@@ -1,24 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>servin-ecommerce bootstrap 5 html template</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
-    <!--refrence carousel-->
-    <link rel="stylesheet" href="{% static 'css/owlcarousel/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/owlcarousel/owl.theme.default.min.css' %}">
-    <!--refrence carousel-->
-    <link rel="stylesheet" href= "{%static 'css/style.css' %}">
-    <link rel="stylesheet" href="{%static 'css/all.min.css'%}">
-    <link rel="stylesheet" href="{%static 'css/respansive.css'%}">
-    <link rel="stylesheet" href="{%static 'css/animate.min.css'%}">
-</head>
-
+{% block content %}
 <body id="body-homepage">
     <div id="modal-subscribe" class="modal fade subscribe-popup">
         <div class="modal-dialog">
@@ -83,7 +67,7 @@
             </form>
         </div>
     </div>
-    <header>
+    {% comment %} <header>
         <div class="topbar-site d-none d-lg-block">
             <div class="container">
                 <div class="row">
@@ -619,7 +603,9 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> {% endcomment %}
+
+    
     <main class="content homepage">
         <section class="mb-5 ">
             <div class="owl-carousel slider_baner-homepage" id="slider_header">
@@ -1596,8 +1582,9 @@
             </div>
         </section>
     </main>
+ {% endblock content %}
 
-    <footer class="area-footer">
+    {% comment %} <footer class="area-footer">
         <div class="area-content-footer">
             <div class="container">
                 <div class="row">
@@ -1699,15 +1686,5 @@
                 </div>
             </div>
         </div>
-    </footer>
-    <a class="scrollTo scroll-To-top" href=".topbar-site"></a>
-    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <!--refrence carousel-->
-    <script src="{% static 'js/carousel/owl.carousel.min.js' %}"></script>
-    <!--refrence carousel-->
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+    </footer> {% endcomment %}
 </body>
-
-</html>
