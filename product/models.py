@@ -44,7 +44,7 @@ class Product(models.Model):
     date_prodcut = models.DateTimeField(auto_now=True)
     salesman = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE, null=True)
     cat = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, null=True)
-    sold_out_num = models.BigIntegerField()
+    sold_out_num = models.BigIntegerField(null=True)
 
 
 
