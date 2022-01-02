@@ -12,6 +12,7 @@ class SalesmanProduct(models.Model):
     date_last_update = models.DateTimeField(auto_now=True, null=True)# add to intermadiate table
     amount = models.BigIntegerField(null=True)#pas az sefaresh az in kam shavad
     product = models.ForeignKey(Product, on_delete=DO_NOTHING, null=True)
+    
 
 
     def __str__(self) -> str:

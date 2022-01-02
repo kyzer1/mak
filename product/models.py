@@ -58,5 +58,4 @@ class Product(models.Model):
 
 
 
-
     # img = models.ImageField(upload_to='product_media/', null=True, blank=True)
