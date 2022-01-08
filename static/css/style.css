@@ -723,15 +723,15 @@ ul.menu-multi-level .mega-menu-col ul {
 }
 
 .slider-baner-image1 {
-    background-image: url(img/img403.jpg);
+    background-image: url("../img/img403.jpg");
 }
 
 .slider-baner-image2 {
-    background-image: url(img/img410.jpg);
+    background-image: url("../img/img410.jpg");
 }
 
 .slider-baner-image3 {
-    background-image: url(img/img409.jpg);
+    background-image: url("../img/img409.jpg");
 }
 
 .item_slider-baner-homepage {

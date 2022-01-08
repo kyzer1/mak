@@ -8,7 +8,7 @@ from salesman_profile.models import SalesmanProfile
 
 class Cart(models.Model):
     customer = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE, null=True)
-    salesman = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE, null=True)
+    # salesman = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE, null=True)
     price = models.FloatField(null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
     count_order = models.BigIntegerField(null=True)

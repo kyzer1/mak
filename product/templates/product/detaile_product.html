@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>servin-ecommerce bootstrap 5 html template</title>
-    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
-    <!--refrence carousel-->
-    <link rel="stylesheet" href="css/owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owlcarousel/owl.theme.default.min.css">
-    <!--refrence carousel-->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/respansive.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-</head>
 
-<body class="singleProduct toSidebar">
+{% block content %}
+<div class="singleProduct toSidebar">
     <div class="bg-close">
     </div>
     <div class="bg-searchform">
@@ -24,7 +10,7 @@
             <div class="area-close-search">
                 <a href="#"><i class="fal fa-times"></i></a>
             </div>
-            <form class="search-form d-flex w-100" action="" method="get">
+            <form class="searcd-block d-lg-noneh-form d-flex w-100" action="" method="get">
                 <input type="text" class="form-control input_search" placeholder="دنبال چه میگردید">
                 <button type="submit">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
@@ -583,7 +569,7 @@
             <h1 class="text-center mb-3">جزئیات نوار کناری سمت چپ</h1>
             <nav aria-label="breadcrumb" class="mb-4 mb-lg-3">
                 <ol class="breadcrumb breadcrumb-singleProduct ">
-                    <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                    <li class="breadcrumb-item"><a href="home">خانه</a></li>
                     <li class="breadcrumb-item"><a href="#">فروشگاه</a></li>
                     <li class="breadcrumb-item active">جزئیات نوار کناری سمت چپ</li>
                 </ol>
@@ -1120,10 +1106,10 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-xl-3 mt-5 mt-lg-0 order-2 order-lg-2">
-        {% comment "" %} sidebar detail view included{% endcomment %}
-                    {% block sidebar %}
-                        {% include 'detail_sidebar.html' %}
-                    {% endblock sidebar %}
+                    
+                {% comment "" %} sidebar detail_view included{% endcomment %}
+                     {% include 'detail_sidebar.html' %}
+                            
                 </div>
             </div>
         </div>
@@ -1235,6 +1221,5 @@
     <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/price-range-slider.js"></script>
     <script src="js/jquery.elevatezoom.js"></script>
-</body>
-
-</html>
+</div>
+{% endblock content %}
