@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>servin-ecommerce bootstrap 5 html template</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+        <!--refrence carousel-->
+        <link rel="stylesheet" href="{% static 'css/owlcarousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owlcarousel/owl.theme.default.min.css' %}">
+        <!--refrence carousel-->
+        <link rel="stylesheet" href= "{%static 'css/style.css' %}">
+        <link rel="stylesheet" href="{%static 'css/all.min.css'%}">
+        <link rel="stylesheet" href="{%static 'css/respansive.css'%}">
+        <link rel="stylesheet" href="{%static 'css/animate.min.css'%}">
+    </head>
+
+    
+<body>
+    <main class="content">
+        <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+            <div class="container container-Page-account">
+                <div class="row">
+                    {% block account_sidebar %}
+                        {% include 'account_sidebar.html' %}
+                    {% endblock account_sidebar %}
+                    <div class="col-12 col-xl-9 container-content-account">
+                        {% block account_header %}
+                            {% include 'account_header.html' %}
+                        {% endblock account_header %}
+                        {% block account_content %}{% endblock account_content %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <a class="scrollTo scroll-To-top" href=".topbar-site"></a>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!--refrence carousel-->
+    <script src="{% static 'js/carousel/owl.carousel.min.js' %}"></script>
+    <!--refrence carousel-->
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+</body>
+</html>
