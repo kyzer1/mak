@@ -1,10 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.deletion import DO_NOTHING
+# from django.contrib.auth.models import User
 from product.models import Product
-# from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model
 
-# User = get_user_model()
+User = get_user_model()
 
 class CustomerProfile(User):
     telephone = models.CharField(max_length=11)
@@ -25,7 +24,7 @@ class CustomerAddress(models.Model):
 
 
 
-class Favotite(models.Model):
+class Favorite(models.Model):
     user = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=DO_NOTHING) # badan dar view handle shavad
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING) # badan dar view handle shavad
 

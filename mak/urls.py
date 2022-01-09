@@ -1,8 +1,7 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls.conf import include
 from mak.views import home_page
 
 
@@ -10,7 +9,9 @@ from mak.views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
-    path('', include('product.urls', namespace='products'))
+    path('', include('product.urls', namespace='products')),
+    path('', include('salesman_profile.urls', namespace='salesman_profile')),
+    path('', include('customer_profile.urls', namespace='customer_profile'))
 ]
 if settings.DEBUG:
     # add root static files
