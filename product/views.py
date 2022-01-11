@@ -2,6 +2,7 @@ from typing import Any
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from django.shortcuts import render
+from django.views.generic.detail import DetailView
 from .models import CategoryProduct, Product
 from django.views.generic import ListView
 
@@ -32,8 +33,8 @@ def show_sub_cat_det(request, cat): # --> showing sub_cat after click
 
 class ShowProduct(ListView):
     template_name = 'product/detail_sub_cat.html'
-    contex_object_name ='product'
-    paiginated_by = 10
+    context_object_name ='products'
+    paginate_by = 16
 
     def get(self, request, *args, **kwargs):
         self.queryset = Product.objects.all().filter(cat__title=kwargs.get('sub_cat'))
