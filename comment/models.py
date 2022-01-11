@@ -15,8 +15,8 @@ class Comment(models.Model):
     ]
     rate = models.CharField(max_length=50,choices=rate_choices, null=True, blank=True)
     comment = models.TextField(null=True, blank=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    customer = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,related_name="product_comment")
+    customer = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE, null=True,related_name="customers")
 
     def __str__(self) -> str:
         return self.comment

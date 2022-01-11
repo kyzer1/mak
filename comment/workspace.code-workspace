@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../django/Tamrin/Hello-Django"
+		},
+		{
+			"path": "../../../test/upload_file"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

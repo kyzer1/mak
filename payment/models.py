@@ -7,6 +7,6 @@ from salesman_profile.models import SalesmanProfile
 
 class Payment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
-    customer = models.ForeignKey(CustomerProfile, on_delete=DO_NOTHING)
-    salesman = models.ForeignKey(SalesmanProfile, on_delete=DO_NOTHING)
+    customer = models.ForeignKey(CustomerProfile, on_delete=DO_NOTHING,related_name="cusomer_payment")
+    salesman = models.ForeignKey(SalesmanProfile, on_delete=DO_NOTHING,related_name="salesman_payment")
     cart = models.JSONField()

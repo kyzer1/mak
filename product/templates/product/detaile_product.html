@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
 <div class="singleProduct toSidebar">
@@ -26,12 +26,12 @@
             </form>
         </div>
     </div>
-    <header>
+    {% comment %} <header> {% endcomment %}
         <div class="topbar-site d-none d-lg-block">
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <div class="d-flex align-items-center ">
+                        {% comment %} <div class="d-flex align-items-center ">
                             <div class="email ">
                                 <a href="mailto:contact@servin.com">
                                     <span>contact@servin.com</span>
@@ -44,9 +44,9 @@
                                     <i class="fal fa-phone-alt"></i>
                                 </a>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
-                    <div class="col-6">
+                    {% comment %} <div class="col-6">
                         <div class="d-flex align-items-center justify-content-end">
                             <div class="user-account d-none d-md-block">
                                 <a href="account.html">
@@ -61,511 +61,15 @@
                                 <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
-        <nav class="serv-navbar">
-            <div class="container">
-                <div class="row" style="position: relative;">
-                    <div
-                        class="col-4 col-lg-2 order-2 order-lg-1 d-flex justify-content-center justify-content-lg-start">
-                        <div class="area-logo">
-                            <a href="index.html"><img src="img/logo.png" class="img-fluid" /></a>
-                        </div>
-                    </div>
-                    <div class="col-4 col-lg-8 order-1 order-lg-2 d-flex align-items-center col-main_menu">
-                        <div class="main_menu h-100 d-none d-lg-block">
-                            <ul class="d-flex h-100 align-items-center ">
-                                <li><a href="index.html">صفحه اصلی</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html"> صفحه اصلی 1</a>
-                                        <li><a href="index-2.html"> صفحه اصلی 2</a>
-                                    </ul>
-                                </li>
-                                <li><a href="#">صفحات<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="about.html">درباره ما</a></li>
-                                        <li><a href="contact.html">تماس با ما</a>
-                                        </li>
-                                        <li><a href="login.html">ورود</a></li>
-                                        <li><a href="signup.html">ثبت نام</a></li>
-                                        <li><a href="404.html">خطا 404</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">وبلاگ<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">شبکه ای <i class="fal fa-angle-left"></i></a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-three-columns.html">سه ستون </a></li>
-                                                <li><a href="blog-four-columns.html">چهار ستون </a>
-                                                </li>
-                                                <li><a href="blog-left-sidebar.html">نوار کناری سمت چپ </a></li>
-                                                <li><a href="blog-right-sidebar.html">نوار کناری سمت راست </a></li>
-                                                <li><a href="blog-standard-left-sidebar.html">نوار کناری استاندارد چپ
-                                                    </a></li>
-                                                <li><a href="blog-standard-right-sidebar.html">نوار کناری استاندارد راست
-                                                        </i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">ساختمانی <i class="fal fa-angle-left"></i>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-masonry-three-columns.html">سه ستون </a></li>
-                                                <li><a href="blog-masonry-four-columns.html">چهار ستون </a>
-                                                </li>
-                                                <li><a href="blog-masonry-left-sidebar.html">نوار کناری سمت چپ </a></li>
-                                                <li><a href="blog-masonry-right-sidebar.html">نوار کناری سمت راست </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">جزییات وبلاگ <i class="fal fa-angle-left"></i></a>
-                                            <ul class="sub-menu">
-                                                <li><a href="single-left.html">پیش فرض</a></li>
-                                                <li><a href="single-right.html">نوار کناری سمت راست</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">لیستی <i class="fal fa-angle-left"></i></a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-list-left-sidebar.html">نوار کناری سمت چپ</a></li>
-                                                <li><a href="blog-list-right-sidebar.html">نوار کناری سمت راست</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="container-mega-menu"><a href="shop-left-sidebar.html">محصولات<i
-                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="serv-megamenu serv-megamenu-Style1">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <a class="title_megamenu" href="#">آرایشی</a>
-                                                <ul>
-                                                    <li><a href="#"> آرایش صورت
-                                                        </a></li>
-                                                    <li><a href="#">آرایش لب</a></li>
-                                                    <li><a href="#">آرایش چشم و ابرو</a></li>
-                                                    <li><a href="#">آرایش ناخن</a></li>
-                                                    <li><a href="#"> آرایش مو</a></li>
-                                                    <li><a href="#">پاک کننده های آرایشی</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-3">
-                                                <a class="title_megamenu" href="#">عطر و آدکلان</a>
-                                                <ul>
-                                                    <li><a href="#"> بادی اسپلش</a></li>
-                                                    <li><a href="#">عطر جیبی</a></li>
-                                                    <li><a href="#">اسپری و مام مردانه</a></li>
-                                                    <li><a href="#">اسپری و مام زنانه</a></li>
-                                                    <li><a href="#">عطر زنانه</a></li>
-                                                    <li><a href="#">ادکلان مردانه</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-3">
-                                                <a class="title_megamenu" href="#">مراقبتی</a>
-                                                <ul>
-                                                    <li><a href="#">مراقبت چشم</a></li>
-                                                    <li><a href="#">مراقبت صورت</a></li>
-                                                    <li><a href="#">مراقبت لب</a></li>
-                                                    <li><a href="#">مراقبت ناخن</a></li>
-                                                    <li><a href="#"> مراقبت بدن</a></li>
-                                                    <li><a href="#">مراقبت مو</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-3 ">
-                                                <a class="title_megamenu" href="#">بهداشت و سلامت</a>
-                                                <ul>
-                                                    <li><a href="#">بهداشت دهان و دندان</a></li>
-                                                    <li><a href="#">بهداشت بانوان</a></li>
-                                                    <li><a href="#">بهداشت عمومی</a></li>
-                                                    <li><a href="#">بهداشت آقایان</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="container-mega-menu"><a href="shop-left-sidebar.html">فروشگاه<i
-                                            class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="serv-megamenu">
-                                        <div class="row mb-3">
-                                            <div class="col-12 d-flex mb-3">
-                                                <div class="mega-menu-col col-4">
-                                                    <a class="title_megamenu" href="#">صفحات محصول</a>
-                                                    <ul>
-                                                        <li><a href="shop-product-detail.html"> پیش فرض
-                                                            </a></li>
-                                                        <li><a href="shop-product-detail-right-sidebar.html">نوار کناری
-                                                                سمت راست</a></li>
-                                                        <li><a href="shop-product-detail-left-sidebar.html">نوار کناری
-                                                                سمت چپ</a></li>
-                                                        <li><a href="shop-product-detail-with-icons.html">جزئیات محصول
-                                                                با آیکن ها</a></li>
-                                                        <li><a href="shop-product-detail-with-sticy-addtocart.html">جزئیات
-                                                                محصول با سبد خرید شناور</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="mega-menu-col col-4">
-                                                    <a class="title_megamenu" href="#">صفحات دیگر</a>
-                                                    <ul>
-                                                        <li><a href="cart.html"> سبد خرید</a></li>
-                                                        <li><a href="checkout.html">بررسی</a></li>
-                                                        <li><a href="wishlist.html">لیست مورد علاقه</a></li>
-                                                        <li><a href="account.html">حساب کاربری</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="mega-menu-col col-4">
-                                                    <a class="title_megamenu" href="#">طرح بندی صفحه خرید</a>
-                                                    <ul>
-                                                        <li><a href="shop-list.html">نمای لیستی فروشگاه</a></li>
-                                                        <li><a href="shop-list-right-sidebar.html">لیستی نوار کناری سمت
-                                                                راست</a></li>
-                                                        <li><a href="shop-list-left-sidebar.html">لیستی نوار کناری سمت
-                                                                چپ</a></li>
-                                                        <li><a href="shop-left-sidebar.html">شبکه ای نوار کناری سمت
-                                                                چپ</a></li>
-                                                        <li><a href="shop-right-sidebar .html"> شبکه ای نوار کناری سمت
-                                                                راست</a></li>
-                                                        <li><a href="shop-four-column-filter-drawer.html">چهار ستون با
-                                                                فیلتر کشویی</a></li>
-                                                        <li><a href="shop-four-column-filter_offcanvas.html"> چهار ستون
-                                                                با فیلتر کشویی خارجی</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <a href="shop-left-sidebar.html">
-                                                    <img class="img-fluid"
-                                                        src="img/short-hair-asian-young-beautiful-woman-applying-cosmetic-powder-brush_1150-13018.jpg"
-                                                        alt="تصویر مگامنو">
-                                                </a>
-                                            </div>
-                                            <div class="col-4">
-                                                <a href="shop-left-sidebar.html">
-                                                    <img class="img-fluid" src="img/Z4xAUT.jpg" alt="تصویر مگامنو" />
-                                                </a> </div>
-                                            <div class="col-4">
-                                                <a href="shop-left-sidebar.html">
-                                                    <img class="img-fluid" src="img/apUKWu.jpg" alt="تصویر مگامنو" />
-                                                </a> </div>
 
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="icon_meni_bar">
-                            <a class="d-block d-lg-none"><i class="fas fa-bars "></i></a>
-                        </div>
-                        <div id="menu_mobile" class="menu_mobile">
-                            <div class="header_menu_mobile d-flex align-items-center">
-                                <button type="button" class="close close_menu_mobile" aria-label="Close"><span
-                                        aria-hidden="true">×</span></button>
-                                <div class="area-logo">
-                                    <a href="index.html"><img src="img/logo.png" class="img-fluid" /></a>
-                                </div>
-                            </div>
-                            <div class="area_menu_mobile menu-top-menu-container" id="accordian">
-                                <ul class="menu-multi-level">
-                                    <li class="menu-item-has-children"><a href="#">صفحه اصلی</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html"> صفحه اصلی 1</a></li>
-                                            <li><a href="index-2.html"> صفحه اصلی 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">صفحات </a>
-                                        <ul class="sub-menu">
-                                            <li><a href="about.html">درباره ما</a></li>
-                                            <li><a href="contact.html">تماس با ما</a>
-                                            </li>
-                                            <li><a href="login.html">ورود</a></li>
-                                            <li><a href="signup.html">ثبت نام</a></li>
-                                            <li><a href="404.html">خطا 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">وبلاگ</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item-has-children"><a href="single-product.html">شبکه ای
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog-three-columns.html">سه ستون </a></li>
-                                                    <li><a href="blog-four-columns.html">چهار ستون </a>
-                                                    </li>
-                                                    <li><a href="blog-left-sidebar.html">نوار کناری سمت چپ </a></li>
-                                                    <li><a href="blog-right-sidebar.html">نوار کناری سمت راست </a></li>
-                                                    <li><a href="blog-standard-left-sidebar.html">نوار کناری استاندارد
-                                                            چپ
-                                                        </a></li>
-                                                    <li><a href="blog-standard-right-sidebar.html">نوار کناری استاندارد
-                                                            راست
-                                                            </i></a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="single.html">ساختمانی
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog-masonry-three-columns.html">سه ستون </a></li>
-                                                    <li><a href="blog-masonry-four-columns.html">چهار ستون </a>
-                                                    </li>
-                                                    <li><a href="blog-masonry-left-sidebar.html">نوار کناری سمت چپ </a>
-                                                    </li>
-                                                    <li><a href="blog-masonry-right-sidebar.html">نوار کناری سمت راست
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="404.html">جزییات وبلاگ </a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="single-left.html">پیش فرض</a></li>
-                                                    <li><a href="single-right.html">نوار کناری سمت راست</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="archive.html">لیستی </a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog-list-left-sidebar.html">نوار کناری سمت چپ</a></li>
-                                                    <li><a href="blog-list-right-sidebar.html">نوار کناری سمت راست</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="menu-item-has-children"><a href="#">محصولات</a>
-                                        <ul class="sub-menu">
-                                            <li class="mega-menu-col">
-                                                <a class="title-megamenu-mobile " href="#">آرایشی</a>
-                                                <ul>
-                                                    <li><a href="#"> آرایش صورت</a></li>
-                                                    <li> <a href="#">آرایش لب</a></li>
-                                                    <li><a href="#">آرایش چشم و ابرو</a></li>
-                                                    <li><a href="#">آرایش ناخن</a></li>
-                                                    <li> <a href="#"> آرایش مو</a></li>
-                                                    <li><a href="#">پاک کننده های آرایشی</a></li>
-                                                    <li><a href="shop-product-detail-with-sticy-addtocart.html">جزئیات
-                                                            محصول با سبد خرید شناور</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="mega-menu-col">
-                                                <a class="title-megamenu-mobile" href="#">عطر و آدکلان</a>
-                                                <ul>
-                                                    <li><a href="#"> بادی اسپلش</a></li>
-                                                    <li> <a href="#">عطر جیبی</a></li>
-                                                    <li> <a href="#">اسپری و مام مردانه</a></li>
-                                                    <li><a href="#">اسپری و مام زنانه</a></li>
-                                                    <li> <a href="#">عطر زنانه</a></li>
-                                                    <li><a href="#">ادکلان مردانه</a></li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="mega-menu-col">
-                                                <a class="title-megamenu-mobile " href="#">مراقبتی</a>
-                                                <ul>
-                                                    <li> <a href="#">مراقبت چشم</a></li>
-                                                    <li> <a href="#">مراقبت صورت</a></li>
-                                                    <li> <a href="#">مراقبت لب</a></li>
-                                                    <li> <a href="#">مراقبت ناخن</a></li>
-                                                    <li> <a href="#"> مراقبت بدن</a></li>
-                                                    <li> <a href="#">مراقبت مو</a> </li>
-
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col">
-                                                <a class="title-megamenu-mobile " href="#">بهداشت و سلامت</a>
-                                                <ul>
-                                                    <li> <a href="#">بهداشت دهان و دندان</a></li>
-                                                    <li> <a href="#">بهداشت بانوان</a></li>
-                                                    <li> <a href="#">بهداشت عمومی</a></li>
-                                                    <li> <a href="#">بهداشت آقایان</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><a href="#">فروشگاه</a>
-                                        <ul class="sub-menu">
-                                            <li class="mega-menu-col">
-                                                <a class="title-megamenu-mobile " href="#">صفحات محصول</a>
-                                                <ul>
-                                                    <li><a href="shop-product-detail.html"> پیش فرض
-                                                        </a></li>
-                                                    <li><a href="shop-product-detail-right-sidebar.html">نوار
-                                                            کناری
-                                                            سمت راست</a></li>
-                                                    <li><a href="shop-product-detail-left-sidebar.html">نوار
-                                                            کناری
-                                                            سمت چپ</a></li>
-                                                    <li><a href="shop-product-detail-with-icons.html">جزئیات
-                                                            محصول
-                                                            با آیکن ها</a></li>
-                                                    <li><a href="shop-product-detail-with-sticy-addtocart.html">جزئیات
-                                                            محصول با سبد خرید شناور</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col">
-                                                <a class="title-megamenu-mobile " href="#">صفحات دیگر</a>
-                                                <ul>
-                                                    <li><a href="cart.html"> سبد خرید</a></li>
-                                                    <li><a href="checkout.html">بررسی</a></li>
-                                                    <li><a href="wishlist.html">لیست مورد علاقه</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col ">
-                                                <a class="title-megamenu-mobile " href="#">طرح بندی صفحه خرید</a>
-                                                <ul>
-                                                    <li><a href="shop-list.html">نمای لیستی فروشگاه</a></li>
-                                                    <li><a href="shop-list-right-sidebar.html">لیستی نوار کناری
-                                                            سمت
-                                                            راست</a></li>
-                                                    <li><a href="shop-list-left-sidebar.html">لیستی نوار کناری
-                                                            سمت
-                                                            چپ</a></li>
-                                                    <li><a href="shop-left-sidebar.html">شبکه ای نوار کناری سمت
-                                                            چپ</a></li>
-                                                    <li><a href="shop-right-sidebar .html"> شبکه ای نوار کناری
-                                                            سمت
-                                                            راست</a></li>
-                                                    <li><a href="shop-four-column-filter-drawer.html">چهار ستون
-                                                            با
-                                                            فیلتر کشویی</a></li>
-                                                    <li><a href="shop-four-column-filter_offcanvas.html"> چهار
-                                                            ستون
-                                                            با فیلتر کشویی خارجی</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4 col-lg-2 order-3 order-lg-3">
-                        <div class="area-widget_navbar d-flex align-items-center justify-content-end h-100">
-                            <div class="icon-search item_widget_navbar d-none d-lg-block">
-                                <a href="#">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                            </div>
-                            <div class="icon-wishlist item_widget_navbar d-none d-lg-block">
-                                <a href="#">
-                                    <i class="fal fa-heart"></i>
-                                    <span class="badge_count">0</span>
-                                </a>
-                            </div>
-                            <div class="icon-shooping-cart item_widget_navbar">
-                                <a href="#">
-                                    <i class="fal fa-shopping-cart"></i>
-                                    <span class="badge_count">0</span>
-                                </a>
-                                <div class="box-add-to-cart-header">
-                                    <div class="header-add-to-cart d-flex justify-content-between align-items-center">
-                                        <div class="count-product-addtocart">
-                                            <span>تعداد کالا :</span>
-                                            <span>2</span>
-                                        </div>
-                                        <div class="link-show-cart"><a href="#">مشاهده سبد خرید</a></div>
-                                    </div>
-                                    <div class="body-add-to-cart p-4">
-                                        <div class="row  mb-4">
-                                            <div class="col-10">
-                                                <div class="details_product_addtocart">
-                                                    <div
-                                                        class="title_product_addtocart mb-2 d-flex justify-content-start">
-                                                        محصول 1 </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div
-                                                            class="img_product_addtocart h-100 d-flex align-items-center">
-                                                            <img class="img-fluid" src="img/img71.jpg" />
-                                                        </div>
-                                                        <div class="details_price_addtocart d-flex align-items-center">
-                                                            <input name="input" type="number" value="1" class="me-2">
-                                                            <div
-                                                                class="price_product_addtocart d-flex align-items-center">
-                                                                <span class="order-2"> 20000 تومان</span>
-                                                                <span class="order-1 me-2">x</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-2 d-flex align-items-center justify-content-center">
-                                                <div class="close_product_addtocart"> <a href="#" class="d-flex p-1"><i
-                                                            class="fas fa-trash-alt"></i><span
-                                                            class="tooltip-site">حذف</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row  mb-4">
-                                            <div class="col-10">
-                                                <div class="details_product_addtocart">
-                                                    <div
-                                                        class="title_product_addtocart mb-2 d-flex justify-content-start">
-                                                        محصول 2 </div>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div
-                                                            class="img_product_addtocart h-100 d-flex align-items-center">
-                                                            <img class="img-fluid" src="img/img70.jpg" />
-                                                        </div>
-                                                        <div class="details_price_addtocart d-flex align-items-center">
-                                                            <input name="input" type="number" value="1" class="me-2">
-                                                            <div
-                                                                class="price_product_addtocart d-flex align-items-center">
-                                                                <span class="order-2"> 20000 تومان</span>
-                                                                <span class="order-1 me-2">x</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-2 d-flex align-items-center justify-content-center">
-                                                <div class="close_product_addtocart"> <a href="#" class="d-flex p-1"><i
-                                                            class="fas fa-trash-alt"></i><span
-                                                            class="tooltip-site">حذف</span></a> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="footer_addtocart d-flex flex-column align-items-center justify-content-center">
-                                        <div
-                                            class="area_total_modal_addtocart mb-3  d-flex justify-content-between w-100">
-                                            <span>مجموع کل :</span>
-                                            <span> 250000 تومان</span>
-                                        </div>
-                                        <a href="#" class="btn btn-custom  btn-block btn-add-to-cart btn-animate1">
-                                            پرداخت </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="area-widget-header-fixed d-block d-lg-none">
-                                <div class="widget-header-fixed d-flex justify-content-between align-items-center">
-                                    <div class="icon-search widget-header">
-                                        <a href="#" class="d-flex justify-content-center align-items-center">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </div>
-                                    <div class="icon-wishlist widget-header">
-                                        <a href="#" class="d-flex justify-content-center align-items-center">
-                                            <i class="fal fa-heart"></i>
-                                            <span class="badge_count">0</span>
-                                        </a>
-                                    </div>
-                                    <div class="account-user widget-header">
-                                        <a href="#" class="d-flex justify-content-center align-items-center">
-                                            <i class="fal fa-user"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
     </header>
     <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
-        <div class="area-breadcrumb-site">
+        <div class="area-breadcrumb-site" style='background: url({% static "img/imgheader.jpg" %})   no-repeat center top;
+'>
             <h1 class="text-center mb-3">جزئیات نوار کناری سمت چپ</h1>
             <nav aria-label="breadcrumb" class="mb-4 mb-lg-3">
                 <ol class="breadcrumb breadcrumb-singleProduct ">
@@ -585,8 +89,22 @@
                             <div class="exzoom" id="exzoom">
                                 <div class="exzoom_img_box">
                                     <ul class='exzoom_img_ul'>
-                                        <li><img src="img/img4.jpg" /></li>
-                                        <li><img src="img/img17.jpg" /></li>
+                                        {% if product.img1 %}
+                                        <li><img src="{{product.img1.url}}" /></li>
+                                        {% endif %}
+                                        {% if  product.img2 %}
+                                        <li><img src="{{product.img2.url}}" /></li>
+                                        {% endif %}
+                                        {% comment %} {% elif product.img3 %} {% endcomment %}
+                                        {% if  product.img3 %}
+                                        <li><img src="{{product.img3.url}}" /></li>
+                                        {% endif %}
+                                        {% if  product.img4 %}
+                                        <li><img src="{{product.img4.url}}" /></li>
+                                        {% endif %}
+                                        
+                                        {% comment %} <li><img src="{%static 'img/img17.jpg' %}" /></li> {% endcomment %}
+                                    
                                     </ul>
                                 </div>
                                 <div class="exzoom_nav"></div>
@@ -601,15 +119,20 @@
                         <div class="col-12 col-lg-6 ">
                             <div class="contentproduct-single area-details-product ">
                                 <h3 class="product-title mb-3">
-                                    <a href="#">عنوان محصول</a>
+                                    <a href="#">{{product.title}}</a>
                                 </h3>
                                 <div
                                     class="d-sm-flex d-lg-block d-xl-flex justify-content-between align-items-center  mb-3">
                                     <div class="area-price-Product d-flex me-2 me-sm-0">
                                         <span class="me-2"> قیمت: </span>
-                                        <del class="price-discount me-3 ">150000تومان</del>
-                                        <p class="price mb-0">120000 تومان</p>
+                                        {% comment %} <del class="price-discount me-3 "></del> {% endcomment %}
+                                        <p class="price mb-0">{{first.price}}</p>
+                                        <p>
+                                        <span class="me-2"> فروشنده: </span>
+                                        </p>
+                                        <p class="price mb-0">{{first.salesman}}</p>
                                     </div>
+                                    
                                     <a href="#" class="d-flex">
                                         <div class="star_rating me-3">
                                             <span class="star-icon star-icon-active"><i class="far fa-star"></i></span>
@@ -621,12 +144,23 @@
                                         <span>(3.2)</span>
                                     </a>
                                 </div>
+                                <div class="area-price-Product d-flex me-2 me-sm-0">
+                                <span class="me-2"> سایر فروشندگان: </span>
+                                    {% for p in sayer  %}
+                                        <p>{{p.salesman}}</p>
+                                        <p>{{p.price}}</p>
+                                    {% endfor %}
+                                </div>
                                 <p class="mb-3">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                                    طراحان گرافیک
-                                    است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و
-                                    برای شرایط .
+                                    {{product.description}}
                                 </p>
+                                 {% for i in l %}
+                                    {% if i.prop == 'رنگ' %}
+                                    
+                                    {% else %}
+                                    {% endif %}i.prop
+                                    {{i.value}}
+                                    {% endfor %} 
                                 <div class="area-radiosColorProduct mb-4">
                                     <span class="me-3">رنگ</span>
                                     <div class="option-color-product option-color1 ">
@@ -723,8 +257,8 @@
                                 <hr>
                                 <ul class="category-single-product">
                                     <li><span>شناسه محصول: </span>BE65VGR</li>
-                                    <li><span>دسته بندی: </span><a href="#">عطر و آدکلان</a>،
-                                        <a href="#">آدکلان مردانه</a>
+                                    <li><span>دسته بندی: </span><a href="#">{{product.cat.title}} </a>،
+                                        <a href="#">{{product.cat.parent.title}}</a>
                                     </li>
                                     <li><span>برچسب ها: </span><a href="#">مردانه</a> ،
                                         <a href="#">زنانه</a>
@@ -813,8 +347,9 @@
                                 <div class="tab-pane fade" id="reviews-product" role="tabpanel"
                                     aria-labelledby="reviews-product-tab">
                                     <div class="box-comments">
+                                    {% for comment in comments %}
                                         <div class="item-comment pb-5 pb-md-1 mb-4">
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                            {% comment %} <div class="d-flex justify-content-between align-items-center mb-3">
                                                 <div class="star_rating me-3 ">
                                                     <span class="star-icon star-icon-active"><i
                                                             class="far fa-star"></i></span>
@@ -826,7 +361,7 @@
                                                             class="far fa-star"></i></span>
                                                     <span class="star-icon star-icon-active"><i
                                                             class="far fa-star"></i></span>
-                                                </div>
+                                                </div> 
                                                 <div class="box-like-dislike-comment d-flex align-items-center">
                                                     <button class="btn-like pe-3" type="button">5 <i
                                                             class="fal fa-thumbs-up"></i></button>
@@ -834,37 +369,35 @@
                                                     <button class="btn-dislike ps-3" type="button">2 <i
                                                             class="fal fa-thumbs-down"></i></button>
                                                 </div>
-                                            </div>
+                                            </div> {% endcomment %}
                                             <div class="porofile_customers-comment d-flex">
-                                                <div class="area-img-comment">
-                                                    <img src="img/img100.jpg" class="img-fluid">
-                                                </div>
+                                                {% comment %} <div class="area-img-comment">
+                                                    <img src="{%static 'img/img100.jpg' %}" class="img-fluid">
+                                                </div> {% endcomment %}
                                                 <div class="ms-3 ms-md-4">
                                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                                         <div class="porofileName ">
-                                                            <h6>فاطمه حمزه عوفی</h6>
-                                                            <span>3 روز پیش</span>
+                                                            <h6>{{comment.customer}}</h6>
+                                                            {% comment %} <span>3 روز پیش</span> {% endcomment %}
                                                         </div>
-                                                        <div class="area-btn-peply">
+                                                        {% comment %} <div class="area-btn-peply">
                                                             <a href="#" class="btn-peply"> پاسخ</a>
-                                                        </div>
+                                                        </div> {% endcomment %}
                                                     </div>
                                                     <p>
-                                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                                                        استفاده از طراحان
-                                                        گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                                        سطرآنچنان که لازم است، و
-                                                        برای شرایط
+                                                        {{comment.comment}}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                     {% endfor %}
                                     <div class="area-form-wrap single-product">
                                         <div class="area-form-reviews">
                                             <h3 class="h4 mb-4 heading-style1 mt-5">ارسال نظرات</h3>
                                             <!-- Default form contact -->
-                                            <form class="row form-reviews" action="#!">
+                                            <form class="row form-reviews" action="{% url 'comments:add_comment' product.id %}" method="POST">
+                                                {% csrf_token %}
                                                 <div class="starrating risingstar d-flex justify-content-start mb-4">
                                                     <input type="radio" id="star5" name="rating" value="5" /><label
                                                         for="star5" title="5 star"></label>
@@ -878,9 +411,8 @@
                                                         for="star1" title="1 star"></label>
                                                 </div> <!-- Message -->
                                                 <div class="form-group mb-4 col-12">
-                                                    <textarea required class="form-control" id="textarea-form" rows="6"
-                                                        placeholder="نظر شما *"></textarea> </div>
-                                                <!-- Name -->
+                                                    {{form}} </div>
+                                                {% comment %} <!-- Name -->
                                                 <div class="form-group mb-4 col-12 col-md-6"> </label>
                                                     <input type="text" required class="form-control" id="Input-name"
                                                         placeholder="نام خود را وارد کنید *">
@@ -889,7 +421,7 @@
                                                 <div class="form-group mb-4 col-12 col-md-6">
                                                     <input type="email" required class="form-control" id="input-email"
                                                         placeholder="ایمیل خود را وارد کنید *">
-                                                </div>
+                                                </div> {% endcomment %}
                                                 <!-- Send button -->
                                                 <div class="form-group mb-4 col-12 col-md-6">
                                                     <button type="submit" class="btn-animate1">ارسال نظر</button>
@@ -902,11 +434,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-5">
-                        <h2 class="title-site">محصولات مرتبط
-                        </h2>
+
                     </div>
                     <div class="row">
+                    <h2 class="title-site">محصولات مرتبط
+                    </h2>
                         <div class="col-12">
                             <div class="owl-carousel slider-product-toSidebar">
                                 <div class="wow bounceIn item_slider_product-new" data-wow-duration="2s">
@@ -916,8 +448,8 @@
                                         <div class="cart-img-product mb-3">
                                             <a href="#">
                                                 <div class="d-flex justify-content-center align-items-center h-100">
-                                                    <img src="img/img1.jpg" class="img1-product img-fluid" />
-                                                    <img src="img/img2.jpg" class="img2-product img-fluid" />
+                                                    <img src="{%static 'img/img1.jpg' %}" class="img1-product img-fluid" />
+                                                    <img src="{%static 'img/img2.jpg' %}" class="img2-product img-fluid" />
                                                 </div>
                                             </a>
                                             <div class="area-button-view-product">
@@ -954,8 +486,8 @@
                                         <div class="cart-img-product mb-3">
                                             <a href="#">
                                                 <div class="d-flex justify-content-center align-items-center h-100">
-                                                    <img src="img/img3.jpg" class="img1-product img-fluid" />
-                                                    <img src="img/img4.jpg" class="img2-product img-fluid" />
+                                                    <img src="{%static 'img/img3.jpg' %}" class="img1-product img-fluid" />
+                                                    <img src="{%static 'img/img4.jpg' %}" class="img2-product img-fluid" />
                                                 </div>
                                             </a>
                                             <div class="area-button-view-product">
@@ -992,8 +524,8 @@
                                         <div class="cart-img-product mb-3">
                                             <a href="#">
                                                 <div class="d-flex justify-content-center align-items-center h-100">
-                                                    <img src="img/img5.jpg" class="img1-product img-fluid" />
-                                                    <img src="img/img6.jpg" class="img2-product img-fluid" />
+                                                    <img src="{%static 'img/img5.jpg' %}" class="img1-product img-fluid" />
+                                                    <img src="{%static 'img/img6.jpg' %}" class="img2-product img-fluid" />
                                                 </div>
                                             </a>
                                             <div class="area-button-view-product">
@@ -1028,8 +560,8 @@
                                         <div class="cart-img-product mb-3">
                                             <a href="#">
                                                 <div class="d-flex justify-content-center align-items-center h-100">
-                                                    <img src="img/img7.jpg" class="img1-product img-fluid" />
-                                                    <img src="img/img8.jpg" class="img2-product img-fluid" />
+                                                    <img src="{%static 'img/img7.jpg' %}" class="img1-product img-fluid" />
+                                                    <img src="{%static 'img/img8.jpg' %}" class="img2-product img-fluid" />
                                                 </div>
                                             </a>
                                             <div class="area-button-view-product">
@@ -1068,8 +600,8 @@
                                         <div class="cart-img-product mb-3">
                                             <a href="#">
                                                 <div class="d-flex justify-content-center align-items-center h-100">
-                                                    <img src="img/img9.jpg" class="img1-product img-fluid" />
-                                                    <img src="img/img10.jpg" class="img2-product img-fluid" />
+                                                    <img src="{%static 'img/img9.jpg' %}" class="img1-product img-fluid" />
+                                                    <img src="{%static 'img/img10.jpg' %}" class="img2-product img-fluid" />
                                                 </div>
                                             </a>
                                             <div class="area-button-view-product">
@@ -1108,13 +640,13 @@
                 <div class="col-12 col-lg-4 col-xl-3 mt-5 mt-lg-0 order-2 order-lg-2">
                     
                 {% comment "" %} sidebar detail_view included{% endcomment %}
-                     {% include 'detail_sidebar.html' %}
+                     {% comment %} {% include 'detail_sidebar.html' %} {% endcomment %}
                             
                 </div>
             </div>
         </div>
     </main>
-    <footer class="area-footer footer2">
+    {% comment %} <footer class="area-footer footer2">
         <div class="area-content-footer">
             <div class="container">
                 <div class="row">
@@ -1204,22 +736,24 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-4 mt-sm-0 d-flex justify-content-start justify-content-sm-end">
                         <div class="area_cartimg_footer">
-                            <img class="img-fluid" src="img/img100.png" style="width: 12rem;" />
+                            <img class="img-fluid" src="{%static 'img/img100.png'%}" style="width: 12rem;" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> {% endcomment %}
     <a class="scrollTo scroll-To-top " href=".topbar-site"></a>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{%static 'js/jquery-3.6.0.min.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
     <!--refrence carousel-->
-    <script src="js/carousel/owl.carousel.min.js"></script>
+    <script src="{%static 'js/carousel/owl.carousel.min.js'%}"></script>
     <!--refrence carousel-->
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/price-range-slider.js"></script>
-    <script src="js/jquery.elevatezoom.js"></script>
+    <script type="text/javascript" src="{%static 'js/main.js'%}"></script>
+    <script type="text/javascript" src="{%static 'js/wow.min.js'%}"></script>
+    <script type="text/javascript" src="{%static 'js/price-range-slider.js'%}"></script>
+    <script src="{%static 'js/jquery.elevatezoom.js'%}"></script>
 </div>
 {% endblock content %}
+
+

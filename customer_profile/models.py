@@ -18,7 +18,7 @@ class CustomerProfile(User):
 class CustomerAddress(models.Model):
     address = models.TextField()
     postal_code = models.CharField(max_length=10)
-    customer = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE)
+    customer = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE,related_name="customer_ad")
 
     def __str__(self) -> str:
         return f'{self.customer} {self.address}'
@@ -26,6 +26,6 @@ class CustomerAddress(models.Model):
 
 
 class Favotite(models.Model):
-    user = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=DO_NOTHING) # badan dar view handle shavad
+    user = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE,related_name="users")
+    product = models.ForeignKey(Product, on_delete=DO_NOTHING,related_name="product_fav") # badan dar view handle shavad
 

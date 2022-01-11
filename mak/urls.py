@@ -10,10 +10,13 @@ from mak.views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
-    path('', include('product.urls', namespace='products'))
+    path('', include('product.urls', namespace='products')),
+    path('commment/', include('comment.urls', namespace='comments'))
 ]
 if settings.DEBUG:
     # add root static files
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     # add media static files
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    

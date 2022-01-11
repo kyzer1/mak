@@ -4,6 +4,101 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+
+Skip to content
+Pull requests
+Issues
+Marketplace
+Explore
+@missheykh
+postgres /
+postgres
+Public
+
+Code
+Pull requests
+Actions
+Security
+
+    Insights
+
+postgres/.gitignore
+@anarazel
+anarazel Support for optimizing and emitting code in LLVM JIT provider.
+Latest commit b96d550 on Mar 22, 2018
+History
+7 contributors
+@petere
+@mhagander
+@tglsfdc
+@nmisch
+@MasaoFujii
+@adunstan
+@anarazel
+44 lines (43 sloc) 504 Bytes
+# Global excludes across all subdirectories
+*.o
+*.obj
+*.bc
+*.so
+*.so.[0-9]
+*.so.[0-9].[0-9]
+*.so.[0-9].[0-9][0-9]
+*.sl
+*.sl.[0-9]
+*.sl.[0-9].[0-9]
+*.sl.[0-9].[0-9][0-9]
+*.dylib
+*.dll
+*.exp
+*.a
+*.mo
+*.pot
+objfiles.txt
+.deps/
+*.gcno
+*.gcda
+*.gcov
+*.gcov.out
+lcov*.info
+coverage/
+coverage-html-stamp
+*.vcproj
+*.vcxproj
+win32ver.rc
+*.exe
+lib*dll.def
+lib*.pc
+
+# Local excludes in root directory
+/GNUmakefile
+/config.cache
+/config.log
+/config.status
+/pgsql.sln
+/pgsql.sln.cache
+/Debug/
+/Release/
+/tmp_install/
+
+    © 2022 GitHub, Inc.
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+
+
+
 # C extensions
 *.so
 
@@ -113,7 +208,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+mac-venv/
 # Spyder project settings
 .spyderproject
 .spyproject
