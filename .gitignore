@@ -4,7 +4,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-
+#migrations
+**/migrations/*
 
 Skip to content
 Pull requests
@@ -70,6 +71,12 @@ win32ver.rc
 *.exe
 lib*dll.def
 lib*.pc
+
+# db.json
+db.json
+
+#models.png
+models.png
 
 # Local excludes in root directory
 /GNUmakefile
@@ -150,6 +157,14 @@ cover/
 # Translations
 *.mo
 *.pot
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
 
 # Django stuff:
 *.log
