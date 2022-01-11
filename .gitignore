@@ -151,6 +151,6 @@ pyvenv.cfg
 pip-selfcheck.json
 
 ## migrations ##
-**/migrations/*
+**/migrations/*.py
 
 # End of https://www.toptal.com/developers/gitignore/api/python,venv
