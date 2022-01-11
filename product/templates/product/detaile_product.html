@@ -599,11 +599,17 @@
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 ">
+                       
+                    
                             <div class="contentproduct-single area-details-product ">
                                 <h3 class="product-title mb-3">
-                                    <a href="#">عنوان محصول</a>
+                                    <a href="#">{{sub}}</a>
+                       
                                 </h3>
+                       
+                        
                                 <div
+                                
                                     class="d-sm-flex d-lg-block d-xl-flex justify-content-between align-items-center  mb-3">
                                     <div class="area-price-Product d-flex me-2 me-sm-0">
                                         <span class="me-2"> قیمت: </span>
@@ -1108,109 +1114,13 @@
                 <div class="col-12 col-lg-4 col-xl-3 mt-5 mt-lg-0 order-2 order-lg-2">
                     
                 {% comment "" %} sidebar detail_view included{% endcomment %}
-                     {% include 'detail_sidebar.html' %}
+                     {% comment %} {% include 'detail_sidebar.html' %} {% endcomment %}
                             
                 </div>
             </div>
         </div>
     </main>
-    <footer class="area-footer footer2">
-        <div class="area-content-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-lg-0">
-                        <div class="widget_footer">
-                            <div class="title_widget_footer mb-3">
-                                اطلاعات
-                            </div>
-                            <div class="contenet_widget_footer">
-                                <ul>
-                                    <li><a href="#">درباره ما</a></li>
-                                    <li><a href="#">شرایط استفاده</a></li>
-                                    <li><a href="#">راهنمای سفارش و خرید</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-lg-0">
-                        <div class="widget_footer">
-                            <div class="title_widget_footer mb-3">
-                                حساب کاربری
-                            </div>
-                            <div class="contenet_widget_footer">
-                                <ul>
-                                    <li><a href="#">سفارش های من</a></li>
-                                    <li><a href="#">لیست علاقه مندی ها</a></li>
-                                    <li><a href="#">پیگیری سفارش</a></li>
-                                    <li><a href="#">مشخصات کاربری من</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-sm-0">
-                        <div class="widget_footer">
-                            <div class="title_widget_footer mb-3">
-                                خدمات
-                            </div>
-                            <div class="contenet_widget_footer">
-                                <ul>
-                                    <li><a href="#">شرایط ارسال و عودت</a></li>
-                                    <li><a href="#">پرسش های متداول</a></li>
-                                    <li><a href="#">رعایت حریم خصوصی</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="widget_footer">
-                            <div class="title_widget_footer mb-3">
-                                تماس با ما
-                            </div>
-                            <div class="contenet_widget_footer">
-                                <ul class="mb-3">
-                                    <li>
-                                        <span> آدرس: ۴۴۵ کوه عدن جاده، کوه بهشت، اوکلند.</span>
-                                    </li>
-                                    <li>
-                                        <span> شماره تماس: 2135642512</span>
-                                    </li>
-                                    <li>
-                                        <span> ایمیل: digistore@exmple.com</span>
-                                    </li>
-                                </ul>
-                                <div class="area-socialIcon d-flex ">
-                                    <a href="http://www.facebook.com" class="icon facebook"><span
-                                            class="tooltip-site">Facebook</span></a>
-                                    <a href="http://www.github.com" class="icon instegram"><span
-                                            class="tooltip-site">instegram</span></a>
-                                    <a href="http://www.dribble.com" class="icon linkedin"><span
-                                            class="tooltip-site">linkedin</span></a>
-                                    <a href="http://www.twitter.com" class="icon twitter"><span
-                                            class="tooltip-site">Twitter</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="area-copyright  py-4 ">
-            <div class="container">
-                <div class="row justify-content-between align-items-center ">
-                    <div class="col-12 col-sm-6">
-                        <div class="copyright">
-                            تمامی حقوق سایت محفوظ است
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 mt-4 mt-sm-0 d-flex justify-content-start justify-content-sm-end">
-                        <div class="area_cartimg_footer">
-                            <img class="img-fluid" src="img/img100.png" style="width: 12rem;" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+  
     <a class="scrollTo scroll-To-top " href=".topbar-site"></a>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

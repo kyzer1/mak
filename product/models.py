@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.deletion import SET_NULL
 from salesman_profile.models import SalesmanProfile
+from django.urls import reverse
 # from cart.models import Order
 
 # from customer_profile.models import HistoryCustomer
@@ -14,6 +15,9 @@ class CategoryProduct(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    def get_url(self):
+        return reverse ('product:detail/',args=[self.pk])
 
 
 
@@ -51,6 +55,9 @@ class Product(models.Model):
     def __str__(self) -> str:
         return self.title
 
+
+    def get_absolute_url(self):
+        return reverse ('product:det_product',args=[self.pk])
 
 
 
