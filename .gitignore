@@ -64,6 +64,7 @@ db.sqlite3-journal
 
 # migrations
 **/migrations/*
+./manage.py makemigrations --merge
 
 # Flask stuff:
 instance/
