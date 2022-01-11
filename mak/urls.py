@@ -10,7 +10,7 @@ from mak.views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
-    path('', include('product.urls', namespace='products'))
+    path('', include('product.urls', namespace='products')),
 ]
 if settings.DEBUG:
     # add root static files

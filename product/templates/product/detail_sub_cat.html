@@ -51,13 +51,13 @@
                         
                            
                             <div class="cart-img-product mb-3">
-                                <a href="#">
+                                <a href="{% url 'products: detailproduct' product.id %}">
                                     <div class="d-flex justify-content-center align-items-center h-100">
                                         <img src="{{p.img.url}}" class="img1-product img-fluid" />
                                     </div>
                                 </a>
                             <div class="area-button-view-product">
-                                  <a href="shop-product-detail.html" class="button-view-product">مشاهده محصول </a>
+                                  <a href="{% url 'products: detailproduct' product.id %}" class="button-view-product">مشاهده محصول </a>
                                 
                             </div>
                         </div>
