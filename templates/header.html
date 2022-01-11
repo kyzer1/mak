@@ -2,7 +2,7 @@
 
 
 {% block header %}
-<header>
+<div>
     <div class="topbar-site d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -115,48 +115,23 @@
                                         class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <div class="serv-megamenu serv-megamenu-Style1">
                                     <div class="row">
+                                         {% for cat in parent_cat %}
+                                            
                                         <div class="col-3">
-                                            <a class="title_megamenu" href="#">آرایشی</a>
+                                            <a class="title_megamenu" href="#">{{cat.title}}</a>
+                                            {% for sub in sub_cat %}
+                                                {% for title in sub %}
+                                                    {% if title.parent_id == cat.id %}
                                             <ul>
-                                                <li><a href="#"> آرایش صورت
+                                                <li><a href="#"> {{title.title}}
                                                     </a></li>
-                                                <li><a href="#">آرایش لب</a></li>
-                                                <li><a href="#">آرایش چشم و ابرو</a></li>
-                                                <li><a href="#">آرایش ناخن</a></li>
-                                                <li><a href="#"> آرایش مو</a></li>
-                                                <li><a href="#">پاک کننده های آرایشی</a></li>
                                             </ul>
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% endfor %}
                                         </div>
-                                        <div class="col-3">
-                                            <a class="title_megamenu" href="#">عطر و آدکلان</a>
-                                            <ul>
-                                                <li><a href="#"> بادی اسپلش</a></li>
-                                                <li><a href="#">عطر جیبی</a></li>
-                                                <li><a href="#">اسپری و مام مردانه</a></li>
-                                                <li><a href="#">اسپری و مام زنانه</a></li>
-                                                <li><a href="#">عطر زنانه</a></li>
-                                                <li><a href="#">ادکلان مردانه</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-3">
-                                            <a class="title_megamenu" href="#">مراقبتی</a>
-                                            <ul>
-                                                <li><a href="#">مراقبت چشم</a></li>
-                                                <li><a href="#">مراقبت صورت</a></li>
-                                                <li><a href="#">مراقبت لب</a></li>
-                                                <li><a href="#">مراقبت ناخن</a></li>
-                                                <li><a href="#"> مراقبت بدن</a></li>
-                                                <li><a href="#">مراقبت مو</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-3 ">
-                                            <a class="title_megamenu" href="#"> </a>
-                                            <ul>
-                                                <li><a href="#">بهداشت دهان و دندان</a></li>
-                                                <li><a href="#">بهداشت بانوان</a></li>
-                                                <li><a href="#">بهداشت عمومی</a></li>
-                                                <li><a href="#">بهداشت آقایان</a></li>
-                                            </ul>
+                                            
+                                        {% endfor %}
                                         </div>
                                     </div>
                                 </div>
@@ -538,5 +513,5 @@
             </div>
         </div>
     </nav>
-</header>
+</div>
 {% endblock header %}
