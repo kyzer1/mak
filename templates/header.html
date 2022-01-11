@@ -118,7 +118,7 @@
                                         <div class="col-3">
                                            
                                             {% for cat in category %}
-                                            <a class="title_megamenu" href="{% url 'product:productha'%}">{{cat.title}}</a>
+                                            <a class="title_megamenu" href="{% url 'product:shocat'%}">{{cat.title}}</a>
                                             
                                             {% for cat2 in category2 %}
                                             {% if cat2.parent_id == cat.id %}

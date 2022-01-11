@@ -1,6 +1,8 @@
+from typing import Any
 from django.db import models
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DeleteView
+from django.views.generic.detail import DetailView
 from .models import CategoryProduct, Product
 from supply.models import SalesmanProduct
 
@@ -38,11 +40,15 @@ def show_category (request):
 
 
 
-# class ProductView(DeleteView):
-#     model = Product
-#     template_name = "header.html"
-#     context_object_name = "ctxproduct"
-#     pk_url_kwarg =  "product_id"
+class CategoryView(DetailView):
+    model = CategoryProduct
+    template_name = "base_products.html"
+    context_object_name = "ctxproduct"
+    pk_url_kwarg = pk
+    
+    def get(self, request, *args: Any, **kwargs: Any):
+        return super().get(request, *args, **kwargs)
+    
 
 
 
