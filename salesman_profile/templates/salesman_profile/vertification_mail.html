@@ -1,0 +1,4 @@
+
+{% autoescape off %}
+    http://{{ domain }}{% url 'salesman_profile:email_activate' uid=uid %}
+{% endautoescape %}

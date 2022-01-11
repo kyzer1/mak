@@ -36,16 +36,16 @@ class RegisterFormCustomer(ModelForm):
             'email' : EmailValidator('ایمیل وارد شده معتبر نمیباشد')
         }
     
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        is_exists_user_by_email = User.objects.filter(email=email).exists()
-        if is_exists_user_by_email:
-            raise forms.ValidationError('ایمیل وارد شده تکراری میباشد')
+    # def clean_email(self):
+    #     email = self.cleaned_data.get('email')
+    #     is_exists_user_by_email = User.objects.filter(email=email).exists()
+    #     if is_exists_user_by_email:
+    #         raise forms.ValidationError('ایمیل وارد شده تکراری میباشد')
 
-        if len(email) > 20:
-            raise forms.ValidationError('تعداد کاراکترهای ایمیل باید کمتر از 20 باشد')
+    #     if len(email) > 20:
+    #         raise forms.ValidationError('تعداد کاراکترهای ایمیل باید کمتر از 20 باشد')
 
-        return email
+    #     return email
 
     def clean_user_name(self):
         user_name = self.cleaned_data.get('username')
@@ -67,15 +67,15 @@ class RegisterFormCustomer(ModelForm):
 
         return password
 
-    def save(self, commit=True):
-        '''
-        override user create form to create profile after register!
-        '''
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        user.save()
+    # def save(self, commit=True):
+    #     '''
+    #     override user create form to create profile after register!
+    #     '''
+    #     user = super().save(commit=False)
+    #     user.set_password(self.cleaned_data["password1"])
+    #     user.save()
 
-        return user
+    #     return user
 
 
 class LoginFormCustomer(forms.Form):

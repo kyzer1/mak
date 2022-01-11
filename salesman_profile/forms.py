@@ -86,8 +86,8 @@ class RegisterFormSalesman(ModelForm):
         if is_exists_user_by_email:
             raise forms.ValidationError('ایمیل وارد شده تکراری میباشد')
 
-        if len(email) > 20:
-            raise forms.ValidationError('تعداد کاراکترهای ایمیل باید کمتر از 20 باشد')
+        # if len(email) > 20:
+        #     raise forms.ValidationError('تعداد کاراکترهای ایمیل باید کمتر از 20 باشد')
 
         return email
 
@@ -138,3 +138,9 @@ class LoginFormSalesman(forms.Form):
             raise forms.ValidationError('کاربری با مشخصات وارد شده ثبت نام نکرده است')
 
         return email
+
+# class EmailBoxForm(forms.Form):
+#     text = forms.CharField(
+#         widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید', 'type':'text', 'class':'form-control'}),
+#         label='کد تایید نهایی'
+#     )

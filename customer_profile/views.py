@@ -1,25 +1,46 @@
-from django import forms
-from django.core.exceptions import NON_FIELD_ERRORS
-from django.shortcuts import redirect, render
-from django.urls.conf import include
-from django.views.generic import DetailView
-from django.contrib.auth.decorators import login_required
+
 from .forms import RegisterFormCustomer, LoginFormCustomer
-from django.contrib.auth import login, get_user_model, authenticate, logout
+from django.http.response import Http404
+from django.shortcuts import redirect, render
+from django.contrib.auth import login, authenticate, logout
+import uuid
+from django.core.mail import send_mail
+from django.core.cache import cache
+from django.conf import settings
 
-
+def final_verification(subject, message, email_from, recipient_list):
+    send_mail( subject, message, email_from, recipient_list)
 
 def registercustomer(request):
     register_form = RegisterFormCustomer(request.POST or None)
 
-    if request.method == "GET":
-        return render(request, 'salesman_profile/salesmanregister.html', {'register_form': register_form})
-    elif request.method == "POST":
-        
-        if register_form.is_valid():
+    if register_form.is_valid():
+        email = register_form.cleaned_data['email']
+        register_form.save(commit=False)
+        uid = str(uuid.uuid1())
+        cache.set(uid, 120)
+        subject = 'thank your for registering to mak store'
+        message = f'welcome to our store your vertification code is : {uid}'
 
-            register_form.save()
-            
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [ email,]
+        final_verification(subject, message, email_from, recipient_list)
+        request.session['post'] = request.POST
+        return redirect('salesman_profile:email_activate')
+    
+    return render(request, 'customer_profile/customer_register.html', {'register_form': register_form})
+
+
+def email_activate(request):
+    register_form = RegisterFormCustomer(request.session['post'])
+    if request.method == 'GET':
+        return render(request, 'salesman_profile/emailshowbox.html', {})
+    elif request.method == 'POST':
+        if register_form.is_valid():
+            uid = request.POST.get('uid')
+            cache.set(uid, 120)
+            request.session['0'] = uid
+            register_form.save(commit=True)
             return redirect('/')
 
 
@@ -36,7 +57,7 @@ def customer_login(request):
         context = {
             'login_form': login_form
         }
-        return render(request, 'salesman_profile/salesmanlogin.html', context)
+        return render(request, 'salesman_profile/customer_login.html', context)
     elif request.method == "POST":
         if login_form.is_valid():
             email = login_form.cleaned_data.get('email')

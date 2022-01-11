@@ -21,7 +21,7 @@
                     <div class="login login-register-wrap">
                         <div class="area-form-login area-form-login-register p-3 p-sm-4 p-md-5 ">
                             <h3 class="heading-style1 mb-3">ورود</h3>
-                            <form method="post" action="{% url 'salesman_profile:registersalesman' %}">
+                            <form method="post" action="{% url 'salesman_profile:salesman_login' %}">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="{{ login_form.email.id_for_label }}">ایمیل <span class="text-danger ">*</span></label>
