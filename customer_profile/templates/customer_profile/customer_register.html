@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+    <div class="area-breadcrumb-site">
+        <h1 class="text-center mb-3">ثبت نام</h1>
+        <nav aria-label="breadcrumb" class="mb-4 mb-lg-3">
+            <ol class="breadcrumb breadcrumb-singleProduct ">
+                <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                <li class="breadcrumb-item active">ثبت نام</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+
+<main class="content">
+    <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-10 col-md-9 col-lg-8  col-xl-6">
+                    <div class="register login-register-wrap">
+                        <div class="area-form-register area-form-login-register  p-3 p-sm-4 p-md-5 ">
+                            <h3 class="heading-style1 mb-3">ثبت نام</h3>
+                            <form method="post" action="{% url 'customer_profile:registercustomer' %}">
+                                {% csrf_token %}
+                                {{ register_form }}
+
+                                <button class="btn-animate1 mt-4">ثبت نام</button>
+                                <div class="form-note mt-4">حساب کاربری دارید؟ <a href="login.html">وارد شوید</a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="footer-login">
+                            <div class="area-socialIcon socialIcon-bg-secondary d-flex justify-content-center">
+                                <a href="http://www.facebook.com" class="icon facebook"><span class="tooltip-site">Facebook</span></a>
+                                <a href="http://www.github.com" class="icon instegram"><span class="tooltip-site">instegram</span></a>
+                                <a href="http://www.dribble.com" class="icon linkedin"><span class="tooltip-site">linkedin</span></a>
+                                <a href="http://www.twitter.com" class="icon twitter"><span class="tooltip-site">Twitter</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

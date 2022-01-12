@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomerProfile, CustomerAddress, Favotite
+from customer_profile.models import CustomerProfile, CustomerAddress, Favotite
 
 admin.site.register(CustomerProfile)
 admin.site.register(CustomerAddress)

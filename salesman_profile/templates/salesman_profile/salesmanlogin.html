@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+    <div class="area-breadcrumb-site">
+        <h1 class="text-center mb-3">ورود</h1>
+        <nav aria-label="breadcrumb" class="mb-4 mb-lg-3">
+            <ol class="breadcrumb breadcrumb-singleProduct ">
+                <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                <li class="breadcrumb-item active">ورود</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<main class="content">
+    <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-10 col-md-9 col-lg-8  col-xl-6">
+                    <div class="login login-register-wrap">
+                        <div class="area-form-login area-form-login-register p-3 p-sm-4 p-md-5 ">
+                            <h3 class="heading-style1 mb-3">ورود</h3>
+                            <form method="post" action="{% url 'salesman_profile:salesman_login' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="{{ login_form.email.id_for_label }}">ایمیل <span class="text-danger ">*</span></label>
+                                    {{ login_form.email }}
+                                    {% for error in login_form.email.errors %}
+                                        <p style="color: red;">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="{{ login_form.password.id_for_label }}">پسورد <span class="text-danger ">*</span></label>
+                                    {{ login_form.password }}
+                                    {% for error in login_form.password.errors %}
+                                        <p style="color: red;">{{ error }}</p>
+                                    {% endfor %}
+                                    <span class="icon-eye-password" id="basic-addon2">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class=" d-sm-flex justify-content-between">
+                                    <div class="form-check form-check-custom ">
+                                        <label class="checkbox-container"> مرا به خاطر بسپار
+                                            <input type="checkbox" checked="">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="forget_password"> <a href="#">
+                                            رمز عبور را فراموش کرده اید؟</a>
+                                    </div>
+                                </div> <button class="btn-animate1 mt-4">ورود</button>
+
+                                <div class="form-note mt-4">حساب کاربری ندارید؟ <a href="signup.html">ثبت نام
+                                        کنید</a></div>
+                            </form>
+                        </div>
+                        <div class="footer-login">
+                            <div class="area-socialIcon socialIcon-bg-secondary d-flex justify-content-center">
+                                <a href="http://www.facebook.com" class="icon facebook"><span class="tooltip-site">Facebook</span></a>
+                                <a href="http://www.github.com" class="icon instegram"><span class="tooltip-site">instegram</span></a>
+                                <a href="http://www.dribble.com" class="icon linkedin"><span class="tooltip-site">linkedin</span></a>
+                                <a href="http://www.twitter.com" class="icon twitter"><span class="tooltip-site">Twitter</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
