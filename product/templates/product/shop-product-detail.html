@@ -1,23 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block content  %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>servin-ecommerce bootstrap 5 html template</title>
-    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
-    <!--refrence carousel-->
-    <link rel="stylesheet" href="css/owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owlcarousel/owl.theme.default.min.css">
-    <!--refrence carousel-->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/respansive.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-</head>
 
 <body class="singleProduct">
     <div class="bg-close">
@@ -88,7 +73,7 @@
                     <div
                         class="col-4 col-lg-2 order-2 order-lg-1 d-flex justify-content-center justify-content-lg-start">
                         <div class="area-logo">
-                            <a href="index.html"><img src="img/logo.png" class="img-fluid" /></a>
+                            <a href="index.html"><img src="{%static 'img/logo.png'%}" class="img-fluid" /></a>
                         </div>
                     </div>
                     <div class="col-4 col-lg-8 order-1 order-lg-2 d-flex align-items-center col-main_menu">
@@ -253,13 +238,13 @@
                                             <div class="col-4">
                                                 <a href="shop-left-sidebar.html">
                                                     <img class="img-fluid"
-                                                        src="img/short-hair-asian-young-beautiful-woman-applying-cosmetic-powder-brush_1150-13018.jpg"
+                                                        src="{%static 'img/short-hair-asian-young-beautiful-woman-applying-cosmetic-powder-brush_1150-13018.jpg'%}"
                                                         alt="تصویر مگامنو">
                                                 </a>
                                             </div>
                                             <div class="col-4">
                                                 <a href="shop-left-sidebar.html">
-                                                    <img class="img-fluid" src="img/Z4xAUT.jpg" alt="تصویر مگامنو" />
+                                                    <img class="img-fluid" src="{%static 'img/Z4xAUT.jpg'%}" alt="تصویر مگامنو" />
                                                 </a> </div>
                                             <div class="col-4">
                                                 <a href="shop-left-sidebar.html">
@@ -618,13 +603,15 @@
                     <div class="col-12 col-lg-7 ">
                         <div class="contentproduct-sigle area-details-product ">
                             <h3 class="product-title mb-3">
-                                <a href="#">عنوان محصول</a>
+                                <a href="#"> {{product.title}}</a>
                             </h3>
                             <div class="d-sm-flex justify-content-between align-items-center  mb-3">
                                 <div class="area-price-Product d-flex mb-2 mb-sm-0">
                                     <span class="me-2"> قیمت: </span>
-                                    <del class="price-discount me-3 ">150000تومان</del>
-                                    <p class="price mb-0">120000 تومان</p>
+                                    {% comment %} <del class="price-discount me-3 ">150000تومان</del> {% endcomment %}
+                                    <p class="price mb-0">{{first.price}}</p>
+                                     <span class="me-2"> فروشنده: </span>
+                                    <p class="price mb-0">{{first.salesman}}</p>
                                 </div> <a href="#" class="d-flex">
                                     <div class="star_rating me-3">
                                         <span class="star-icon star-icon-active"><i class="far fa-star"></i></span>
@@ -744,6 +731,11 @@
                                 <li><span>برچسب ها: </span><a href="#">مردانه</a> ،
                                     <a href="#">زنانه</a>
                                 </li>
+                            </ul>
+                            <ul class="category-single-product">
+                            {% for p in sayer %}
+                                <li><span>{{p.salesman}}فروشنده: </span>{{p.price}} تومان</li>
+                            {% endfor %}
                             </ul>
                             <div class="socialIcon-singlproduct mt-4 d-flex align-items-center">
                                 <span class="me-2">اشتراک گذاری: </span>
@@ -1216,4 +1208,7 @@
     <script src="js/jquery.elevatezoom.js"></script>
 </body>
 
-</html>
+
+
+
+{% endblock  %}
