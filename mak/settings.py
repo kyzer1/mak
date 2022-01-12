@@ -122,7 +122,7 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': 'redis://127.0.0.1:6379',
         'OPTIONS': {
-            'db': '10',
+            'db': '0',
             'parser_class': 'redis.connection.PythonParser',
             'pool_class': 'redis.BlockingConnectionPool',
         }

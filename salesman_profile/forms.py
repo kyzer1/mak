@@ -79,6 +79,12 @@ class RegisterFormSalesman(ModelForm):
         validators = {
             'email' : EmailValidator('ایمیل وارد شده معتبر نمیباشد'),
         }
+
+        error_messages = {
+        'email': {
+            'mapsa' : 'the shalgham'
+        }
+    }
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
