@@ -1,3 +1,4 @@
+import sys
 from typing import Any
 from django.db import models
 from django.shortcuts import get_object_or_404, render
@@ -5,6 +6,10 @@ from django.views.generic import ListView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import CategoryProduct, Product
 from supply.models import SalesmanProduct
+
+
+
+# print(sys.getrecursionlimit())
 
 
 # class ProductList (ListView):
@@ -35,20 +40,24 @@ def show_category (request):
     top_cat_2 = CategoryProduct.objects.filter(parent__isnull=False)
     
     cnt = {"category" : top_cat, "category2": top_cat_2}
+  
     
     return render(request, "header.html", cnt)
 
 
 
-class CategoryView(DetailView):
-    model = CategoryProduct
-    template_name = "base_products.html"
-    context_object_name = "ctxproduct"
-    pk_url_kwarg = pk
-    
-    def get(self, request, *args: Any, **kwargs: Any):
-        return super().get(request, *args, **kwargs)
-    
+def category_view(request, pk):
+    catt = get_object_or_404(CategoryProduct, pk = pk)
+    gro = CategoryProduct.objects.all()
+    cntx = {}
+    for g in gro:
+        if g.parent_id == pk:
+            print(g)
+
+        
+    print(catt, pk)
+    print(gro)
+    return render(request, 'product/base_products.html', {"catt" : catt})
 
 
 

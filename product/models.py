@@ -13,11 +13,12 @@ class CategoryProduct(models.Model):
     parent = models.ForeignKey('self', on_delete=SET_NULL, null=True, blank=True)
     # product = models.ForeignKey(Product, on_delete=DO_NOTHING)
 
+
     def __str__(self) -> str:
         return self.title
 
-    def get_url(self):
-        return reverse ('product:detail/',args=[self.pk])
+    def get_absolute_url(self):
+        return reverse ('product:shocat',args=[self.pk])
 
 
 
