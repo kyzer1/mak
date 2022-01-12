@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{%static 'css/animate.min.css'%}">
     </head>
 
-    <body>
+    <header>
         <div class="wrapper">
             <div class="header">
                 {% block header %}
@@ -26,9 +26,12 @@
                 {% endblock header %}
             </div>
             <div>
+    </header>
+
+    <body>
                 <div class="content">
                     {% block content %}
-                        
+                      
                     {% endblock content %}
                 </div>
                 <div id="footer">
