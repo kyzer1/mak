@@ -21,6 +21,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -50,6 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'mak.urls'
@@ -71,6 +76,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mak.wsgi.application'
+
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6379',
+#         'OPTIONS': {
+#             'db': '0',
+#             'parser_class': 'redis.connection.PythonParser',
+#             'pool_class': 'redis.BlockingConnectionPool',
+#         }
+#     }
+# }
 
 
 # Database

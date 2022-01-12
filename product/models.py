@@ -9,7 +9,8 @@ from salesman_profile.models import SalesmanProfile
 
 class CategoryProduct(models.Model):
     title = models.CharField(max_length=255)
-    parent = models.ForeignKey('self', on_delete=SET_NULL, null=True, blank=True)
+    parent = models.ForeignKey('self', related_name='child_cat', on_delete=SET_NULL, null=True, blank=True)
+    img = models.ImageField(upload_to='static/img', null=True, blank=True)
     # product = models.ForeignKey(Product, on_delete=DO_NOTHING)
 
     def __str__(self) -> str:
@@ -18,7 +19,7 @@ class CategoryProduct(models.Model):
 
 
 class Property(models.Model):
-    cat = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, null=True)
+    cat = models.ForeignKey(CategoryProduct, related_name='cats', on_delete=models.CASCADE, null=True)
     prop = models.CharField(max_length=255, verbose_name='properties')
 
 
@@ -36,15 +37,14 @@ class Property(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=255, null=True)
     description = models.TextField()
-    img = models.ImageField(upload_to='product_media/', null=True, blank=True)
-    img = models.ImageField(upload_to='product_media/', null=True, blank=True)
-    img = models.ImageField(upload_to='product_media/', null=True, blank=True)
-    img = models.ImageField(upload_to='product_media/', null=True, blank=True)
+    img1 = models.ImageField(upload_to='product_media/', null=True, blank=True)
+    img2= models.ImageField(upload_to='product_media/', null=True, blank=True)
+    img3 = models.ImageField(upload_to='product_media/', null=True, blank=True)
+    img4 = models.ImageField(upload_to='product_media/', null=True, blank=True)
     active = models.BooleanField(default=True)
     date_prodcut = models.DateTimeField(auto_now=True)
-    salesman = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE, null=True)
-    cat = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, null=True)
-    sold_out_num = models.BigIntegerField(null=True)
+    cat = models.ForeignKey(CategoryProduct, related_name='category', on_delete=models.CASCADE, null=True)
+    sold_out_num = models.BigIntegerField(null=True, blank=True)
 
 
 

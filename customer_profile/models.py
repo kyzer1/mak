@@ -7,8 +7,8 @@ from product.models import Product
 # User = get_user_model()
 
 class CustomerProfile(User):
-    telephone = models.CharField(max_length=11)
-    phone_number = models.CharField(max_length=11)
+    telephone = models.CharField(max_length=11, null=True, blank=True)
+    phone_number = models.CharField(max_length=11, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.username
@@ -18,7 +18,7 @@ class CustomerProfile(User):
 class CustomerAddress(models.Model):
     address = models.TextField()
     postal_code = models.CharField(max_length=10)
-    customer = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE)
+    customer = models.ForeignKey(CustomerProfile, related_name='customer_ad', on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return f'{self.customer} {self.address}'
@@ -26,6 +26,6 @@ class CustomerAddress(models.Model):
 
 
 class Favotite(models.Model):
-    user = models.ForeignKey(CustomerProfile, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=DO_NOTHING) # badan dar view handle shavad
+    user = models.ForeignKey(CustomerProfile, related_name='users', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='product_fav', on_delete=DO_NOTHING) # badan dar view handle shavad
 

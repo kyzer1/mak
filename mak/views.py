@@ -1,19 +1,53 @@
+from typing import Any, Dict
+from django.db.models.aggregates import Avg, Max
+from django.db.models.base import Model
 from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
+from django.views.generic import ListView
+
+from product.models import CategoryProduct, Product
 
 
 
-def home_page(request):
-    ctx = {}
+def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
+    popular_categories = list(CategoryProduct.objects.all().order_by('id')[:4])
+    all_categoris = list(CategoryProduct.objects.all().order_by('id')[:3])
+    most_sold_out = Product.objects.all().order_by('-sold_out_num')[:10]
+    print(most_sold_out)
+    # all_products = list(Product.objects.all())
+    # average_sold_out = list(Product.objects.all().aggregate(Avg('sold_out_num')))
+    all_categoris_header = CategoryProduct.objects.all()
+    parent_category = CategoryProduct.objects.all().filter(parent=None)
+    new_products = Product.objects.all().order_by('-date_prodcut')[:10]
+
+    sub = []
+
+    for cat in parent_category:
+        sub.append(cat.child_cat.all())
+
+    ctx = {
+        'popular_categories': popular_categories,
+        'all_categories': all_categoris,
+        'most_sold_out': most_sold_out,
+        'all_categoris_header': all_categoris_header,
+        'new_products': new_products,
+        'parent_cat': parent_category,
+        'sub_cat': sub
+    }
+    
     return render(request, 'index.html', ctx)
 
-def category_header(request): # --> category haye header
-    pass
 
 
-def papular_category(request): #--> 3 dasteye por forosh
+    return render(request, '')
+
+
+
+def PapularCategorie(request): 
+    
     pass
+    
 
 
 def new_products(request):

@@ -13,10 +13,10 @@ class SalesmanProfile(User):
 class SalesmanAddress(models.Model):
     address = models.TextField()
     postal_code = models.CharField(max_length=10)
-    seller_id = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE)
+    salesman_id = models.ForeignKey(SalesmanProfile, related_name='salesman_ad', on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
-        return f'{self.seller_id} {self.address}'
+        return f'{self.salesman_id} {self.address}'
 
 
 
