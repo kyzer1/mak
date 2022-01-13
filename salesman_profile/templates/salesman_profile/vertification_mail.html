@@ -1,4 +1,7 @@
-
 {% autoescape off %}
-    http://{{ domain }}{% url 'salesman_profile:email_activate' uid=uid %}
+    سلام {{ user.email }}
+    {{uid}}
+    {{token}}
+
+    http://{{ domain }}{% url 'salesman_profile:email_activate' uidb64=uid token=token %}
 {% endautoescape %}

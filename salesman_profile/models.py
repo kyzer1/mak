@@ -66,7 +66,7 @@ class SalesmanAddress(models.Model):
 
 
 
-
+User.objects.create_user
 
 
 

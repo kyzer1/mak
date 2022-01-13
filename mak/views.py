@@ -40,7 +40,7 @@ def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
 
 
 
-    return render(request, '')
+    # return render(request, '')
 
 
 

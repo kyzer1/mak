@@ -7,5 +7,5 @@ urlpatterns = [
     path('registersalesman/', registersalesman, name='registersalesman'),
     path('salesmanlogout/', salesmanlogout, name='salesmanlogout'),
     path('salesman_login/', salesman_login, name='salesman_login'),
-    path('email_activate/', email_activate, name='email_activate'),
+    path('email_activate/<str:uidb64>/<str:token>', email_activate, name='email_activate'),
 ]
