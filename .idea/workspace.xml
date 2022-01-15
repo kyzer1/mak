@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8b895a93-4a36-4913-9012-b56ed4acd852" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/customer_profile/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/migrations/0002_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/account-details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/account_header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/account_sidebar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/base-account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/change-password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/content-Orders-account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/customer_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/customer_register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/templates/customer_profile/favorites.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer_profile/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment/migrations/0002_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/templates/salesman_profile/emailshowbox.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/templates/salesman_profile/salesmanlogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/templates/salesman_profile/salesmanregister.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/templates/salesman_profile/vertification_mail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/salesman_profile/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mak.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0002_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/migrations/0002_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0003_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0004_auto_20211225_1433.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0005_auto_20211225_1436.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0006_auto_20211226_0820.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0007_auto_20211226_0836.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0008_auto_20211226_0837.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0009_auto_20211226_0902.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0010_cart_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0011_historycustomer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0012_remove_cart_salesman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0013_remove_cart_count_order.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart/migrations/0014_alter_cart_customer_alter_cart_product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0002_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/migrations/0002_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0003_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0004_remove_comment_userseller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0005_rename_usercustomer_comment_customer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0006_alter_comment_customer_alter_comment_product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/templates/comment/account-comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/comment/templates/comment/account-comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer_profile/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer_profile/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/migrations/0002_rename_seller_id_customeraddress_customer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/migrations/0003_delete_historycustomer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/migrations/0004_auto_20220108_1231.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/migrations/0005_alter_customeraddress_customer_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer_profile/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/templates/customer-profile/account-details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/templates/customer-profile/account-order.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/templates/customer-profile/address.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/templates/customer-profile/change-password.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/templates/customer-profile/customer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/templates/customer-profile/favorites.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/customer_profile/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mak/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mak/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mak/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mak/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/migrations/0002_rename_order_payment_cart.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment/migrations/0003_alter_payment_customer_alter_payment_salesman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/product/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0002_remove_product_sub_category_categoryproduct_parent_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0003_auto_20211225_1234.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0004_auto_20211226_0714.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0005_product_title.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0006_remove_product_salesman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0007_product_salesman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0008_property.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0009_product_sold_out_num.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0010_categoryproduct_img.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0011_alter_categoryproduct_img.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0012_alter_product_sold_out_num.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/product/migrations/0013_rename_img_product_img1_remove_product_salesman_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/salesman_profile/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/salesman_profile/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0002_delete_historysalesman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0003_salesmanprofile_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0004_auto_20211225_1142.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0005_auto_20211225_1240.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0006_remove_salesmanprofile_product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0007_auto_20211226_0714.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0008_salesmanproduct_product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0009_remove_salesmanproduct_product.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0010_delete_salesmanproduct.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/migrations/0011_remove_salesmanaddress_seller_id_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/salesman_profile/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesman_profile/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/salesman_profile/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supply/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/supply/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supply/migrations/0002_auto_20211226_1043.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supply/migrations/0003_auto_20211226_1051.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supply/migrations/0004_auto_20211226_1053.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supply/migrations/0005_rename_product_salesmanproperty_salesman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/supply/migrations/0006_alter_salesmanproduct_product_and_more.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="23amGU18lv0UmtaeOALnQ9MP37u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b895a93-4a36-4913-9012-b56ed4acd852" name="Changes" comment="" />
+      <created>1641980484216</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641980484216</updated>
+      <workItem from="1641980484219" duration="346000" />
+    </task>
+    <servers />
+  </component>
+</project>
