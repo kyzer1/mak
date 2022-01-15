@@ -1,3 +1,4 @@
+from decimal import Context
 from typing import Any, Dict
 from django.db.models.aggregates import Avg, Max
 from django.db.models.base import Model
@@ -39,9 +40,17 @@ def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
     return render(request, 'index.html', ctx)
 
 
-
-    # return render(request, '')
-
+def header(request):
+    top_cat = CategoryProduct.objects.filter(parent__isnull=True)
+    # print(top_cat)
+    top_cat_2 = CategoryProduct.objects.filter(parent__isnull=False)
+    # print(top_cat_2)
+    context = {
+        "category" : top_cat, 
+        "sub_category": top_cat_2
+    }
+  
+    return render(request, 'header.html', context)
 
 
 def PapularCategorie(request): 

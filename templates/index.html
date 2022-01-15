@@ -549,7 +549,7 @@
                 {% for cat in all_categoris_header %}
                     {% if cat.parent_id == Null %}
                         <div class="item_slider-baner-homepage slider-baner">
-                            <img class="img-fluid" src="{{cat.img.url}}"/>
+                            {% comment %} <img class="img-fluid" src="{{cat.img.url}}"/> {% endcomment %}
                             <div class="content-slider ">
                                     <h2 class=""> {{cat.title}} </h2>
                                     <a href="{% url 'products:sub_cat_det' cat.title %}" class="btn-animate1 to-arrow">خرید کنید<i
@@ -624,9 +624,9 @@
                                         <div class="area-button-view-product">
                                             <a href="shop-product-detail.html" class="button-view-product">مشاهده
                                                 محصول</a>
-                                            <a href="{% url 'products: detail_product' %}" class="add-to-cart">
+                                            {% comment %} <a href="{% url 'products: detail_product' %}" class="add-to-cart">
                                                 +
-                                            </a>
+                                            </a> {% endcomment %}
                                         </div>
                                     </div>
                                     <div class="content_product text-center">
@@ -659,7 +659,7 @@
                     {% for cat in popular_categories %}
                     <div class="wow rubberBand col-12 col-sm-6 col-lg-4 col-xl-3 item-baner" data-wow-duration="2s">
                         <div class="box-baner">
-                            <a href="{% url 'products:sub_cat_det' cat.title %}">{{cat.title}}<img class="img-fluid " src="{{cat.img.url}}"
+                            {% comment %} <a href="{% url 'products:sub_cat_det' cat.title %}">{{cat.title}}<img class="img-fluid " src="{{cat.img.url}}" {% endcomment %}
                                     alt="بنر سایت" /></a>
                         </div>
                     </div>
@@ -693,9 +693,9 @@
                                         <div class="area-button-view-product">
                                             <a href="shop-product-detail.html" class="button-view-product">مشاهده
                                                 محصول</a>
-                                            <a href="{% url 'products: detail_product' %}" class="add-to-cart">
+                                            {% comment %} <a href="{% url 'products: detail_product' %}" class="add-to-cart">
                                                 +
-                                            </a>
+                                            </a> {% endcomment %}
                                         </div>
                                     </div>
                                     <div class="content_product text-center">

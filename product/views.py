@@ -1,4 +1,3 @@
-from typing import Any
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from django.shortcuts import render
@@ -31,10 +30,11 @@ def show_sub_cat_det(request, cat): # --> showing sub_cat after click
     return render(request, 'product/sub_cat.html', ctx)
 
 
-class ShowProduct(ListView):
+class ShowProductBySubCategory(ListView):
     template_name = 'product/detail_sub_cat.html'
     context_object_name ='products'
     paginate_by = 16
+
 
     def get(self, request, *args, **kwargs):
         self.queryset = Product.objects.all().filter(cat__title=kwargs.get('sub_cat'))
@@ -42,9 +42,19 @@ class ShowProduct(ListView):
 
 
 
+class ShowProductCategory(ListView):
+    template_name = 'product/list_product_cat.html'
+    context_object_name ='products'
+    paginate_by = 16
+
+    def get(self, request, *args, **kwargs):
+        self.queryset = Product.objects.all().filter(cat__parent=kwargs.get('id'))
+        return super().get(self, request, *args, **kwargs)
 
 
+class ProductList(ListView):
+    model = Product
+    template_name = 'product/list_products.html'
+    context_object_name ='products'
+    paginate_by = 16
 
-
-
-    
