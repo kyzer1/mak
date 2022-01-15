@@ -25,7 +25,7 @@ def registersalesman(request):
         email = register_form.cleaned_data['email']
         username = register_form.cleaned_data.get('username')
         password = register_form.cleaned_data.get('password')
-        user = SalesmanProfile.objects.create_user(username=username, email=email, password=password, is_active=False)
+        user = SalesmanProfile.objects.create_user(username=username, email=email, password=password, is_active=False, is_staff=False)
         cache.set('user',user, 200)
         current_site = get_current_site(request)
         uid = str(uuid.uuid1())
@@ -64,6 +64,7 @@ def email_activate(request, uidb64, token):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
+        user.is_staff = True
         user.save()
         return render(request, 'salesman_profile/emailshowbox.html')
     else:
