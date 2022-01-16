@@ -12,7 +12,9 @@ urlpatterns = [
     path('header', header, name='header'),
     path('', include('product.urls', namespace='products')),
     path('', include('salesman_profile.urls', namespace='salesman_profile')),
-    path('', include('customer_profile.urls', namespace='customer_profile'))
+    path('', include('customer_profile.urls', namespace='customer_profile')),
+    path('', include('comment.urls', namespace='comments')),
+
 ]
 if settings.DEBUG:
     # add root static files
