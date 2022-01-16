@@ -9,3 +9,4 @@ urlpatterns = [
     path('salesman_login/', salesman_login, name='salesman_login'),
     path('email_activate/<str:uidb64>/<str:token>', email_activate, name='email_activate'),
 ]
+
