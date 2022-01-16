@@ -1,0 +1,287 @@
+{% load static %}
+
+<div class="col-12 col-lg-3 mt-5 mt-lg-0 order-2 ">
+    <aside class="area-sidebar">
+        <div class="widget-sidebar mb-4 pb-3" id="accordian">
+            <header>
+                <h3 class="title-widget-sidebar ">دسته بندی</h3>
+            </header>
+            <section>
+                <ul class="menu-multi-level menu-categorySidebar">
+                    {% for cat in category %}
+                    <li class="menu-item-has-children"><a href="{% url "product:show_product_cat" cat.id %}">{{ cat.title }}<span class="badge-sidebar-shop">(150)</span></a>
+                        <ul class="sub-menu" style="display: none;">
+                            {% for sub_cat in sub_category %}
+                            {% if sub_cat.parent_id == cat.id %}
+                            <li class="children"><a href="{% url "product:show_product_sub_cat" sub_cat %}">{{ sub_cat.title }}<span class="badge-sidebar-shop">(10)</span> </a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+        <div class="widget-sidebar mb-4 pb-3">
+            <header>
+                <h3 class="title-widget-sidebar">قیمت</h3>
+            </header>
+            <section>
+                <form method="GET">
+                <div class="area-range-price extra-controls form-inline">
+                    {% comment %} <div class="form-group w-100  ">
+                        <select name="price">
+                            <option>قیمت </option>
+                                <option value="500000,990000">500000 تومان - 990000 تومان</option>
+                            <option value="1000000,2000000">1000000 تومان - 2000000 تومان</option>
+                            <option value="3000000,5000000">3000000 تومان - 5000000 تومان</option>
+                            <option value="5000000,9000000">5000000 تومان - 9000000 تومان</option>
+                        </select>
+
+                    </div> {% endcomment %}
+                    <div class="area-range-price extra-controls form-inline">
+                        <div class="form-group w-100  ">
+                            <span>محدوده : </span>
+                            <input class="js-input-from form-control " value="0" name="price2">
+                            تا
+                            <input type="text" class="js-input-to form-control  " value="0" name="price1">
+                        </div>
+                    </div>
+
+
+                </div>
+                <input type="submit"/>
+                </form>
+            </section>
+        </div>
+        <div class="widget-sidebar mb-4 pb-3">
+            <header>
+                <h3 class="title-widget-sidebar ">رنگ</h3>
+            </header>
+            <section>
+                <div class="area-radiosColorProduct mb-4">
+                    <div class="option-color-product option-color1  mb-2">
+                        <div class="badge-sidebar-shop">(5)</div>
+                        <div class="d-flex">
+                            <div>
+                                <input class="checkbox-color" type="checkbox" name="color1" id="checkbox-color-1" value="purple" data-label="colorOptionText">
+                                <label for="checkbox-color-1" class="lable-option-color">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <label for="checkbox-color-1" class="text-checkbox-ColorProduct ms-2">
+                                بنفش
+                            </label>
+                        </div>
+                    </div>
+                    <div class="option-color-product option-color2  mb-2">
+                        <div class="badge-sidebar-shop">(2)</div>
+                        <div class="d-flex">
+                            <div>
+                                <input class="checkbox-color" type="checkbox" name="color2" id="checkbox-color-2" value="toosy" data-label="colorOptionText">
+                                <label for="checkbox-color-2" class="lable-option-color">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <label for="checkbox-color-2" class="text-checkbox-ColorProduct ms-2">
+                                توسی
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-color-product option-color3  mb-2">
+                        <div class="badge-sidebar-shop">(3)</div>
+                        <div class="d-flex">
+                            <div>
+                                <input class="checkbox-color" type="checkbox" name="color3" id="checkbox-color-3" value="black" data-label="colorOptionText">
+                                <label for="checkbox-color-3" class="lable-option-color">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <label for="checkbox-color-3" class="text-checkbox-ColorProduct ms-2">
+                                مشکی
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-color-product option-color4  mb-2">
+                        <div class="badge-sidebar-shop">(1)</div>
+                        <div class="d-flex">
+                            <div>
+                                <input class="checkbox-color" type="checkbox" name="color4" id="checkbox-color-4" value="blue" data-label="colorOptionText">
+                                <label for="checkbox-color-4" class="lable-option-color">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <label for="checkbox-color-4" class="text-checkbox-ColorProduct ms-2">
+                                آبی
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-color-product option-color5  mb-2">
+                        <div class="badge-sidebar-shop">(4)</div>
+                        <div class="d-flex">
+                            <div>
+                                <input class="checkbox-color" type="checkbox" name="color5" id="checkbox-color-5" value="brown" data-label="colorOptionText">
+                                <label for="checkbox-color-5" class="lable-option-color">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <label for="checkbox-color-5" class="text-checkbox-ColorProduct ms-2">
+                                قهوه ای
+                            </label>
+                        </div>
+                    </div>
+                    <div class="option-color-product option-color6  mb-2">
+                        <div class="badge-sidebar-shop">(5)</div>
+                        <div class="d-flex">
+                            <div>
+                                <input class="checkbox-color" type="checkbox" name="color6" id="checkbox-color-6" value="red" data-label="colorOptionText">
+                                <label for="checkbox-color-6" class="lable-option-color">
+                                    <span></span>
+                                </label>
+                            </div>
+                            <label for="checkbox-color-6" class="text-checkbox-ColorProduct ms-2">
+                                قرمز
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="widget-sidebar mb-4 pb-3">
+            <header>
+                <h3 class="title-widget-sidebar ">سایز</h3>
+            </header>
+            <section>
+                <div class="area-filter-sizeProduct">
+                    <form class="row">
+                        <div class="col-lg-3 form-check">
+                            <input class="form-check-input" type="checkbox" id="input-size1">
+                            <label for="input-size1" class="form-check-label">100g</label>
+
+                        </div>
+                        <div class="col-lg-3  form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size2">
+                            <label for="input-size2" class="form-check-label">100ml</label>
+
+                        </div>
+                        <div class="col-lg-3  form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size3">
+                            <label for="input-size3" class="form-check-label">200g</label>
+
+                        </div>
+                        <div class="col-lg-3  form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size5">
+                            <label for="input-size5" class="form-check-label">200ml</label>
+                        </div>
+                        <div class="col-lg-3  form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size6">
+                            <label for="input-size6" class="form-check-label">300g</label>
+
+                        </div>
+                        <div class="col-lg-3 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size7">
+                            <label for="input-size7" class="form-check-label">300ml</label>
+
+                        </div>
+                        <div class="col-lg-3 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size8">
+                            <label for="input-size8" class="form-check-label">400g</label>
+
+                        </div>
+                        <div class="col-lg-3  form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-size9">
+                            <label for="input-size9" class="form-check-label">400ml</label>
+
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div class="widget-sidebar mb-4 pb-3">
+            <header>
+                <h3 class="title-widget-sidebar ">برند</h3>
+            </header>
+            <section>
+                <div class="area-filter-brandProduct">
+                    <form class="row">
+                        <div class="col-lg-4 form-check">
+                            <input class="form-check-input" type="checkbox" id="input-brand1">
+                            <label for="input-brand1" class="form-check-label">
+                                <img src="img/img15.png" class="img-fluid" alt="تصویر برند"> </label>
+
+                        </div>
+                        <div class="col-lg-4 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-brand2">
+                            <label for="input-brand2" class="form-check-label">
+                                <img src="img/img16.png" class="img-fluid" alt="تصویر برند">
+                            </label>
+
+                        </div>
+                        <div class="col-lg-4 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-brand3">
+                            <label for="input-brand3" class="form-check-label">
+                                <img src="img/img17.png" class="img-fluid" alt="تصویر برند">
+                            </label>
+
+                        </div>
+                        <div class="col-lg-4 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-brand4">
+                            <label for="input-brand4" class="form-check-label">
+
+                                <img src="img/img18.png" class="img-fluid" alt="تصویر برند">
+                            </label>
+
+                        </div>
+                        <div class="col-lg-4 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-brand5">
+                            <label for="input-brand5" class="form-check-label">
+                                <img src="img/img19.png" class="img-fluid" alt="تصویر برند">
+                            </label>
+
+                        </div>
+                        <div class="col-lg-4 form-check ">
+                            <input class="form-check-input" type="checkbox" id="input-brand6">
+                            <label for="input-brand6" class="form-check-label">
+                                <img src="img/img20.png" class="img-fluid" alt="تصویر برند">
+                            </label>
+
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div class="widget-sidebar mb-4 pb-3">
+            <header>
+                <h3 class="title-widget-sidebar ">برچسب محصول</h3>
+            </header>
+            <section>
+
+                <div class="d-flex flex-wrap  area-tags-shop">
+                    <div class="tag-sidebar"><a href="#">برای مرد</a></div>
+
+                    <div class="tag-sidebar"><a href="#">برای زن</a></div>
+
+                    <div class="tag-sidebar"><a href="#">لوازم آرایش گیاهی</a></div>
+
+                    <div class="tag-sidebar"><a href="#">اسپری</a></div>
+
+                    <div class="tag-sidebar"><a href="#">چشم</a></div>
+
+                    <div class="tag-sidebar"><a href="#">پاک کننده</a></div>
+
+                    <div class="tag-sidebar"><a href="#">محصولات گیاهی</a></div>
+
+                    <div class="tag-sidebar"><a href="#">مو</a></div>
+
+                    <div class="tag-sidebar"><a href="#">صورت</a></div>
+                </div>
+
+            </section>
+        </div>
+    </aside>
+</div>

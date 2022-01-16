@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load render_partial %}
+
 {% block content %}
 <div class="shop list">
     <!-- Modal view quick -->
@@ -39,42 +41,81 @@
             </nav>
         </div>
     </section>
-    <div class="tab-content tab-content-shop" id="myTabContent">
-
-        <div class="tab-pane fade show active" id="contentShop3" role="tabpanel"
-            aria-labelledby="tab-iconColumnThree">
-
+    <main class="content">
+        <div class="container">
             <div class="row">
-                {% for p in products %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="product_cart">
-                        
-                           
-                            <div class="cart-img-product mb-3">
-                                <a href="#">
-                                    <div class="d-flex justify-content-center align-items-center h-100">
-                                        <img src="{{p.img1.url}}" class="img1-product img-fluid" />
+                <div class="tab-content tab-content-shop" id="myTabContent">
+
+                    <div class="tab-pane fade show active" id="contentShop3" role="tabpanel"
+                        aria-labelledby="tab-iconColumnThree">
+            
+                        <div class="row">
+                            {% if my_products %}
+                                {% for p in my_products %}
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="product_cart">
+                                            
+                                            
+                                                <div class="cart-img-product mb-3">
+                                                    <a href="#">
+                                                        <div class="d-flex justify-content-center align-items-center h-100">
+                                                            <img src="{{p.img1.url}}" class="img1-product img-fluid" />
+                                                        </div>
+                                                    </a>
+                                                <div class="area-button-view-product">
+                                                    <a href="#" class="button-view-product">مشاهده محصول </a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="content_product text-center">
+                                                <a href="#">
+                                                    <h3 class="title-product mb-2">{{p.title}}</h3>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
-                            <div class="area-button-view-product">
-                                  <a href="#" class="button-view-product">مشاهده محصول </a>
-                                
-                            </div>
+                                {%endfor%}
+                            {% else %}
+                                {% for p in products %}
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="product_cart">
+                                            
+                                            
+                                                <div class="cart-img-product mb-3">
+                                                    <a href="#">
+                                                        <div class="d-flex justify-content-center align-items-center h-100">
+                                                            <img src="{{p.img1.url}}" class="img1-product img-fluid" />
+                                                        </div>
+                                                    </a>
+                                                <div class="area-button-view-product">
+                                                    <a href="#" class="button-view-product">مشاهده محصول </a>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="content_product text-center">
+                                                <a href="#">
+                                                    <h3 class="title-product mb-2">{{p.title}}</h3>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%endfor%}
+
+                            {% endif %}
+
+                            
                         </div>
-                        <div class="content_product text-center">
-                            <a href="#">
-                                <h3 class="title-product mb-2">{{p.title}}</h3>
-                            </a>
-                        </div>
+            
                     </div>
+                    {% render_partial 'product:side_bar_filtering' %}
                 </div>
-                {%endfor%}
+
+
             </div>
-
         </div>
+    </main>
 
-    </div>
-  
+
     <a class="scrollTo scroll-To-top" href=".topbar-site"></a>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
