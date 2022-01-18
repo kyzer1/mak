@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Cart, HistoryCustomer, Order
+from .models import Order, OrderItem
 
 admin.site.register(Order)
-admin.site.register(Cart)
-admin.site.register(HistoryCustomer)
+admin.site.register(OrderItem)
+# admin.site.register(HistoryCustomer)
 

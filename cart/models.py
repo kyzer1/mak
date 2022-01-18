@@ -1,34 +1,46 @@
 from django.db import models
-from customer_profile.models import CustomerProfile
-from product.models import Product
-
+# from customer_profile.models import CustomerProfile
 # from product.models import Product
-# from salesman_profile.models import SalesmanProfile
+from django.conf import settings
+from supply.models import SalesmanProduct
+ 
+
+class OrderItem(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    ordered = models.BooleanField(default=False)
+    salesman_product = models.ForeignKey(SalesmanProduct, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} of {self.salesman_product}"
+
+    def get_total_item_price(self):
+        return self.quantity * self.salesman_product.price
+
+    # def get_discount_item_price(self):
+    #     return self.quantity * self.salesman_product.discount_price
+
+    # def get_amount_saved(self):
+    #     return self.get_total_item_price() - self.get_discount_item_price()
+
+    def get_final_price(self):
+        if self.salesman_product.price:        
+            return self.get_total_item_price()
 
 
-class Cart(models.Model):
-    customer = models.ForeignKey(CustomerProfile, related_name='cart_customers', on_delete=models.CASCADE, null=True)
-    # salesman = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE, null=True)
-    price = models.FloatField(null=True)
-    product = models.ForeignKey(Product, related_name='cart_products', on_delete=models.CASCADE, null=True, blank=True)
-    # count_order = models.BigIntegerField(null=True)
-    is_paid = models.BooleanField(default=False, null=True)# zamani ke pardakht anjam shod True shavad va dar history vared shavad
+class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    items = models.ManyToManyField(OrderItem)
+    start_date = models.DateTimeField(auto_now_add=True)
+    ordered_date = models.DateTimeField()
+    ordered = models.BooleanField(default=False)
 
-
-
-class Order(Cart):
-    date_order = models.DateTimeField(auto_now_add=True, null=True)
-    expire_date = models.DateTimeField(auto_now=True, null=True)
-
-    def __str__(self) -> str:
-        return {self.customer}
-
-
-
-
-class HistoryCustomer(Cart): # handle in view with query
-    pass
-
-    def __str__(self) -> str:
-        return self.customer # name karbar bargandade shavd
-
+    def __str__(self):
+        return self.user.email
+    
+    def get_total_price(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_final_price()
+        return total
