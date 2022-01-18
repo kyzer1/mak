@@ -1,8 +1,7 @@
-from django.http.response import Http404, HttpResponse
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from customer_profile.models import CustomerProfile
 from salesman_profile.models import SalesmanProfile
-from .forms import RegisterFormSalesman
+from .forms import RegisterFormSalesman, ForgetPassForm, ForgetPasswordForm
 from django.contrib.auth import login, authenticate, logout
 import uuid
 from django.core.mail import send_mail
@@ -13,6 +12,10 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from verification_email_token_gen import account_activation_token
 from django.core.cache import cache
 from django.conf import settings
+from uuid import uuid4
+from django.urls import reverse
+from .models import User
+
 
 
 def final_verification(subject, message, email_from, recipient_list):
@@ -113,3 +116,59 @@ def salesman_login(request):
         if user is not None:
             login(request, user)
         return redirect('/')
+
+
+def forget_password(request):
+    forget_password_form = ForgetPasswordForm(request.POST or None)
+    if request.method == "GET":
+        return render(request, 'User/forget_password.html', {'forget_password_form': forget_password_form})
+
+    else:
+        
+        if forget_password_form.is_valid():
+            miss_email=forget_password_form.cleaned_data.get('email')
+            #user = authenticate(request, email=miss_email)
+            user = User.objects.get(email=miss_email)
+            if user:
+                uid=str(uuid4())
+                link=reverse("user:set_true",kwargs={"auten":uid})
+                current_site = get_current_site(request)
+                mail_subject = 'click on the link for change password.'
+                message = "127.0.0.1:8000"+link
+                to_email = forget_password_form.cleaned_data.get('email')
+                # forget= f'{to_email}+flag'
+                # request.session["forget"]=forget
+                request.session["email"]=to_email
+                request.session["uid"]=uid
+                cache.set(to_email,uid,300)
+                cache.set("forget",0,300)
+
+                send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [to_email])
+
+                return redirect('user:forget_pass')
+
+            else:
+                return redirect('user:forget_password')
+
+
+    # if register_form.is_valid():
+    #     email = register_form.cleaned_data['email']
+    #     username = register_form.cleaned_data.get('username')
+    #     password = register_form.cleaned_data.get('password')
+    #     user = SalesmanProfile.objects.create_user(username=username, email=email, password=password, is_active=False, is_staff=False)
+    #     cache.set('user',user, 200)
+    #     current_site = get_current_site(request)
+    #     uid = str(uuid.uuid1())
+    #     cache.set('uid', uid, 120)
+    #     subject = 'thank your for registering to mak store'
+    #     message = render_to_string('customer_profile/vertification_mail.html', {
+    #             'user': user,
+    #             'domain': current_site.domain,
+    #             'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+    #             'token': account_activation_token.make_token(user),
+    #     })
+    #     email_from = settings.EMAIL_HOST_USER
+    #     recipient_list = [ email,]
+    #     final_verification(subject, message, email_from, recipient_list)
+    #     request.session['form'] = request.POST
+    #     return redirect('/')
