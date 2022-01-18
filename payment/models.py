@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models.deletion import DO_NOTHING
-from cart.models import Cart
 
 from customer_profile.models import CustomerProfile
 from salesman_profile.models import SalesmanProfile
