@@ -1,5 +1,6 @@
 from itertools import product
 from pyexpat.errors import messages
+from urllib import request
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
@@ -11,13 +12,23 @@ class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
 
         try:
-            order = Order.objects.get(user=self.request.user, ordered=False)
+            order = Order.objects.all()
+            item = OrderItem.objects.all()
+            print(order)
+            title = []
+            print(order, item)
+            for elm in order.items.order_item.all():
+                for item in elm.salesman_product.products.first():
+                    title.append(item.product.title)
+            
+            print(title)
+
             context = {
-                'object' : order
+                'order' : order
             }
-            return render(self.request, 'order_summary.html', context)
+            return render(self.request, 'cart/order_summary.html', context)
         except ObjectDoesNotExist:
-            messages.error(self.request, "You do not have an order")
+            messages(self.request, "You do not have an order")
             return redirect("/")
 
 
@@ -41,11 +52,11 @@ def reduce_quantity_item(request, pk):
             else:
                 order_item.delete()
             messages.info(request, "Item quantity was updated")
-            return redirect("core:order-summary")
+            return redirect("cart:order-summary")
         else:
             messages.info(request, "This Item not in your cart")
-            return redirect("core:order-summary")
+            return redirect("cart:order-summary")
     else:
         #add message doesnt have order
         messages.info(request, "You do not have an Order")
-        return redirect("core:order-summary")
+        return redirect("cart:order-summary")

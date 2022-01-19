@@ -41,158 +41,114 @@
         <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-xl-8">
-                        <div class="area-table-cart-shop area-table-shop mb-5">
-                            <table class="table table-shop">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">حذف</th>
-                                        <th scope="col">تصویر</th>
-                                        <th scope="col">محصول</th>
-                                        <th scope="col"> قیمت (تومان)</th>
-                                        <th scope="col">تعداد</th>
-                                        <th scope="col"> جمع</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
+                    
+                        <div class="col-12 col-xl-8">
+                            <div class="area-table-cart-shop area-table-shop mb-5">
+                                <table class="table table-shop">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">حذف</th>
+                                            <th scope="col">"{{order.items.salesman_product.img.url}}"</th>
+                                            <th scope="col">{{order.items.salesman_product.product.title}}</th>
+                                            <th scope="col"> {{order.items.salesman_product.price}} :قیمت (تومان)</th>
+                                            <th scope="col">تعداد</th>
+                                            <th scope="col"> جمع</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
 
-                                            <a href="#" class="remove-product">
-                                                <i class="fal fa-times"></i>
-                                            </a> </td>
+                                                <a href="#" class="remove-product">
+                                                    <i class="fal fa-times"></i>
+                                                </a> </td>
 
-                                        <td>
+                                            <td>
 
-                                            <div class="product-thumbnail">
-                                                <a href="#"><img src="img/img12.jpg"></a>
-                                            </div>
+                                                <div class="product-thumbnail">
+                                                    <a href="#"> '{{order.items.salesman_product.img.url}}' <img src="img/img12.jpg"></a>
+                                                </div>
 
-                                        </td>
-                                        <td>
-                                            <div class="name-product">
-                                                <a href="#">
-                                                    <h3>نام محصول</h3>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-
-                                        <td class="cell-product-price">
-                                            <div class="product-price">
-                                                2500000
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div
-                                                class="input-number-wrapper d-flex justify-content-center align-items-center">
-                                                <span class="quanti-invitati-op increase">+</span>
-                                                <input class="input-number-custtom" type="text" value="1">
-                                                <span class="quanti-invitati-op decrease">-</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-subtotal">
-                                                2500000
-
-                                            </div>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-
-                                            <a href="#" class="remove-product">
-                                                <i class="fal fa-times"></i>
-                                            </a> </td>
-
-                                        <td>
-
-                                            <div class="product-thumbnail">
-                                                <a href="#"><img src="img/img11.jpg"></a>
-                                            </div>
-
-                                        </td>
-                                        <td>
-                                            <div class="name-product">
-                                                <a href="#">
-                                                    <h3>نام محصول</h3>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-
-                                        <td class="cell-product-price">
-                                            <div class="product-price">
-                                                300000
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div
-                                                class="input-number-wrapper d-flex justify-content-center align-items-center">
-                                                <span class="quanti-invitati-op increase">+</span>
-                                                <input class="input-number-custtom" type="text" value="1">
-                                                <span class="quanti-invitati-op decrease">-</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-subtotal">
-                                                300000
-                                            </div>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6" class="actions w-100">
-                                            <div
-                                                class="footer-table-cart d-flex flex-column flex-md-row align-items-center justify-content-between">
-                                                <div class="area-coupon me-0  me-md-2 mb-4 mb-md-0">
-                                                    <form
-                                                        class="d-flex flex-column flex-sm-row align-items-start justify-content-between ">
-
-                                                        <div class="coupon d-flex mb-0 align-items-center">
-                                                            <label class="me-2" for="input-coupon">کوپن: </label>
-                                                            <input type="text" class="form-control me-2"
-                                                                id="input-coupon" placeholder="کد تخفیف">
-                                                        </div>
-
-
-                                                        <button type="submit"
-                                                            class="btn-animate1 me-0  me-md-2 mt-3 mt-sm-0"> اعمال
-                                                            کوپن</button>
-
-                                                    </form>
+                                            </td>
+                                            <td>
+                                                <div class="name-product">
+                                                    <a href="#">
+                                                        <h3>{{order.items.salesman_product.product.title}}</h3>
+                                                    </a>
 
                                                 </div>
 
-                                                <div class="area-btn-update area-btn-animate-S2">
-                                                    <button type="submit" class="btn-animate1">بروزرسانی سبد
-                                                        خرید</button>
+                                            </td>
+
+                                            <td class="cell-product-price">
+                                                <div class="product-price">
+                                                    {{order.items.salesman_product.price}}
                                                 </div>
-                                            </div>
+                                            </td>
 
-                                        </td>
-                                    </tr>
+                                            <td>
+                                                <div
+                                                    class="input-number-wrapper d-flex justify-content-center align-items-center">
+                                                    <span class="quanti-invitati-op increase">+</span>
+                                                    <input class="input-number-custtom" type="text" value="1">
+                                                    <span class="quanti-invitati-op decrease">-</span>
+                                                </div>
+                                            </td>
 
-                                </tbody>
-                            </table>
+                                            <td>
+                                                <div class="product-subtotal">
+                                                    {{order.get_total_price}}
+
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6" class="actions w-100">
+                                                <div
+                                                    class="footer-table-cart d-flex flex-column flex-md-row align-items-center justify-content-between">
+                                                    <div class="area-coupon me-0  me-md-2 mb-4 mb-md-0">
+                                                        <form
+                                                            class="d-flex flex-column flex-sm-row align-items-start justify-content-between ">
+
+                                                            <div class="coupon d-flex mb-0 align-items-center">
+                                                                <label class="me-2" for="input-coupon">کوپن: </label>
+                                                                <input type="text" class="form-control me-2"
+                                                                    id="input-coupon" placeholder="کد تخفیف">
+                                                            </div>
+
+
+                                                            <button type="submit"
+                                                                class="btn-animate1 me-0  me-md-2 mt-3 mt-sm-0"> اعمال
+                                                                کوپن</button>
+
+                                                        </form>
+
+                                                    </div>
+
+                                                    <div class="area-btn-update area-btn-animate-S2">
+                                                        <button type="submit" class="btn-animate1">بروزرسانی سبد
+                                                            خرید</button>
+                                                    </div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-
+                    
                     <div class="col-12 col-xl-4">
                         <div class="box-cart-total ">
                             <h2>جمع سبد خرید</h2>
                             <div class="details-cart-total">
                                 <div class="cart-subtotal d-flex justify-content-between align-items-center  mb-4">
                                     <span>مجموع</span>
-
-                                    <span class="subtotal">110000 تومان</span>
+                                    
+                                    <span class="subtotal">{{order.get_total_price}} تومان</span>
+                                    
                                 </div>
                                 <hr>
                                 <div class="cart-shipping d-flex justify-content-between align-items-center  mb-4">
@@ -293,8 +249,7 @@
                                 <hr>
                                 <div class="cart-total  d-flex justify-content-between align-items-center mb-4">
                                     <span> مجموع کل سبد خرید</span>
-
-                                    <span class="payable">110000 تومان</span>
+                                    <span class="payable">{{order.get_total_price}} تومان</span>
                                 </div>
                             </div>
                         </div>

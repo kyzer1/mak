@@ -6,8 +6,8 @@ from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView
-
 from product.models import CategoryProduct, Product
+from supply.models import SalesmanProduct
 
 
 
@@ -21,6 +21,7 @@ def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
     all_categoris_header = CategoryProduct.objects.all()
     parent_category = CategoryProduct.objects.all().filter(parent=None)
     new_products = Product.objects.all().order_by('-date_prodcut')[:10]
+    price_product = SalesmanProduct.objects.all()
 
     sub = []
 
@@ -34,7 +35,8 @@ def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
         'all_categoris_header': all_categoris_header,
         'new_products': new_products,
         'parent_cat': parent_category,
-        'sub_cat': sub
+        'sub_cat': sub,
+        'price_product': price_product
     }
     
     return render(request, 'index.html', ctx)
