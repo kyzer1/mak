@@ -9,8 +9,6 @@ from product.models import Product
 class Cart(models.Model):
     customer = models.ForeignKey(CustomerProfile, related_name='cart_customers', on_delete=models.CASCADE, null=True)
     # salesman = models.ForeignKey(SalesmanProfile, on_delete=models.CASCADE, null=True)
-    price = models.FloatField(null=True)
-    product = models.ForeignKey(Product, related_name='cart_products', on_delete=models.CASCADE, null=True, blank=True)
     # count_order = models.BigIntegerField(null=True)
     is_paid = models.BooleanField(default=False, null=True)# zamani ke pardakht anjam shod True shavad va dar history vared shavad
 
@@ -19,7 +17,8 @@ class Cart(models.Model):
 class Order(Cart):
     date_order = models.DateTimeField(auto_now_add=True, null=True)
     expire_date = models.DateTimeField(auto_now=True, null=True)
-
+    product = models.ForeignKey(Product, related_name='order_products', on_delete=models.CASCADE, null=True, blank=True)
+    
     def __str__(self) -> str:
         return {self.customer}
 

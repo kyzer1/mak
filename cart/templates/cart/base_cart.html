@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% load mathfilters %}
 {% block content %}
 <div class="contact">
     <!-- <div class="container-fluid">uhj</div> -->
@@ -55,6 +56,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {% for i,j in data.items %}
+                                
                                     <tr>
                                         <td>
 
@@ -65,14 +68,14 @@
                                         <td>
 
                                             <div class="product-thumbnail">
-                                                <a href="#"><img src="img/img12.jpg"></a>
+                                                <a href="#"><img src="{% static '{{j.1}}' %}"></a>
                                             </div>
 
                                         </td>
                                         <td>
                                             <div class="name-product">
                                                 <a href="#">
-                                                    <h3>نام محصول</h3>
+                                                    <h3>{{i}}</h3>
                                                 </a>
 
                                             </div>
@@ -81,7 +84,7 @@
 
                                         <td class="cell-product-price">
                                             <div class="product-price">
-                                                2500000
+                                               {{j.2}}
                                             </div>
                                         </td>
 
@@ -89,65 +92,20 @@
                                             <div
                                                 class="input-number-wrapper d-flex justify-content-center align-items-center">
                                                 <span class="quanti-invitati-op increase">+</span>
-                                                <input class="input-number-custtom" type="text" value="1">
+                                                <input class="input-number-custtom" type="text" value="{{j.0}}">
                                                 <span class="quanti-invitati-op decrease">-</span>
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="product-subtotal">
-                                                2500000
+                                                {{j.0|mul:j.2 }}
 
                                             </div>
                                         </td>
 
                                     </tr>
-                                    <tr>
-                                        <td>
-
-                                            <a href="#" class="remove-product">
-                                                <i class="fal fa-times"></i>
-                                            </a> </td>
-
-                                        <td>
-
-                                            <div class="product-thumbnail">
-                                                <a href="#"><img src="img/img11.jpg"></a>
-                                            </div>
-
-                                        </td>
-                                        <td>
-                                            <div class="name-product">
-                                                <a href="#">
-                                                    <h3>نام محصول</h3>
-                                                </a>
-
-                                            </div>
-
-                                        </td>
-
-                                        <td class="cell-product-price">
-                                            <div class="product-price">
-                                                300000
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div
-                                                class="input-number-wrapper d-flex justify-content-center align-items-center">
-                                                <span class="quanti-invitati-op increase">+</span>
-                                                <input class="input-number-custtom" type="text" value="1">
-                                                <span class="quanti-invitati-op decrease">-</span>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="product-subtotal">
-                                                300000
-                                            </div>
-                                        </td>
-
-                                    </tr>
+                                 {% endfor %}
                                     <tr>
                                         <td colspan="6" class="actions w-100">
                                             <div
@@ -192,7 +150,7 @@
                                 <div class="cart-subtotal d-flex justify-content-between align-items-center  mb-4">
                                     <span>مجموع</span>
 
-                                    <span class="subtotal">110000 تومان</span>
+                                    <span class="subtotal">{{result}} تومان</span>
                                 </div>
                                 <hr>
                                 <div class="cart-shipping d-flex justify-content-between align-items-center  mb-4">
@@ -403,7 +361,7 @@
                     </div>
                     <div class="col-12 col-sm-6 mt-4 mt-sm-0 d-flex justify-content-start justify-content-sm-end">
                         <div class="area_cartimg_footer">
-                            <img class="img-fluid" src="img/img100.png" style="width: 12rem;" />
+                            <img class="img-fluid" src="{% static 'img/img100.png' %}" style="width: 12rem;" />
                         </div>
                     </div>
                 </div>
@@ -411,9 +369,9 @@
         </div>
     </footer>
     <a class="scrollTo scroll-To-top " href=".topbar-site"></a>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="{% static 'text/javascript" src="js/main.js' %}"></script>
 </div>
 
 {% endblock content %}
