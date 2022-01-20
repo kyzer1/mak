@@ -154,6 +154,6 @@ class ForgetPassForm(forms.Form):
 
         return password
 
-    def save(self, commit: bool = ...) :
-        self.instance.set_password(self.cleaned_data.get("password"))
-        return super().save(commit=commit)
+    # def save(self, commit: bool = ...) :
+    #     self.instance.set_password(self.cleaned_data.get("password"))
+    #     return super().save(commit=commit)

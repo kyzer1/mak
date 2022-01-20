@@ -121,7 +121,7 @@ def salesman_login(request):
 def forget_password(request):
     forget_password_form = ForgetPasswordForm(request.POST or None)
     if request.method == "GET":
-        return render(request, 'User/forget_password.html', {'forget_password_form': forget_password_form})
+        return render(request, 'salesman_profile/forget_password.html', {'forget_password_form': forget_password_form})
 
     else:
         
@@ -129,26 +129,33 @@ def forget_password(request):
             miss_email=forget_password_form.cleaned_data.get('email')
             #user = authenticate(request, email=miss_email)
             user = User.objects.get(email=miss_email)
+            # print(user)
             if user:
                 uid=str(uuid4())
-                link=reverse("user:set_true",kwargs={"auten":uid})
+                # link=reverse("user:set_true",kwargs={"auten":uid})
+                link=reverse("salesman_profile:set_true",kwargs={"auten":uid, "token":account_activation_token.make_token(user)})
                 current_site = get_current_site(request)
                 mail_subject = 'click on the link for change password.'
                 message = "127.0.0.1:8000"+link
+                print(message)
                 to_email = forget_password_form.cleaned_data.get('email')
                 # forget= f'{to_email}+flag'
                 # request.session["forget"]=forget
                 request.session["email"]=to_email
+                cache.set("email1", to_email, 120)
+                print(request.session.get("email"))
                 request.session["uid"]=uid
+                cache.set("uid1",uid,120)
                 cache.set(to_email,uid,300)
                 cache.set("forget",0,300)
 
                 send_mail(mail_subject, message, settings.EMAIL_HOST_USER, [to_email])
 
-                return redirect('user:forget_pass')
+                # return redirect('/')
+                return redirect('salesman_profile:forget_pass')
 
             else:
-                return redirect('user:forget_password')
+                return redirect('salesman_profile:forget_password')
 
 
     # if register_form.is_valid():
@@ -172,3 +179,55 @@ def forget_password(request):
     #     final_verification(subject, message, email_from, recipient_list)
     #     request.session['form'] = request.POST
     #     return redirect('/')
+
+
+def set_true(request,auten ,token):
+    try:
+        auten = cache.get("uid1")
+        user = SalesmanProfile.objects.get(pk=auten)
+    except(TypeError, ValueError, OverflowError, SalesmanProfile.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        return redirect('salesman_profile:forget_pass')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
+
+    # try:
+    #     uid = urlsafe_base64_decode(uidb64)
+    #     user = SalesmanProfile.objects.get(pk=uid)
+    # except(TypeError, ValueError, OverflowError, SalesmanProfile.DoesNotExist):
+    #     user = None
+    # if user is not None and account_activation_token.check_token(user, token):
+    #     user.is_active = True
+    #     user.is_staff = True
+    #     user.save()
+    #     return render(request, 'salesman_profile/emailshowbox.html')
+    # else:
+    #     return HttpResponse('Activation link is invalid!')
+
+def forget_pass(request):
+    forget_pass_form = ForgetPassForm(request.POST or None)
+    if request.method == "GET":
+        return render(request, 'salesman_profile/forget_pass.html', {'forget_pass_form': forget_pass_form})
+    
+    else:
+        user=SalesmanProfile.objects.get(email=request.session.get("email"))
+        ucode=cache.get(request.session.get("email"))
+        if request.session.get("uid")==ucode:
+                forg=cache.get("forget")
+                if forg:
+                    if forget_pass_form.is_valid():
+                        password = request.POST.get("password", "")
+                        user.set_password(password)
+                        user.save()
+
+                        login(request,user)
+                        return redirect("home")
+                    else:
+                        return redirect("user:forget_password")
+                else:
+                    return HttpResponse("bayad montazer email bashid..!")
+
+        else:
+            return HttpResponse("link taiid eshtebah ast...!")

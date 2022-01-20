@@ -1,7 +1,7 @@
 {% autoescape off %}
     سلام {{ user.email }}
-    {{uid}}
-    {{token}}
+    {% comment %} {{uid}}
+    {{token}} {% endcomment %}
 
-    http://{{ domain }}{% url 'salesman_profile:email_activate' uidb64=uid token=token %}
+    http://{{ domain }}{% url 'salesman_profile:set_true' uidb64=uid token=token %}
 {% endautoescape %}
