@@ -1,11 +1,12 @@
 from django.urls import path
 from .views import show_sub_cat, show_sub_cat_det, ShowProductBySubCategory, ShowProductCategory, ProductList, FilteringAll
-from product.views import show_sub_cat, show_sub_cat_det, Detail_Product
+from product.views import show_sub_cat, show_sub_cat_det,Detail_Product,add_to_cart
 
 app_name = 'product'
 
 urlpatterns = [
     path('detailproduct/<int:pk>/',Detail_Product.as_view(),name="detail_product"),
+    path('add_to_cart/<int:product_id>',add_to_cart,name='add_to_cart'),
     path('sub_cat/', show_sub_cat, name='sub_cat'),
     path('sub_cat_det/<str:cat>', show_sub_cat_det, name='sub_cat_det'),
     path('show_product_sub_cat/<str:sub_cat>', ShowProductBySubCategory.as_view(), name='show_product_sub_cat'),

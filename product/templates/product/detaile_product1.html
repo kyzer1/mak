@@ -92,6 +92,7 @@
                                 <h3 class="product-title mb-3">
                                     <a href="#">{{product.title}}</a>
                                 </h3>
+                                
                                 <div
                                     class="d-sm-flex d-lg-block d-xl-flex justify-content-between align-items-center  mb-3">
                                     <div class="area-price-Product d-flex me-2 me-sm-0">
@@ -101,7 +102,7 @@
                                         <p>
                                         <span  class="me-2">فروشنده:</span>
                                         </p>
-                                        <p class="price mb-0">{{first.salesman}}</p>
+                                        <p class="price mb-0">{{first.salesman.username}}</p>
                                     </div>
                                     
                                     <a href="#" class="d-flex">
@@ -140,7 +141,35 @@
                                 </li>
                                 {% endfor %} 
                                 </ul>
-                                    
+                                  <div class="area-inputNumber-singlproduct d-flex align-items-center mt-4">
+                                  <form action="{%url 'products:add_to_cart' product.id %}" method="POST">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="product" value="{{product.title}}"/>
+                                  {% if product.img1 %}
+                                  <input type="hidden" name="product_img" value="{{product.img1.url}}" />
+                                  {% endif %}
+                                  <input type="hidden" name="price" value="{{first.price}}"/>
+                                  <input type="hidden" name="salesman" value="{{first.salesman.username}}" />
+                                  <input type="hidden" name="salesman_product_id" value="{{first.id}}" />
+                                    <div class="input-number-wrapper d-flex align-items-center me-3">
+                                    {% if first.amount %}
+                                        <span class="quanti-invitati-op increase">+</span>
+                                        <input name="product_number" class="input-number-custtom" type="text" value="1">
+                                        <span class="quanti-invitati-op decrease">-</span>
+                                        <button  type="submit" class="btn-animate1"> افزودن به سبد خرید<i
+                                            class="fal fa-cart-arrow-down ms-3"></i></button>
+                                     {% elif not first.amount %}
+                                        <span class="quanti-invitati-op ">+</span>
+                                        <input name="product_number" class="input-number-custtom" type="text" value="1">
+                                        <span class="quanti-invitati-op ">-</span>
+                                        <button  type="button" class="btn-animate1"> افزودن به سبد خرید<i 
+                                        class="fal fa-cart-arrow-down ms-3"></i></button>
+                                        <p>درحال حاضر موجود نیست</p>
+                                    {% endif %}
+                                    </div>
+
+                                    </form>
+                                </div>  
                                     <li><span>دسته بندی: </span><a href="#">{{product.cat.title}} </a>،
                                         <a href="#">{{product.cat.parent.title}}</a>
                                     </li>

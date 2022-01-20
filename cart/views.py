@@ -1,51 +1,41 @@
-from itertools import product
-from pyexpat.errors import messages
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import View
-from .models import Order, OrderItem
-from django.core.exceptions import ObjectDoesNotExist
-from product.models import Product
+from django.shortcuts import render
+import redis
 
-class OrderSummaryView(LoginRequiredMixin, View):
-    def get(self, *args, **kwargs):
-
-        try:
-            order = Order.objects.get(user=self.request.user, ordered=False)
-            context = {
-                'object' : order
-            }
-            return render(self.request, 'order_summary.html', context)
-        except ObjectDoesNotExist:
-            messages.error(self.request, "You do not have an order")
-            return redirect("/")
-
-
-def reduce_quantity_item(request, pk):
-    item = get_object_or_404(Product, pk=pk )
-    order_qs = Order.objects.filter(
-        user = request.user, 
-        ordered = False
-    )
-    if order_qs.exists():
-        order = order_qs[0]
-        if order.items.filter(item__pk=item.pk).exists() :
-            order_item = OrderItem.objects.filter(
-                item = item,
-                user = request.user,
-                ordered = False
-            )[0]
-            if order_item.quantity > 1:
-                order_item.quantity -= 1
-                order_item.save()
-            else:
-                order_item.delete()
-            messages.info(request, "Item quantity was updated")
-            return redirect("core:order-summary")
-        else:
-            messages.info(request, "This Item not in your cart")
-            return redirect("core:order-summary")
+def show_cart(request):
+  
+    r=redis.Redis(decode_responses=True)
+    if request.user.is_authenticated:
+            key=str(request.session["email"])
     else:
-        #add message doesnt have order
-        messages.info(request, "You do not have an Order")
-        return redirect("core:order-summary")
+            key=str(request.session._get_or_create_session_key())
+    data=r.hgetall(key)
+    data1=dict()
+#     print(data)
+    keys=data.keys()
+    values=data.values()
+    print(data.items())
+
+    for i,j in data.items():
+        j=j.strip('[]\"')
+        j=j.split(',')
+        data1[i]=j
+    print(data1.items())
+
+    result=0  
+    for i,j in data1.items():
+        j[0]=int(j[0].strip("'"))
+        j[1]=j[1].strip("'")
+        j[2]=j[2].strip("'")
+        j[2]=float(j[2].lstrip(" ' "))
+        j[3]=j[3].strip("'")
+        j[4]=j[4].strip("'")
+        result+=j[0]*j[2]
+        print(f"type j[0]{type(j[0])}")
+        print(data1.items())
+
+    
+    
+
+    ctx={"data":data1,"result":result}
+    return render(request,"cart/base_cart.html",ctx)
+
