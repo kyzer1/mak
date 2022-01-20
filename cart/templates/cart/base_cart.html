@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+<div class="contact">
+    <!-- <div class="container-fluid">uhj</div> -->
+    <div class="bg-close">
+    </div>
+    <div class="bg-searchform">
+        <div class="area-searchform">
+            <div class="area-close-search">
+                <a href="#"><i class="fal fa-times"></i></a>
+            </div>
+            <form class="search-form d-flex w-100" action="" method="get">
+                <input type="text" class="form-control input_search" placeholder="دنبال چه میگردید">
+                <button type="submit">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z">
+                        </path>
+                        <path fill-rule="evenodd"
+                            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z">
+                        </path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+        <div class="area-breadcrumb-site">
+            <h1 class="text-center mb-3">سبد خرید</h1>
+            <nav aria-label="breadcrumb" class="mb-4 mb-lg-3">
+                <ol class="breadcrumb breadcrumb-singleProduct ">
+                    <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                    <li class="breadcrumb-item active">سبد خرید</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <main class="content">
+        <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-xl-8">
+                        <div class="area-table-cart-shop area-table-shop mb-5">
+                            <table class="table table-shop">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">حذف</th>
+                                        <th scope="col">تصویر</th>
+                                        <th scope="col">محصول</th>
+                                        <th scope="col"> قیمت (تومان)</th>
+                                        <th scope="col">تعداد</th>
+                                        <th scope="col"> جمع</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i,j in data.items %}
+                                
+                                    <tr>
+                                        <td>
+
+                                            <a href="#" class="remove-product">
+                                                <i class="fal fa-times"></i>
+                                            </a> </td>
+
+                                        <td>
+
+                                            <div class="product-thumbnail">
+                                                <a href="#"><img src="{% static '{{j.1}}' %}"></a>
+                                            </div>
+
+                                        </td>
+                                        <td>
+                                            <div class="name-product">
+                                                <a href="#">
+                                                    <h3>{{i}}</h3>
+                                                </a>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td class="cell-product-price">
+                                            <div class="product-price">
+                                               {{j.2}}
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div
+                                                class="input-number-wrapper d-flex justify-content-center align-items-center">
+                                                <span class="quanti-invitati-op increase">+</span>
+                                                <input class="input-number-custtom" type="text" value="{{j.0}}">
+                                                <span class="quanti-invitati-op decrease">-</span>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="product-subtotal">
+                                                {{j.0|mul:j.2 }}
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                 {% endfor %}
+                                    <tr>
+                                        <td colspan="6" class="actions w-100">
+                                            <div
+                                                class="footer-table-cart d-flex flex-column flex-md-row align-items-center justify-content-between">
+                                                <div class="area-coupon me-0  me-md-2 mb-4 mb-md-0">
+                                                    <form
+                                                        class="d-flex flex-column flex-sm-row align-items-start justify-content-between ">
+
+                                                        <div class="coupon d-flex mb-0 align-items-center">
+                                                            <label class="me-2" for="input-coupon">کوپن: </label>
+                                                            <input type="text" class="form-control me-2"
+                                                                id="input-coupon" placeholder="کد تخفیف">
+                                                        </div>
+
+
+                                                        <button type="submit"
+                                                            class="btn-animate1 me-0  me-md-2 mt-3 mt-sm-0"> اعمال
+                                                            کوپن</button>
+
+                                                    </form>
+
+                                                </div>
+
+                                                <div class="area-btn-update area-btn-animate-S2">
+                                                    <button type="submit" class="btn-animate1">بروزرسانی سبد
+                                                        خرید</button>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-4">
+                        <div class="box-cart-total ">
+                            <h2>جمع سبد خرید</h2>
+                            <div class="details-cart-total">
+                                <div class="cart-subtotal d-flex justify-content-between align-items-center  mb-4">
+                                    <span>مجموع</span>
+
+                                    <span class="subtotal">{{result}} تومان</span>
+                                </div>
+                                <hr>
+                                <div class="cart-shipping d-flex justify-content-between align-items-center  mb-4">
+                                    <span>هزینه ارسال</span>
+
+                                    <span class="subtotal"> رایگان</span>
+                                </div>
+
+                                <h4 class="mb-4"><a data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                                        role="button" aria-expanded="false" aria-controls="collapseExample"> محاسبه
+                                        هزینه ارسال</a>
+                                </h4>
+                                <div class="collapse" id="collapseExample">
+                                    <form class="row" action="#!">
+                                        <div class="custom_select col-12  col-md-4 col-xl-12  mb-3">
+                                            <select class="form-control col-12 ">
+                                                <option value="">یک گزینه را انتخاب کنید ...</option>
+                                                <option value="AF"> افغانستان </option>
+                                                <option value="AL"> آلبانی </option>
+                                                <option value="DZ"> الجزایر </option>
+                                                <option value="AO"> آنگولا </option>
+                                                <option value="AI"> آنگولا </option>
+                                                <option value="AQ"> قطب جنوب </option>
+                                                <option value="AG"> آنتیگوا و باربودا </option>
+                                                <option value="AR"> آرژانتین </option>
+                                                <option value="AM"> ارمنستان </option>
+                                                <option value="AW"> آروبا </option>
+                                                <option value="AU"> استرالیا </option>
+                                                <option value="AT"> اتریش </option>
+                                                <option value="AZ"> آذربایجان </option>
+                                                <option value="BH"> بحرین </option>
+                                                <option value="BD"> بنگلادش </option>
+                                                <option value="BB"> باربادوس </option>
+                                                <option value="BY"> بلاروس </option>
+                                                <option value="BE"> بلژیک </option>
+                                                <option value="BZ"> بلیز </option>
+                                                <option value="BJ"> بنین </option>
+                                                <option value="BM"> برمودا </option>
+                                                <option value="BT"> بوتان </option>
+                                                <option value="BO"> بولیوی </option>
+                                                <option value="BA"> بوسنی و هرزگوین </option>
+                                                <option value="BW"> بوتسوانا </option>
+                                                <option value="BR"> برزیل </option>
+                                                <option value="IO"> قلمرو اقیانوس هند بریتانیا </option>
+                                                <option value="VG"> جزایر ویرجین بریتانیا </option>
+                                                <option value="BN"> برونئی </option>
+                                                <option value="BG"> بلغارستان </option>
+                                                <option value="BI"> بوروندی </option>
+                                                <option value="KH"> کامبوج </option>
+                                                <option value="CM"> کامرون </option>
+                                                <option value="CA"> کانادا </option>
+                                                <option value="CV"> کیپ ورد </option>
+                                                <option value="KY"> جزایر کیمن </option>
+                                                <option value="CF"> جمهوری آفریقای مرکزی </option>
+                                                <option value="TD"> چاد </option>
+                                                <option value="CL"> شیلی </option>
+                                                <option value="CN"> چین </option>
+                                                <option value="CX"> جزیره کریسمس </option>
+                                                <option value="CC"> جزایر کوکوس </option>
+                                                <option value="CO"> کلمبیا </option>
+                                                <option value="KM"> کومور </option>
+                                                <option value="CG"> کنگو </option>
+                                                <option value="CD"> کنگو </option>
+                                                <option value="CK"> جزایر کوک </option>
+                                                <option value="CR"> کاستاریکا </option>
+                                                <option value="HR"> کرواسی </option>
+                                                <option value="CU"> کوبا </option>
+                                                <option value="CW"> کورااائو </option>
+                                                <option value="CY"> قبرس </option>
+                                                <option value="CZ"> جمهوری چک </option>
+                                                <option value="DK"> دانمارک </option>
+                                                <option value="DJ"> جیبوتی </option>
+                                                <option value="DM"> دومینیکا </option>
+                                                <option value="DO"> جمهوری دومنیکن </option>
+                                                <option value="EC"> اکوادور </option>
+                                                <option value="EG"> مصر </option>
+                                                <option value="SV"> السالوادور </option>
+                                            </select>
+                                        </div>
+                                        <!--کشور -->
+                                        <div class="form-group col-6 col-md-4 col-xl-6">
+                                            <input type="text" class="form-control" id="input-county"
+                                                placeholder="کشور ">
+                                        </div>
+
+                                        <!-- کد پستی -->
+                                        <div class="form-group col-6 col-md-4 col-xl-6">
+                                            <input type="text" class="form-control" id="input-codeposty"
+                                                placeholder="کد پستی ">
+                                        </div>
+
+                                        <!-- بروز رسانی -->
+                                        <div class="area-btn-update col-12 area-btn-animate-S2">
+                                            <button type="submit" class="btn-animate1 ">بروز رسانی</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr>
+                                <div class="cart-total  d-flex justify-content-between align-items-center mb-4">
+                                    <span> مجموع کل سبد خرید</span>
+
+                                    <span class="payable">110000 تومان</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="area-btn-checkout  mt-4">
+                            <button type="submit" class="btn-animate1 border-0">ادامه جهت تسویه حساب</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="area-footer footer2">
+        <div class="area-content-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-lg-0">
+                        <div class="widget_footer">
+                            <div class="title_widget_footer mb-3">
+                                اطلاعات
+                            </div>
+                            <div class="contenet_widget_footer">
+                                <ul>
+                                    <li><a href="#">درباره ما</a></li>
+                                    <li><a href="#">شرایط استفاده</a></li>
+                                    <li><a href="#">راهنمای سفارش و خرید</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-lg-0">
+                        <div class="widget_footer">
+                            <div class="title_widget_footer mb-3">
+                                حساب کاربری
+                            </div>
+                            <div class="contenet_widget_footer">
+                                <ul>
+                                    <li><a href="#">سفارش های من</a></li>
+                                    <li><a href="#">لیست علاقه مندی ها</a></li>
+                                    <li><a href="#">پیگیری سفارش</a></li>
+                                    <li><a href="#">مشخصات کاربری من</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4 mb-sm-0">
+
+                        <div class="widget_footer">
+                            <div class="title_widget_footer mb-3">
+                                خدمات
+                            </div>
+                            <div class="contenet_widget_footer">
+                                <ul>
+                                    <li><a href="#">شرایط ارسال و عودت</a></li>
+                                    <li><a href="#">پرسش های متداول</a></li>
+                                    <li><a href="#">رعایت حریم خصوصی</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="widget_footer">
+                            <div class="title_widget_footer mb-3">
+                                تماس با ما
+                            </div>
+                            <div class="contenet_widget_footer">
+                                <ul class="mb-3">
+                                    <li>
+                                        <span> آدرس: ۴۴۵ کوه عدن جاده، کوه بهشت، اوکلند.</span>
+                                    </li>
+                                    <li>
+                                        <span> شماره تماس: 2135642512</span>
+                                    </li>
+                                    <li>
+                                        <span> ایمیل: digistore@exmple.com</span>
+                                    </li>
+
+                                </ul>
+
+                                <div class="area-socialIcon d-flex ">
+                                    <a href="http://www.facebook.com" class="icon facebook"><span
+                                            class="tooltip-site">Facebook</span></a>
+                                    <a href="http://www.github.com" class="icon instegram"><span
+                                            class="tooltip-site">instegram</span></a>
+                                    <a href="http://www.dribble.com" class="icon linkedin"><span
+                                            class="tooltip-site">linkedin</span></a>
+                                    <a href="http://www.twitter.com" class="icon twitter"><span
+                                            class="tooltip-site">Twitter</span></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="area-copyright  py-4 ">
+            <div class="container">
+                <div class="row justify-content-between align-items-center ">
+                    <div class="col-12 col-sm-6">
+                        <div class="copyright">
+                            تمامی حقوق سایت محفوظ است
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 mt-4 mt-sm-0 d-flex justify-content-start justify-content-sm-end">
+                        <div class="area_cartimg_footer">
+                            <img class="img-fluid" src="{% static 'img/img100.png' %}" style="width: 12rem;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a class="scrollTo scroll-To-top " href=".topbar-site"></a>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="{% static 'text/javascript" src="js/main.js' %}"></script>
+</div>
+
+{% endblock content %}
