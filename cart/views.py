@@ -1,5 +1,14 @@
 from django.shortcuts import render
 import redis
+from django.views.generic import ListView
+
+class OrderSummaryView(ListView):
+    pass 
+
+
+def reduce_quantity_item(request):
+    pass
+
 
 def show_cart(request):
   
