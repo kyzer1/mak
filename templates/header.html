@@ -33,6 +33,8 @@
                             <span>خروج</span>
                             <i class="fal fa-user"></i>
                             </a>
+                            <span>salam {{ request.user.username }}</span>
+                            <i class="fal fa-user"></i>
                             {% else %}
                             <a href="{% url 'customer_profile:customer_login' %}">
                             <span>ورود</span>

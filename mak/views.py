@@ -8,19 +8,18 @@ from django.views.generic.base import TemplateView
 from django.views.generic import ListView
 
 from product.models import CategoryProduct, Product
-
-
+from salesman_profile.models import User
 
 def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
     popular_categories = list(CategoryProduct.objects.all().order_by('id')[:4])
     all_categoris = list(CategoryProduct.objects.all().order_by('id')[:3])
     most_sold_out = Product.objects.all().order_by('-sold_out_num')[:10]
-    print(most_sold_out)
     # all_products = list(Product.objects.all())
     # average_sold_out = list(Product.objects.all().aggregate(Avg('sold_out_num')))
     all_categoris_header = CategoryProduct.objects.all()
     parent_category = CategoryProduct.objects.all().filter(parent=None)
     new_products = Product.objects.all().order_by('-date_prodcut')[:10]
+
 
     sub = []
 
@@ -34,20 +33,24 @@ def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
         'all_categoris_header': all_categoris_header,
         'new_products': new_products,
         'parent_cat': parent_category,
-        'sub_cat': sub
+        'sub_cat': sub,
     }
     
     return render(request, 'index.html', ctx)
 
 
 # def header(request):
-#     top_cat = CategoryProduct.objects.filter(parent__isnull=True)
-#     # print(top_cat)
-#     top_cat_2 = CategoryProduct.objects.filter(parent__isnull=False)
-#     # print(top_cat_2)
+#     user_id = request.user.id
+#     user = User.objects.get(id=user_id)
+#     print(user)
+#     # top_cat = CategoryProduct.objects.filter(parent__isnull=True)
+#     # # print(top_cat)
+#     # top_cat_2 = CategoryProduct.objects.filter(parent__isnull=False)
+#     # # print(top_cat_2)
 #     context = {
-#         "category" : top_cat, 
-#         "sub_category": top_cat_2
+#         "user_profiles" : user
+#         # "category" : top_cat, 
+#         # "sub_category": top_cat_2
 #     }
   
 #     return render(request, 'header.html', context)

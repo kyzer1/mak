@@ -146,3 +146,37 @@ class LoginFormCustomer(forms.Form):
             raise forms.ValidationError('کاربری با مشخصات وارد شده ثبت نام نکرده است')
 
         return email
+
+class ForgetPasswordForm(forms.Form):
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'placeholder': 'لطفا ایمیل خود را وارد نمایید', 'type':'email', 'class':'form-control'}),
+        label='ایمیل'
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        is_exists_user = User.objects.filter(email=email).exists()
+        if not is_exists_user:
+            raise forms.ValidationError('کاربری با ایمیل وارد شده ثبت نام نکرده است')
+
+        return email
+
+
+class ForgetPassForm(forms.Form):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'لطفا کلمه عبور خود را وارد نمایید'}),
+        label='کلمه ی عبور'
+    )
+
+    re_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'لطفا تکرار کلمه عبور خود را وارد نمایید'}),
+        label='تکرار کلمه ی عبور'
+    )
+
+    def clean_re_password(self):
+        password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if password != re_password:
+            raise forms.ValidationError('کلمه های عبور مغایرت دارند')
+
+        return password

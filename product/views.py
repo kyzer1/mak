@@ -102,7 +102,6 @@ class FilteringAll(ListView):
         else:
             cache.set("filtering_price", [filter_by_price_1, filter_by_price_2])
             queryst = SalesmanProduct.objects.filter(Q(price__gte=float(filter_by_price_2)) & Q(price__lte=float(filter_by_price_1)))
-            print("inooo : ",queryst)
             cache.set('filtering_price', queryst)
         return queryst
 

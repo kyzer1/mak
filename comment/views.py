@@ -18,14 +18,12 @@ User = get_user_model()
 @login_required()#login_url
 def add_comment(request,product_id):
     user_id = request.user.id
-    print(user_id)
     user = CustomerProfile.objects.get(id=user_id)
     if request.method=="POST":
         form=CommentForm(request.POST)
         product=get_object_or_404(Product,pk=product_id)
         if form.is_valid():
             comment=form.cleaned_data.get("comment")
-            print(comment)
             rate=form.cleaned_data.get("rate")
             comment=Comment(customer=user,comment=comment,rate=rate ,product=product)
             comment.save()
