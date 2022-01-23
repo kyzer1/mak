@@ -1,4 +1,5 @@
 {% load static %}
+{% load sub_category_tag %}
 
 <div>
     <div class="topbar-site d-none d-lg-block">
@@ -32,6 +33,8 @@
                             <span>خروج</span>
                             <i class="fal fa-user"></i>
                             </a>
+                            <span>salam {{ request.user.username }}</span>
+                            <i class="fal fa-user"></i>
                             {% else %}
                             <a href="{% url 'customer_profile:customer_login' %}">
                             <span>ورود</span>
@@ -72,17 +75,18 @@
                                 </ul>
                             </li>
 
-                            <li class="container-mega-menu"><a href="{% url 'product:show_product' %}">محصولات<i
+                            <li class="container-mega-menu"><a href="">محصولات<i
                                         class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <div class="serv-megamenu">
                                     <div class="row">
-                                        {% for cat in category %}
+                                        {% for cat in p_category %}
                                         <div class="col-3">
-                                            <a class="title_megamenu" href="{% url "product:show_product_cat" cat.id %}">{{ cat.title }}</a>
+                                            {{ cat.title }}
                                             <ul>
-                                                {% for sub_cat in sub_category %}
+                                                {% get_sub_cat cat as sub_categorys %}
+                                                {% for sub_cat in sub_categorys %}
                                                 {% if sub_cat.parent_id == cat.id %}
-                                                <li><a href="{% url "product:show_product_sub_cat" sub_cat %}">{{ sub_cat.title }}
+                                                <li><a href="{% url "product:show_product" sub_cat %}">{{ sub_cat.title }}
                                                 </a></li>
                                                 {% endif %}
                                                 {% endfor %}
@@ -107,72 +111,18 @@
                         </div>
                         <div class="area_menu_mobile menu-top-menu-container" id="accordian">
                             <ul class="menu-multi-level">
-                                <li class="menu-item-has-children"><a href="#">صفحه اصلی</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html"> صفحه اصلی 1</a></li>
-                                        <li><a href="index-2.html"> صفحه اصلی 2</a>
-                                        </li>
-                                    </ul>
+                                <li><a href="{% url 'home' %}">صفحه اصلی</a>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">صفحات </a>
+                                <li class="menu-item-has-children"><a href="#">صفحات</a>
                                     <ul class="sub-menu">
                                         <li><a href="about.html">درباره ما</a></li>
                                         <li><a href="contact.html">تماس با ما</a>
                                         </li>
-                                        <li><a href="login.html">ورود</a></li>
-                                        <li><a href="signup.html">ثبت نام</a></li>
-                                        <li><a href="404.html">خطا 404</a></li>
+                                        <li><a href="login.html"> محصول مورد علاقه</a></li>
+                                        <li><a href="signup.html"> سبد خرید</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item-has-children"><a href="#">وبلاگ</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item-has-children"><a href="single-product.html">شبکه ای
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-three-columns.html">سه ستون </a></li>
-                                                <li><a href="blog-four-columns.html">چهار ستون </a>
-                                                </li>
-                                                <li><a href="blog-left-sidebar.html">نوار کناری سمت چپ </a></li>
-                                                <li><a href="blog-right-sidebar.html">نوار کناری سمت راست </a></li>
-                                                <li><a href="blog-standard-left-sidebar.html">نوار کناری استاندارد
-                                                        چپ
-                                                    </a></li>
-                                                <li><a href="blog-standard-right-sidebar.html">نوار کناری استاندارد
-                                                        راست
-                                                        </i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="single.html">ساختمانی
-                                            </a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-masonry-three-columns.html">سه ستون </a></li>
-                                                <li><a href="blog-masonry-four-columns.html">چهار ستون </a>
-                                                </li>
-                                                <li><a href="blog-masonry-left-sidebar.html">نوار کناری سمت چپ </a>
-                                                </li>
-                                                <li><a href="blog-masonry-right-sidebar.html">نوار کناری سمت راست
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="404.html">جزییات وبلاگ </a>
-                                            <ul class="sub-menu">
-                                                <li><a href="single-left.html">پیش فرض</a></li>
-                                                <li><a href="single-right.html">نوار کناری سمت راست</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="archive.html">لیستی </a>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog-list-left-sidebar.html">نوار کناری سمت چپ</a></li>
-                                                <li><a href="blog-list-right-sidebar.html">نوار کناری سمت راست</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="menu-item-has-children"><a href="product">محصولات</a>
+                                <li class="menu-item-has-children"><a href="">محصولات</a>
                                     <ul class="sub-menu">
                                         <li class="mega-menu-col">
                                             <a class="title-megamenu-mobile " href="#">آرایشی</a>
@@ -185,94 +135,6 @@
                                                 <li><a href="#">پاک کننده های آرایشی</a></li>
                                                 <li><a href="shop-product-detail-with-sticy-addtocart.html">جزئیات
                                                         محصول با سبد خرید شناور</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="mega-menu-col">
-                                            <a class="title-megamenu-mobile" href="#">عطر و آدکلان</a>
-                                            <ul>
-                                                <li><a href="#"> بادی اسپلش</a></li>
-                                                <li> <a href="#">عطر جیبی</a></li>
-                                                <li> <a href="#">اسپری و مام مردانه</a></li>
-                                                <li><a href="#">اسپری و مام زنانه</a></li>
-                                                <li> <a href="#">عطر زنانه</a></li>
-                                                <li><a href="#">ادکلان مردانه</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="mega-menu-col">
-                                            <a class="title-megamenu-mobile " href="#">مراقبتی</a>
-                                            <ul>
-                                                <li> <a href="#">مراقبت چشم</a></li>
-                                                <li> <a href="#">مراقبت صورت</a></li>
-                                                <li> <a href="#">مراقبت لب</a></li>
-                                                <li> <a href="#">مراقبت ناخن</a></li>
-                                                <li> <a href="#"> مراقبت بدن</a></li>
-                                                <li> <a href="#">مراقبت مو</a> </li>
-
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <a class="title-megamenu-mobile " href="#">بهداشت و سلامت</a>
-                                            <ul>
-                                                <li> <a href="#">بهداشت دهان و دندان</a></li>
-                                                <li> <a href="#">بهداشت بانوان</a></li>
-                                                <li> <a href="#">بهداشت عمومی</a></li>
-                                                <li> <a href="#">بهداشت آقایان</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#">فروشگاه</a>
-                                    <ul class="sub-menu">
-                                        <li class="mega-menu-col">
-                                            <a class="title-megamenu-mobile " href="#">صفحات محصول</a>
-                                            <ul>
-                                                <li><a href="shop-product-detail.html"> پیش فرض
-                                                    </a></li>
-                                                <li><a href="shop-product-detail-right-sidebar.html">نوار
-                                                        کناری
-                                                        سمت راست</a></li>
-                                                <li><a href="shop-product-detail-left-sidebar.html">نوار
-                                                        کناری
-                                                        سمت چپ</a></li>
-                                                <li><a href="shop-product-detail-with-icons.html">جزئیات
-                                                        محصول
-                                                        با آیکن ها</a></li>
-                                                <li><a href="shop-product-detail-with-sticy-addtocart.html">جزئیات
-                                                        محصول با سبد خرید شناور</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col">
-                                            <a class="title-megamenu-mobile " href="#">صفحات دیگر</a>
-                                            <ul>
-                                                <li><a href="cart.html"> سبد خرید</a></li>
-                                                <li><a href="checkout.html">بررسی</a></li>
-                                                <li><a href="wishlist.html">لیست مورد علاقه</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-col ">
-                                            <a class="title-megamenu-mobile " href="#">طرح بندی صفحه خرید</a>
-                                            <ul>
-                                                <li><a href="shop-list.html">نمای لیستی فروشگاه</a></li>
-                                                <li><a href="shop-list-right-sidebar.html">لیستی نوار کناری
-                                                        سمت
-                                                        راست</a></li>
-                                                <li><a href="shop-list-left-sidebar.html">لیستی نوار کناری
-                                                        سمت
-                                                        چپ</a></li>
-                                                <li><a href="shop-left-sidebar.html">شبکه ای نوار کناری سمت
-                                                        چپ</a></li>
-                                                <li><a href="shop-right-sidebar .html"> شبکه ای نوار کناری
-                                                        سمت
-                                                        راست</a></li>
-                                                <li><a href="shop-four-column-filter-drawer.html">چهار ستون
-                                                        با
-                                                        فیلتر کشویی</a></li>
-                                                <li><a href="shop-four-column-filter_offcanvas.html"> چهار
-                                                        ستون
-                                                        با فیلتر کشویی خارجی</a>
-                                                </li>
                                             </ul>
                                         </li>
                                     </ul>

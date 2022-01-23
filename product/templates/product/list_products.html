@@ -54,21 +54,19 @@
                                 {% for p in my_products %}
                                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                         <div class="product_cart">
-                                            
-                                            
                                                 <div class="cart-img-product mb-3">
-                                                    <a href="#">
+                                                    <a href="{% url 'product:detail_product' p.id %}">
                                                         <div class="d-flex justify-content-center align-items-center h-100">
                                                             <img src="{{p.img1.url}}" class="img1-product img-fluid" />
                                                         </div>
                                                     </a>
                                                 <div class="area-button-view-product">
-                                                    <a href="#" class="button-view-product">مشاهده محصول </a>
+                                                    <a href="{% url 'product:detail_product' p.id %}" class="button-view-product">مشاهده محصول </a>
                                                     
                                                 </div>
                                             </div>
                                             <div class="content_product text-center">
-                                                <a href="#">
+                                                <a href="{% url 'product:detail_product' p.id %}">
                                                     <h3 class="title-product mb-2">{{p.title}}</h3>
                                                 </a>
                                             </div>
@@ -79,21 +77,20 @@
                                 {% for p in products %}
                                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                                         <div class="product_cart">
-                                            
-                                            
+                                        
                                                 <div class="cart-img-product mb-3">
-                                                    <a href="#">
+                                                    <a href="{% url 'product:detail_product' p.id %}">
                                                         <div class="d-flex justify-content-center align-items-center h-100">
                                                             <img src="{{p.img1.url}}" class="img1-product img-fluid" />
                                                         </div>
                                                     </a>
                                                 <div class="area-button-view-product">
-                                                    <a href="#" class="button-view-product">مشاهده محصول </a>
+                                                    <a href="{% url 'product:detail_product' p.id %}" class="button-view-product">مشاهده محصول </a>
                                                     
                                                 </div>
                                             </div>
                                             <div class="content_product text-center">
-                                                <a href="#">
+                                                <a href="{% url 'product:detail_product' p.id %}">
                                                     <h3 class="title-product mb-2">{{p.title}}</h3>
                                                 </a>
                                             </div>

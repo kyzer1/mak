@@ -3,5 +3,5 @@
     {% comment %} {{uid}}
     {{token}} {% endcomment %}
 
-    http://{{ domain }}{% url 'salesman_profile:set_true' uidb64=uid token=token %}
+    http://{{ domain }}{% url 'customer_profile:set_true' uidb64=uid token=token %}
 {% endautoescape %}

@@ -118,3 +118,42 @@ class LoginFormSalesman(forms.Form):
 #         widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید', 'type':'text', 'class':'form-control'}),
 #         label='کد تایید نهایی'
 #     )
+
+
+class ForgetPasswordForm(forms.Form):
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'placeholder': 'لطفا ایمیل خود را وارد نمایید', 'type':'email', 'class':'form-control'}),
+        label='ایمیل'
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        is_exists_user = User.objects.filter(email=email).exists()
+        if not is_exists_user:
+            raise forms.ValidationError('کاربری با ایمیل وارد شده ثبت نام نکرده است')
+
+        return email
+
+
+class ForgetPassForm(forms.Form):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'لطفا کلمه عبور خود را وارد نمایید'}),
+        label='کلمه ی عبور'
+    )
+
+    re_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'لطفا تکرار کلمه عبور خود را وارد نمایید'}),
+        label='تکرار کلمه ی عبور'
+    )
+
+    def clean_re_password(self):
+        password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if password != re_password:
+            raise forms.ValidationError('کلمه های عبور مغایرت دارند')
+
+        return password
+
+    # def save(self, commit: bool = ...) :
+    #     self.instance.set_password(self.cleaned_data.get("password"))
+    #     return super().save(commit=commit)

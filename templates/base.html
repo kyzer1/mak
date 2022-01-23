@@ -22,8 +22,8 @@
     <header>
         <div class="wrapper">
             <div class="header">
-                {% render_partial "header" %}
-
+                {% comment %} {% render_partial "header" %} {% endcomment %}
+                {% block header %}{% include "header.html" %}{% endblock header %}
             </div>
             <div>
     </header>

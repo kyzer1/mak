@@ -1,8 +1,8 @@
-from django.http.response import Http404, HttpResponse
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from customer_profile.models import CustomerProfile
+from markupsafe import re
 from salesman_profile.models import SalesmanProfile
-from .forms import RegisterFormSalesman
+from .forms import RegisterFormSalesman, ForgetPassForm, ForgetPasswordForm
 from django.contrib.auth import login, authenticate, logout
 import uuid
 from django.core.mail import send_mail
@@ -13,6 +13,13 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from verification_email_token_gen import account_activation_token
 from django.core.cache import cache
 from django.conf import settings
+from uuid import uuid4
+from django.urls import reverse
+from .models import User
+from django.core import validators
+from django import forms
+
+
 
 
 def final_verification(subject, message, email_from, recipient_list):
@@ -109,7 +116,66 @@ def salesman_login(request):
         email = request.POST.get('email', "")
         password = request.POST.get("password", "")
         user = authenticate(email=email, password=password)
-        print(user)
         if user is not None:
             login(request, user)
         return redirect('/')
+
+
+def forget_password(request):
+    forget_password_form = ForgetPasswordForm(request.POST or None)
+    if request.method == "GET":
+        return render(request, 'salesman_profile/forget_password.html', {'forget_password_form': forget_password_form})
+
+    elif request.method == "POST":
+        if forget_password_form.is_valid():
+            email = forget_password_form.cleaned_data.get("email")
+            cache.set('email_miss',email,300)
+            user = SalesmanProfile.objects.get(email=email)
+            if user:
+                uid = str(uuid.uuid1())
+                cache.set('uid', uid, 120)
+                current_site = get_current_site(request)
+                subject = 'thank your for registering to mak store'
+                message = render_to_string('salesman_profile/set_tru.html', {
+                        'user': user,
+                        'domain': current_site.domain,
+                        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                        'token': account_activation_token.make_token(user),
+                })
+                email_from = settings.EMAIL_HOST_USER
+
+                recipient_list = [ email,]
+                final_verification(subject, message, email_from, recipient_list)
+
+                return redirect('/') # badan behesh ye message bede
+            else:
+                raise forms.ValidationError('همچین کاربری یافت نشد')
+
+
+def set_true(request,uidb64 ,token):
+    try:
+        uid = urlsafe_base64_decode(uidb64)
+        user = SalesmanProfile.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, SalesmanProfile.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        return redirect('salesman_profile:forget_pass')
+    else:
+        return HttpResponse('Activation link is invalid!')
+
+
+def forget_pass(request):
+    forget_pass_form = ForgetPassForm(request.POST or None)
+    if request.method == "GET":
+        return render(request, 'salesman_profile/forget_pass.html', {'forget_pass_form': forget_pass_form})
+    elif request.method == "POST":
+        print('in chache',cache.get('email_miss'))
+        user = SalesmanProfile.objects.get(email=cache.get('email_miss'))
+        if forget_pass_form.is_valid():
+            password = request.POST.get("password", "")
+            user.set_password(password)
+            user.save()
+            login(request,user)
+            return redirect("home")
+        else:
+            return redirect("salesman_profile:forget_password")

@@ -4,5 +4,5 @@
     {{uid}}
     {{token}}
 
-    http://{{ domain }}{% url 'customer_profile:email_activate' uidb64=uid token=token %}
+    http://{{ domain }}{% url 'customer_profile:email_activate_customer' uidb64=uid token=token %}
 {% endautoescape %}
