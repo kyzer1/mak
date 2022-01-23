@@ -3,7 +3,7 @@ from django.urls import path
 from product.views import show_sub_cat, show_sub_cat_det,Detail_Product
 from .views import show_sub_cat, show_sub_cat_det, ProductList, FilteringAll
 from product.views import show_sub_cat, show_sub_cat_det ,Detail_Product
-from .views import show_sub_cat, show_sub_cat_det, ShowProductBySubCategory, ShowProductCategory, ProductList, FilteringAll
+from .views import show_sub_cat, show_sub_cat_det, ProductList, FilteringAll
 from product.views import show_sub_cat, show_sub_cat_det,Detail_Product,add_to_cart
 
 app_name = 'product'
