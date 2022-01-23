@@ -16,9 +16,14 @@ urlpatterns = [
     path('', include('salesman_profile.urls', namespace='salesman_profile')),
     path('', include('customer_profile.urls', namespace='customer_profile')),
     path('', include('comment.urls', namespace='comments')),
+<<<<<<< HEAD
     # path('', include('cart.urls', namespace='cart')),
     path('', include('payment.urls', namespace='payment')),
     path('bankgateways/', az_bank_gateways_urls())
+=======
+    path('', include('cart.urls', namespace='carts')),
+
+>>>>>>> 5622e153cad765c32de62782a6f997e1dd67dbd9
 ]
 if settings.DEBUG:
     # add root static files
