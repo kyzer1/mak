@@ -163,17 +163,19 @@ class ProductList(ListView):
 
 
 def add_to_cart(request,product_id):
-    r=redis.Redis(decode_responses=True)
+    r=redis.Redis(decode_responses=True,encoding ="utf-8")
     if  request.method=="POST":
         product=request.POST.get("product")
         # request.session["product"]=product
-        product_img=request.POST.get("product_img")
+        product_img='"'+request.POST.get("product_img")+'"'
+        print(product_img)
         # request.session["product_img"]=product_img
-        product_number=request.POST.get("product_number")
+        product_number=int(request.POST.get("product_number"))
+        print(f"type pronum:{type(product_number)}")
         # request.session["product_number"]=product_number
-        unit_price=request.POST.get("price")
+        unit_price=float(request.POST.get("price"))
         # request.session["price"]=price
-        salesman_product_id=request.POST.get("salesman_product_id")
+        salesman_product_id=int(request.POST.get("salesman_product_id"))
         # request.session["salesman_product_id"]=salesman_product_id
         salesman=request.POST.get("salesman")
         # request.session["salesman"]=salesman
@@ -182,14 +184,15 @@ def add_to_cart(request,product_id):
         request.session.save()
         list=str([product_number,product_img,unit_price,salesman,salesman_product_id])
         dict={product:list}
+        print("dict:{dict}")
         if request.user.is_authenticated:
             key=str(request.session["email"])
         else:
             key=str(request.session._get_or_create_session_key())
             # print(f"sessin_key:{key}")
         r.hmset(key,mapping=dict)
-        r.expire(key,1000)
-        # print(r.hgetall(key))
+        r.expire(key,300)#cart for 10 days remains in cache
+        print(r.hgetall(key))
 
         return redirect(reverse("products:detail_product",kwargs={"pk":product_id}))
         
