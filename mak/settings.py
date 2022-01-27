@@ -109,10 +109,10 @@ WSGI_APPLICATION = 'mak.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("DB_NAME", ""),
-        'USER': os.environ.get("DB_USER", ""),
-        'PASSWORD': os.environ.get("DB_PASSWORD", ""),
-        'HOST': os.environ.get("DB_HOST", ""),
+        'NAME': os.environ.get("DB_NAME", "db1"),
+        'USER': os.environ.get("DB_USER", "iman"),
+        'PASSWORD': os.environ.get("DB_PASSWORD", "sadaf123"),
+        'HOST': os.environ.get("DB_HOST", "localhost"),
         'PORT': os.environ.get("DB_PORT", "5432"),
     }
 }

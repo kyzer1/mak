@@ -177,8 +177,8 @@ def add_to_cart(request,product_id):
         # request.session["salesman_product_id"]=salesman_product_id
         salesman=request.POST.get("salesman")
         # request.session["salesman"]=salesman
-        # if request.user.is_authenticated:
-        #     request.session["email"]=request.user.email
+        if request.user.is_authenticated:
+            request.session["email"]=request.user.email
         request.session.save()
         list=str([product_number,product_img,unit_price,salesman,salesman_product_id])
         dict={product:list}
