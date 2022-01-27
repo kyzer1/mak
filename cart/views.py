@@ -3,7 +3,7 @@ import redis
 from django.views.generic import ListView
 from supply.models import SalesmanProduct
 from customer_profile.models import CustomerProfile
-
+from django.contrib.auth.decorators import login_required
 
 
 def reduce_quantity_item(request):
@@ -55,7 +55,7 @@ def show_cart(request):
     new_product_number.clear()
     return render(request,"cart/base_cart.html",ctx)
 
-
+@login_required(login_url='/customer_login/')
 def order_summary(request):
     ctx={}
     r=redis.Redis(decode_responses=True,encoding ="utf-8")
@@ -88,7 +88,8 @@ def order_summary(request):
         result+=j[0]*j[2]
 
     #account info
-    
+
+
     first_name=request.user.first_name
     last_name=request.user.last_name
     email=request.user.email
