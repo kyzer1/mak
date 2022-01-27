@@ -2,18 +2,23 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from mak.views import header, home_page
+from mak.views import home_page
+from azbankgateways.urls import az_bank_gateways_urls
 
+admin.autodiscover()
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
-    path('header', header, name='header'),
+    # path('header', header, name='header'),
     path('', include('product.urls', namespace='products')),
     path('', include('salesman_profile.urls', namespace='salesman_profile')),
     path('', include('customer_profile.urls', namespace='customer_profile')),
     path('', include('comment.urls', namespace='comments')),
+    # path('', include('cart.urls', namespace='cart')),
+    path('', include('payment.urls', namespace='payment')),
+    path('bankgateways/', az_bank_gateways_urls()),
     path('', include('cart.urls', namespace='carts')),
 
 ]

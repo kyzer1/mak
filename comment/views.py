@@ -24,7 +24,6 @@ def add_comment(request,product_id):
         product=get_object_or_404(Product,pk=product_id)
         if form.is_valid():
             comment=form.cleaned_data.get("comment")
-            print(comment)
             rate=form.cleaned_data.get("rate")
             comment=Comment(customer=user,comment=comment,rate=rate ,product=product)
             comment.save()

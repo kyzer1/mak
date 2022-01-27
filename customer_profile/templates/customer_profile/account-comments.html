@@ -1,0 +1,50 @@
+{% extends 'customer_profile/base-account.html' %}
+{% load static %}
+
+
+{% block account_content %}
+<div class="account-content content-comment-account">
+
+    <div class="header-tab-content-account  mb-4">
+        <h1 class="title-tabcontent-account mb-3 mb-sm-0">
+            دیدگاهها
+        </h1>
+    </div>
+    <div class="main-content-account">
+        <div class="box-comments">
+            {% for comment in my_comments %}
+                <div class="item-comment d-flex   mb-4">
+                    <div class="profile-commentsproduct me-3">
+                        <a href="#">
+                            <img src="{{ comment.product.img1.url }}">
+                        </a>
+                    </div>
+                    <div class="comments-product-content">
+                        <div class="comments-product-headerContent  mb-3">
+                            <div class="star_rating-item-comment d-flex ">
+                                {{ comment.product }}
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <form method="POST" action="{% url 'customer_profile:my_comments' %}">
+                                    {% csrf_token %}
+                                    <div class="profile-comments-status me-3">
+                                        <input type="hidden" id="custId" name="cm_delete" value="{{ comment.id }}">
+                                        <button class="btn-animate1 mt-4">حذف</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <p class="mb-4">
+                            {{ comment.comment }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="area-btnOldComment  text-center pt-1">
+            <a class="btn-style2" href="#">نمایش دیدگاههای قدیمی تر</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
