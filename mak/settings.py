@@ -214,3 +214,6 @@ EMAIL_PORT = 587
 # EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_HOST_USER = 'dehghan215@gmail.com'
 EMAIL_HOST_PASSWORD = 'amiraylar1384'
+
+
+# LOGIN_URL = 'customer_login/'

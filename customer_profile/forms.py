@@ -180,3 +180,47 @@ class ForgetPassForm(forms.Form):
             raise forms.ValidationError('کلمه های عبور مغایرت دارند')
 
         return password
+
+
+class ProfileDetail(forms.Form):
+    # name = forms.CharField(
+    #     widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
+    #     label='نام'
+    # )
+
+
+    # familyname = forms.CharField(
+    #     widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
+    #     label='نام خانوادگی'
+    # )
+
+    # email = forms.CharField(
+    #     widget=forms.TextInput(attrs={'placeholder': 'لطفا ایمیل خود را وارد نمایید'}),
+    #     label='ایمیل',
+    #     validators=[
+    #         validators.EmailValidator('ایمیل وارد شده معتبر نمیباشد')
+    #     ]
+    # )
+
+    telephone = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
+        label='تلفن'
+    )
+
+
+    phone_number = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
+        label='موبایل'
+    )
+
+
+    address = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
+        label='آدرس'
+    )
+
+
+    postal_code = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
+        label='کد پستی'
+    )

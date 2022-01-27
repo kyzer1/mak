@@ -1,0 +1,50 @@
+{% extends 'customer_profile/base-account.html' %}
+{% load static %}
+
+
+{% block account_content %}
+
+
+<div class="account-content content-address-account">
+
+
+    <div class="header-tab-content-account  mb-4">
+        <h1 class="title-tabcontent-account">
+            نشانی ها
+        </h1>
+    </div>
+    <div class="main-content-account">
+        <div class="profile-address-container">
+            {% comment %} <div class="profile-address-itemTop mb-3"> اهواز_ کوی مجاهد، کوچه هنر 4 پلاک 15
+            </div> {% endcomment %}
+            <div class="profile-address-content">
+                <ul>
+                    {% for address in customer_addresss %}
+                        <li>
+                            <div class="profile-address-item profile-address-item-location mb-2">
+                                <i class="fal fa-map-marker-alt me-2"> {{ address.address }}</i></div>
+                        </li>
+                    {% endfor %}
+                    <li>
+                        <div class="profile-address-item profile-address-item-postalCode mb-2">
+                            <i class="far fa-envelope me-2"></i>{{ request.user.email }}</div>
+                    </li>
+                    
+                    <li>
+                        <div class="profile-address-item profile-address-item-phone mb-2"><i class="fal fa-phone-alt me-2"></i>{{ customer_number }}</div>
+                    </li>
+                    
+                    <li>
+                        <div class="profile-address-item profile-address-item-name mb-2"><i class="fal fa-user me-2"></i>{{ request.user.username }}</div>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock %}
