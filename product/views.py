@@ -63,6 +63,7 @@ class Detail_Product(DetailView):
          ctx=super().get_context_data(**kwargs)
          first=self.get_object().products.first()
          ctx["first"]=first
+         print('first:',first)
          if first:
             l=first.salesproducts.all()
             if l:
@@ -75,7 +76,8 @@ class Detail_Product(DetailView):
          category=self.get_object().cat
          same_cat=Product.objects.filter(cat=category).exclude(id=self.get_object().id)
          ctx["same_cat"]=same_cat
-
+        #  for i in first.salesproducts.objects.all():
+        #      print('prop',i.props.prop)
 
          return ctx
 

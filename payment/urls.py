@@ -7,4 +7,4 @@ app_name = "payment"
 urlpatterns = [
     path('dargah/', go_to_gateway_view, name="dargah"),
     path("callback_gateway/", callback_gateway_view, name="callback_gateway")
-]
+ ]

@@ -16,7 +16,7 @@ urlpatterns = [
     path('', include('salesman_profile.urls', namespace='salesman_profile')),
     path('', include('customer_profile.urls', namespace='customer_profile')),
     path('', include('comment.urls', namespace='comments')),
-    # path('', include('cart.urls', namespace='cart')),
+    path('', include('cart.urls', namespace='cart')),
     path('', include('payment.urls', namespace='payment')),
     path('bankgateways/', az_bank_gateways_urls()),
     path('', include('cart.urls', namespace='carts')),
