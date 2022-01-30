@@ -24,8 +24,16 @@ class SalesmanProduct(models.Model):
 class SalesManProperty(models.Model):
     salesman = models.ForeignKey(SalesmanProduct, related_name='salesproducts', on_delete=models.CASCADE, null=True)
     prop = models.ForeignKey(Property, related_name='props', on_delete=models.CASCADE, null=True)
-    value = models.CharField(max_length=255)
+   
 
 
     def __str__(self) -> str:
+        return f"{self.prop.prop}:{self.salesman.product.title}:{self.salesman.salesman}"
+
+
+class Property_Values(models.Model):
+    prop=models.ForeignKey(SalesManProperty,on_delete=models.CASCADE,related_name="values")
+    value=models.CharField(max_length=255)
+
+    def __str__(self):
         return self.value
