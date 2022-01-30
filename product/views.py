@@ -54,7 +54,7 @@ def show_sub_cat_det(request, cat): # --> showing sub_cat after click
 class Detail_Product(DetailView):
     model=Product
     context_object_name_="product"
-    template_name ="product/detaile_product1.html"
+    template_name ="product/detaile_product.html"
     # slug_field = 'product_slug'
     # slug_url_kwarg = 'slug'
     pk_url_kwarg = 'pk'
@@ -76,8 +76,7 @@ class Detail_Product(DetailView):
          category=self.get_object().cat
          same_cat=Product.objects.filter(cat=category).exclude(id=self.get_object().id)
          ctx["same_cat"]=same_cat
-        #  for i in first.salesproducts.objects.all():
-        #      print('prop',i.props.prop)
+         
 
          return ctx
 
