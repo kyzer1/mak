@@ -180,6 +180,7 @@ def add_to_cart(request,product_id):
             request.session["email"]=request.user.email
         request.session.save()
         list=str([product_number,product_img,unit_price,salesman,salesman_product_id])
+        # print('in dict ast', product)
         dict={product:list}
         print("dict:{dict}")
         if request.user.is_authenticated:
@@ -189,7 +190,7 @@ def add_to_cart(request,product_id):
             # print(f"sessin_key:{key}")
         r.hmset(key,mapping=dict)
         r.expire(key,300)#cart for 10 days remains in cache
-        print(r.hgetall(key))
+        # print(r.hgetall(key))
 
         return redirect(reverse("products:detail_product",kwargs={"pk":product_id}))
         

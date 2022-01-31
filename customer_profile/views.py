@@ -1,8 +1,5 @@
-from itertools import product
 from django.template.loader import render_to_string
-from markupsafe import re
 from customer_profile.models import CustomerProfile, CustomerAddress
-from product.models import Product
 from .forms import RegisterFormCustomer, LoginFormCustomer,  ForgetPassForm, ForgetPasswordForm, ProfileDetail
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import redirect, render
@@ -103,7 +100,7 @@ def customer_login(request):
                 login(request, user)
                 return redirect('/')
             else:
-                login_form.add_error('email', 'کاربری با مشخصات وارد شده یافت نشد')
+                login_form.add_error(email, 'کاربری با مشخصات وارد شده یافت نشد')
 
             return redirect('/')
 
