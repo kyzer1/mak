@@ -15,7 +15,7 @@ from customer_profile.models import CustomerProfile
 User = get_user_model()
 
 
-@login_required()#login_url
+@login_required(login_url='/customer_login/')
 def add_comment(request,product_id):
     user_id = request.user.id
     user = CustomerProfile.objects.get(id=user_id)

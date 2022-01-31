@@ -105,10 +105,7 @@ def customer_login(request):
                 try:
                     key=request.session.session_key
                     cart=r.hgetall(key)
-                    print("cartttttttttttttttt",cart)
-                    email=request.user.email
                     r.hset(email,mapping=cart)
-                    print("again cartttttttttttttt",r.hgetall(email))
                 except:
                     pass
                 login(request, user)
@@ -118,6 +115,9 @@ def customer_login(request):
 
             return redirect('/')
 
+        else:#if user already not register
+            print(f"error:{login_form.errors}")
+            return redirect('customer_profile:registercustomer')
 
 
 def forget_password(request):
