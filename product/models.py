@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.deletion import SET_NULL
 from salesman_profile.models import SalesmanProfile
+from django.utils.text import slugify
 # from cart.models import Order
 
 # from customer_profile.models import HistoryCustomer
@@ -45,7 +46,12 @@ class Product(models.Model):
     date_prodcut = models.DateTimeField(auto_now=True)
     cat = models.ForeignKey(CategoryProduct, related_name='category', on_delete=models.CASCADE, null=True)
     sold_out_num = models.BigIntegerField(null=True, blank=True)
+    slug_title=models.SlugField(blank=True,allow_unicode=True)
 
+    def save(self,*args,**kwargs):
+        # if not self.slug_title:
+        self.slug_title=slugify(self.title,allow_unicode=True)
+        super().save(*args,**kwargs)
 
 
     def __str__(self) -> str:

@@ -55,9 +55,9 @@ class Detail_Product(DetailView):
     model=Product
     context_object_name_="product"
     template_name ="product/detaile_product.html"
-    # slug_field = 'product_slug'
-    # slug_url_kwarg = 'slug'
-    pk_url_kwarg = 'pk'
+    slug_field = 'slug_title'
+    slug_url_kwarg = 'slug'
+    # pk_url_kwarg = 'pk'
     
     def get_context_data(self, **kwargs):
          ctx=super().get_context_data(**kwargs)
@@ -160,7 +160,7 @@ class ProductList(ListView):
 
 
 
-def add_to_cart(request,product_id):
+def add_to_cart(request, slug: str):
     r=redis.Redis(decode_responses=True,encoding ="utf-8")
     if  request.method=="POST":
         product=request.POST.get("product")
@@ -192,5 +192,5 @@ def add_to_cart(request,product_id):
         r.expire(key,300)#cart for 10 days remains in cache
         print(r.hgetall(key))
 
-        return redirect(reverse("products:detail_product",kwargs={"pk":product_id}))
+        return redirect(reverse("products:detail_product",kwargs={"slug":slug}))
         
