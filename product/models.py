@@ -45,7 +45,7 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     date_prodcut = models.DateTimeField(auto_now=True)
     cat = models.ForeignKey(CategoryProduct, related_name='category', on_delete=models.CASCADE, null=True)
-    sold_out_num = models.BigIntegerField(null=True, blank=True)
+    sold_out_num = models.BigIntegerField(blank=True,default=0)
     slug_title=models.SlugField(blank=True,allow_unicode=True)
 
     def save(self,*args,**kwargs):

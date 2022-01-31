@@ -20,7 +20,7 @@ from django.core import validators
 from django import forms
 from django.contrib.auth.decorators import login_required
 from comment.models import Comment
-
+import redis
 
 
 
@@ -89,6 +89,7 @@ def customer_login(request):
         return redirect('/')
     
     login_form = LoginFormCustomer(request.POST or None)
+    
     if request.method == "GET":
         context = {
             'login_form': login_form
@@ -100,6 +101,13 @@ def customer_login(request):
             password = login_form.cleaned_data.get('password')
             user = authenticate(request, email=email, password=password)
             if user is not None:
+                r=redis.Redis()
+                try:
+                    key=request.session.session_key
+                    cart=r.hgetall(key)
+                    r.hset(email,mapping=cart)
+                except:
+                    pass
                 login(request, user)
                 return redirect('/')
             else:
@@ -107,6 +115,9 @@ def customer_login(request):
 
             return redirect('/')
 
+        else:#if user already not register
+            print(f"error:{login_form.errors}")
+            return redirect('customer_profile:registercustomer')
 
 
 def forget_password(request):

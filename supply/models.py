@@ -7,7 +7,7 @@ from salesman_profile.models import SalesmanProfile
 class SalesmanProduct(models.Model):
     salesman = models.ForeignKey(SalesmanProfile, related_name='salesmans', on_delete=models.CASCADE, null=True)
     # primary_product = models.ManyToManyField(PrimaryProduct, null=True)
-    price = models.FloatField(null=True)
+    price = models.IntegerField(null=True)
     date_import_product = models.DateTimeField(auto_now_add=True, null=True)# add to intermadiate table
     date_last_update = models.DateTimeField(auto_now=True, null=True)# add to intermadiate table
     amount = models.BigIntegerField(null=True)#pas az sefaresh az in kam shavad

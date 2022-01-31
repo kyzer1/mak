@@ -10,6 +10,7 @@ from comment.models import Comment
 from django.http import JsonResponse
 from django.urls import reverse
 import redis
+import json
 
 
 
@@ -161,36 +162,25 @@ class ProductList(ListView):
 
 
 def add_to_cart(request, slug: str):
-    r=redis.Redis(decode_responses=True,encoding ="utf-8")
+    r=redis.Redis()
     if  request.method=="POST":
         product=request.POST.get("product")
-        # request.session["product"]=product
-        product_img='"'+request.POST.get("product_img")+'"'
-        print(product_img)
-        # request.session["product_img"]=product_img
+        product_img=request.POST.get("product_img")
         product_number=int(request.POST.get("product_number"))
-        print(f"type pronum:{type(product_number)}")
-        # request.session["product_number"]=product_number
-        unit_price=float(request.POST.get("price"))
-        # request.session["price"]=price
+        unit_price=int(request.POST.get("price"))
         salesman_product_id=int(request.POST.get("salesman_product_id"))
-        # request.session["salesman_product_id"]=salesman_product_id
         salesman=request.POST.get("salesman")
-        # request.session["salesman"]=salesman
+        items_list=[product_number,product_img,unit_price,salesman,salesman_product_id]
+        items_list=json.dumps(items_list)
+        items_dict={product:items_list}
         if request.user.is_authenticated:
-            request.session["email"]=request.user.email
-        request.session.save()
-        list=str([product_number,product_img,unit_price,salesman,salesman_product_id])
-        dict={product:list}
-        print("dict:{dict}")
-        if request.user.is_authenticated:
-            key=str(request.session["email"])
+            key=request.user.email
+            r.hset(key,mapping=items_dict)
+            r.expire(key,300)#cart for 300 s remains in cache
         else:
-            key=str(request.session._get_or_create_session_key())
-            # print(f"sessin_key:{key}")
-        r.hmset(key,mapping=dict)
-        r.expire(key,300)#cart for 10 days remains in cache
-        print(r.hgetall(key))
+            key=request.session.session_key
+            r.hset(key,mapping=items_dict)
+            r.expire(key,300)#cart for 300s remains in cache
 
         return redirect(reverse("products:detail_product",kwargs={"slug":slug}))
         
