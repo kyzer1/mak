@@ -615,14 +615,14 @@
                                 <div class="product_cart">
                                     <a href="#" class="link-wishlist-icon"><i class="fal fa-heart"></i></a>
                                     <div class="cart-img-product mb-3">
-                                        <a href="{% url 'products:detail_product' product.id%}">
+                                        <a href="{% url 'products:detail_product' product.slug_title%}">
                                             <div class="d-flex justify-content-center align-items-center h-100">
                                                 <img src="{{product.img1.url}}" class="img1-product img-fluid" />
                                                 <img src="{{product.img1.url}}" class="img2-product img-fluid" />
                                             </div>
                                         </a>
                                         <div class="area-button-view-product">
-                                            <a href="{% url 'products:detail_product' product.id%}" class="button-view-product">مشاهده
+                                            <a href="{% url 'products:detail_product' product.slug_title%}" class="button-view-product">مشاهده
                                                 محصول</a>
                                         </div>
                                     </div>

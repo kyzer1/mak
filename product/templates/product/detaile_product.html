@@ -144,7 +144,7 @@
                                 </ul>
                                 {% endif %}
                                   <div class="area-inputNumber-singlproduct d-flex align-items-center mt-4">
-                                  <form action="{%url 'products:add_to_cart' product.id %}" method="POST">
+                                  <form action="{%url 'products:add_to_cart' product.slug_title %}" method="POST">
                                   {% csrf_token %}
                                   <input type="hidden" name="product" value="{{product.title}}"/>
                                   {% if product.img1 %}
