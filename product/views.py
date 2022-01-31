@@ -54,15 +54,16 @@ def show_sub_cat_det(request, cat): # --> showing sub_cat after click
 class Detail_Product(DetailView):
     model=Product
     context_object_name_="product"
-    template_name ="product/detaile_product1.html"
-    # slug_field = 'product_slug'
-    # slug_url_kwarg = 'slug'
-    pk_url_kwarg = 'pk'
+    template_name ="product/detaile_product.html"
+    slug_field = 'slug_title'
+    slug_url_kwarg = 'slug'
+    # pk_url_kwarg = 'pk'
     
     def get_context_data(self, **kwargs):
          ctx=super().get_context_data(**kwargs)
          first=self.get_object().products.first()
          ctx["first"]=first
+         print('first:',first)
          if first:
             l=first.salesproducts.all()
             if l:
@@ -75,7 +76,7 @@ class Detail_Product(DetailView):
          category=self.get_object().cat
          same_cat=Product.objects.filter(cat=category).exclude(id=self.get_object().id)
          ctx["same_cat"]=same_cat
-
+         
 
          return ctx
 
@@ -159,7 +160,7 @@ class ProductList(ListView):
 
 
 
-def add_to_cart(request,product_id):
+def add_to_cart(request, slug: str):
     r=redis.Redis(decode_responses=True,encoding ="utf-8")
     if  request.method=="POST":
         product=request.POST.get("product")
@@ -192,5 +193,5 @@ def add_to_cart(request,product_id):
         r.expire(key,300)#cart for 10 days remains in cache
         # print(r.hgetall(key))
 
-        return redirect(reverse("products:detail_product",kwargs={"pk":product_id}))
+        return redirect(reverse("products:detail_product",kwargs={"slug":slug}))
         

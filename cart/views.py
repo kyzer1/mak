@@ -39,7 +39,6 @@ def show_cart(request):
     
     #clean and normalize data
     for i,j in data.items():
-        
         j=j.strip('[]\"')
         j=j.split(',')
         j[1]=j[1].strip("\'")
@@ -55,7 +54,7 @@ def show_cart(request):
         j[4]=j[4].strip("'")#salesman id
         result+=j[0]*j[2]
         
-      
+    print(f"image: {j[1]}")
    
 
     ctx={"data":clean_data,"result":result,"new_product_number":new_product_number}
@@ -93,20 +92,18 @@ def order_summary(request):
         result+=j[0]*j[2]
 
     #account info
+    if request.user.is_authenticated:
+        first_name=request.user.first_name
+        last_name=request.user.last_name
+        email=request.user.email
+        usr_obj=CustomerProfile.objects.get(email=email)
+        addres=usr_obj.customer_ad.first()
+        # postal_code=usr_obj.postal_code 
+        ctx["first_name"]=first_name
+        ctx["last_name"]=last_name
+        ctx["email"]=email
+        ctx["addres"]=addres
 
-    # request.session['result_jam'] = result
-    first_name=request.user.first_name
-    last_name=request.user.last_name
-    email=request.user.email
-    usr_obj=CustomerProfile.objects.get(email=email)
-    addres=usr_obj.customer_ad.first()
-    # postal_code=usr_obj.postal_code 
-    ctx["first_name"]=first_name
-    ctx["last_name"]=last_name
-    ctx["email"]=email
-    ctx["addres"]=addres
-    request.session["jame_kol"] = result
-    # cache.set("faktor_data", clean_data)
     ctx={"data":clean_data,"result":result}
 
     return render(request,"cart/order_summary.html",ctx)

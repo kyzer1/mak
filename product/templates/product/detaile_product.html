@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load tags %}
-
 {% block content %}
 <div class="singleProduct toSidebar">
     <div class="bg-close">
@@ -132,17 +130,21 @@
                                 <p class="mb-3">
                                     {{product.description}}
                                 </p>
+                                {% if first.salesproducts.all.values.all %}
                                 <ul>
                                 <li>ویژگی های کالا</li>
-                                 {% for i in l %}
-                                 <li>
-                                    {{i.prop.prop}}:
-                                    {% split_prop_func i.value %}
+                                {% for i in first.salesproducts.all %}
+                                <li>
+                                    {{i.prop}}:
+                                    {% for j in i.values.all %}
+                                    <span>{{j.value}}</span>
+                                    {%endfor %}
                                 </li>
-                                {% endfor %} 
+                                {% endfor %}
                                 </ul>
+                                {% endif %}
                                   <div class="area-inputNumber-singlproduct d-flex align-items-center mt-4">
-                                  <form action="{%url 'products:add_to_cart' product.id %}" method="POST">
+                                  <form action="{%url 'products:add_to_cart' product.slug_title %}" method="POST">
                                   {% csrf_token %}
                                   <input type="hidden" name="product" value="{{product.title}}"/>
                                   {% if product.img1 %}
