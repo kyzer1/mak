@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import logging
 from django.urls import reverse
 from azbankgateways import bankfactories, models as bank_models, default_settings as settings
@@ -49,7 +49,7 @@ def callback_gateway_view(request):
     if bank_record.is_success:
         # پرداخت با موفقیت انجام پذیرفته است و بانک تایید کرده است.
         # می توانید کاربر را به صفحه نتیجه هدایت کنید یا نتیجه را نمایش دهید.
-        return HttpResponse("پرداخت با موفقیت انجام شد.")
+        return redirect("cart:faktor")
 
     # پرداخت موفق نبوده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.
     return HttpResponse("پرداخت با شکست مواجه شده است. اگر پول کم شده است ظرف مدت ۴۸ ساعت پول به حساب شما بازخواهد گشت.")

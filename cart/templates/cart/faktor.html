@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+    <div class="area-breadcrumb-site">
+        <h1 class="text-center mb-3"></h1>
+        <nav aria-label="breadcrumb" class="mb-4 mb-lg-3">
+            <ol class="breadcrumb breadcrumb-singleProduct ">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">خانه</a></li>
+                <li class="breadcrumb-item active">فاکتور</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+
+<main class="content">
+    <section class="mb-5 pb-sm-2 pb-md-3  pb-lg-4 pb-xl-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="area-content-wishlist area-table-shop mb-5">
+                        <table class="table table-shop table-wishlist">
+                            <thead>
+                                <tr>
+                                    {% comment %} <th scope="col">تصویر</th> {% endcomment %}
+                                    <th scope="col">تعداد</th>
+                                    <th scope="col">محصول</th>
+                                    <th scope="col"> قیمت (تومان)</th>
+                                    <th scope="col"> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i,j in data.items %}
+                                    <tr>
+                                        {% comment %} <td>
+                                            <div class="product-thumbnail">
+                                                <a href="#"><img src="{{ i.j1.url }}"></a>
+                                            </div>
+                                        </td> {% endcomment %}
+                                        <td>
+                                            <div class="name-product">
+                                                <a href="#">
+                                                    <h3>{{ j.0 }}</h3>
+                                                </a> </div>
+                                        </td>
+                                        <td>
+                                            <div class="name-product">
+                                                <a href="#">
+                                                    <h3>{{ i }}</h3>
+                                                </a> </div>
+                                        </td>
+                                        <td class="cell-product-price">
+                                            <div class="product-price">
+                                                {{ j.2 }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+                        <!-- WISHLIST MOBILE -->
+                        <ul class="table-wishlist responsive-mobile d-block d-md-none">
+                            <li>
+                                <div class="product-wishlist responsive-mobile bg-white d-flex align-items-center  mb-4">
+                                    <div class="product-thumbnail me-2 me-md-3"><a href="#"><img src="img/img12.jpg"></a>
+                                    </div>
+                                    <div class="product-details-responsive-mobile">
+
+                                        <div class="name-product mb-2">
+                                            <a href="#">
+                                                <h3>نام محصول</h3>
+                                            </a> </div>
+                                        <div class="product-price">
+                                            2500000 تومان
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="additional-info-wishlist responsive-mobile d-flex align-items-center">
+                                    <span class="status-product stok me-3">
+                                        موجود
+                                    </span>
+                                    <div class="area-btn-addtocart-wishlist me-3">
+                                        <button type="submit" class="btn-animate1"> افزودن به سبد خرید<i class="fal fa-cart-arrow-down ms-2"></i></button>
+                                    </div> <a href="#" class="remove-product">
+                                        <i class="fal fa-times"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="product-wishlist responsive-mobile bg-white d-flex align-items-center  mb-4">
+                                    <div class="product-thumbnail me-2 me-md-3"><a href="#"><img src="img/img11.jpg"></a>
+                                    </div>
+                                    <div class="product-details-responsive-mobile">
+                                        <div class="name-product mb-2">
+                                            <a href="#">
+                                                <h3>نام محصول</h3>
+                                            </a> </div>
+                                        <div class="product-price">
+                                            2500000 تومان
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="additional-info-wishlist responsive-mobile d-flex align-items-center">
+                                    <span class="status-product  not-stok me-3">
+                                        ناموجود
+                                    </span>
+                                    <div class="area-btn-addtocart-wishlist me-3">
+                                        <button type="submit" class="btn-animate1"> افزودن به سبد خرید<i class="fal fa-cart-arrow-down ms-2"></i></button>
+                                    </div> <a href="#" class="remove-product">
+                                        <i class="fal fa-times"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <p style="color: red; font-size: x-large;">jame kol = {{ result }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -4,5 +4,5 @@ from .views import add_comment
 app_name = 'comments'
 
 urlpatterns = [
-    path('add-comment/<int:product_id>', add_comment, name="add_comment")
+    path('add-comment/<str:slug>', add_comment, name="add_comment")
 ]
