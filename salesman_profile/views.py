@@ -38,7 +38,7 @@ def registersalesman(request):
         uid = str(uuid.uuid1())
         cache.set('uid', uid, 120)
         subject = 'thank your for registering to mak store'
-        message = render_to_string('customer_profile/vertification_mail.html', {
+        message = render_to_string('salesman_profile/activate_mail.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),

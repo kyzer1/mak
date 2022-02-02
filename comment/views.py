@@ -16,18 +16,18 @@ User = get_user_model()
 
 
 @login_required(login_url='/customer_login/')
-def add_comment(request,product_id):
+def add_comment(request,slug):
     user_id = request.user.id
     user = CustomerProfile.objects.get(id=user_id)
     if request.method=="POST":
         form=CommentForm(request.POST)
-        product=get_object_or_404(Product,pk=product_id)
+        product=get_object_or_404(Product,slug_title=slug)
         if form.is_valid():
             comment=form.cleaned_data.get("comment")
             rate=form.cleaned_data.get("rate")
             comment=Comment(customer=user,comment=comment,rate=rate ,product=product)
             comment.save()
-            return redirect(reverse("products:detail_product",kwargs={"pk":product.id}))
+            return redirect(reverse("products:detail_product",kwargs={"slug":slug}))
         else:
             comments=product.product_comment.all()
             ctx={

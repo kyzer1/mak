@@ -311,7 +311,7 @@
                                         <div class="area-form-reviews">
                                             <h3 class="h4 mb-4 heading-style1 mt-5">ارسال نظرات</h3>
                                             <!-- Default form contact -->
-                                            <form class="row form-reviews" action="{% url 'comments:add_comment' product.id %}" method="POST">
+                                            <form class="row form-reviews" action="{% url 'comments:add_comment' product.slug_title %}" method="POST">
                                                 {% csrf_token %}
                                                 {% comment %} <div class="starrating risingstar d-flex justify-content-start mb-4">
                                                     <input type="radio" id="star5" name="rating" value="5" /><label
