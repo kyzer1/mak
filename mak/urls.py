@@ -4,6 +4,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from mak.views import home_page
 from azbankgateways.urls import az_bank_gateways_urls
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 
 admin.autodiscover()
 
@@ -20,7 +25,7 @@ urlpatterns = [
     path('', include('payment.urls', namespace='payment')),
     path('bankgateways/', az_bank_gateways_urls()),
     path('', include('cart.urls', namespace='carts')),
-
+    path('api-auth/', include('rest_framework.urls')),
 ]
 if settings.DEBUG:
     # add root static files

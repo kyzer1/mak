@@ -184,6 +184,7 @@ def faktor(request):
         result=0  
         for i,j in clean_data.items():
             result+=j[0]*j[2]
+            print(j[3])
             customer=CustomerProfile.objects.get(email=key)
             faktor = Payment()
             faktor.customer = customer

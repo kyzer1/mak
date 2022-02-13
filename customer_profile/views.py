@@ -21,11 +21,12 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from comment.models import Comment
 import redis
-
+from .tasks import send_email_task
 
 
 def final_verification(subject, message, email_from, recipient_list):
-    send_mail( subject, message, email_from, recipient_list)
+    # send_mail( subject, message, email_from, recipient_list)
+    send_email_task(subject, message, email_from, recipient_list)
 
 
 

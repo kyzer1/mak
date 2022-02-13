@@ -22,7 +22,7 @@ def home_page(request): #--> 3 dasteye por forosh --> hatman badan handle shavad
 
 
     sub = []
-
+    
     for cat in parent_category:
         sub.append(cat.child_cat.all())
 

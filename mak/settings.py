@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'mathfilters',
     'django_extensions',
     'django_render_partial',
+    'rest_framework',
     'azbankgateways',
+    'rest_framework_simplejwt',
+    'drf_braces',
 
     'customer_profile',
     'salesman_profile',
@@ -175,6 +178,14 @@ CACHES = {
     }
 }
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -210,10 +221,29 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-# EMAIL_HOST_USER = os.environ.get("EMAIL_USERNAME")
-# EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
-EMAIL_HOST_USER = 'dehghan215@gmail.com'
-EMAIL_HOST_PASSWORD = 'Amirdn@Aylar1384'
+EMAIL_HOST_USER = os.environ.get("EMAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+# EMAIL_HOST_USER = 'dehghan215@gmail.com'
+# EMAIL_HOST_PASSWORD = 'Amirdn@Aylar1384'
 
 
 # LOGIN_URL = 'customer_login/'
+# REDIS_HOST = os.environ.get("REDIS_HOST", "")
+
+# CELERY_BROKER_URL = f"redis://{REDIS_HOST}:6379"
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = "Asia/Tehran"
+# CELERY_BEAT_SCHEDULE = {
+#     'task-first': {
+#         'task': 'one',
+#         'schedule': timedelta(seconds=1)
+#        },
+#     'task-second': {
+#         'task': 'two',
+#         'schedule': crontab(minute=0, hour='*/3,10-19')
+#       }
+# }

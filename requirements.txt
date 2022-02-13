@@ -20,7 +20,9 @@ defusedxml==0.7.1
 Deprecated==1.2.13
 Django==4.0
 django-extensions==3.1.5
+django-mathfilters==1.0.0
 django-render-partial==0.4
+djangorestframework==3.13.1
 Eel==0.12.4
 entrypoints==0.3
 future==0.18.2
