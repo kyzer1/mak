@@ -100,11 +100,11 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class ProfileAddressSerializer(serializers.ModelSerializer):
     
-    customer = serializers.RelatedField(many=True, read_only = True)
+    customer = ProfileSerializer(many=True)
 
     class Meta:
         model = CustomerAddress
-        fields = ['address', 'postal_code', "customer"]
+        fields = ['address', 'postal_code', 'customer']
 
 # class ProfileSerializer(FormSerializer):
     
