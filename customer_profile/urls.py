@@ -4,7 +4,7 @@ from .views import (registercustomer, customer_login, customerlogout, email_acti
                         forget_password, forget_pass, set_true, checkForActivationMail, 
                             profilecustomer, my_address, my_comments)
 
-from customer_profile.my_api.views import MyUserLoginTokenPairView, RegisterView, ProfileList
+from customer_profile.my_api.views import MyUserLoginTokenPairView, RegisterView, ProfileList, ProfileDetail, ProfileUpdate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.routers import DefaultRouter
 
@@ -17,6 +17,7 @@ profile_update = ProfileList.as_view({
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r'customerapi', ProfileList)
+
 
 urlpatterns = [
     path('registercustomer/', registercustomer, name='registercustomer'),
@@ -34,6 +35,8 @@ urlpatterns = [
     path('login-api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register-api/', RegisterView.as_view(), name='auth_register'),
     path('profile-api/<int:pk>/', profile_update, name='profile_api'),
+    path('myprofile-api/<int:pk>/', ProfileDetail.as_view(), name='myprofile_api'),
+    path('myprofile-api-up/<int:pk>/', ProfileUpdate.as_view(), name='ProfileUpdate')
 ]
 
 urlpatterns += router.urls

@@ -1,6 +1,5 @@
 # django 
 
-from nbformat import read
 from customer_profile.models import CustomerProfile, CustomerAddress
 from customer_profile.models import User
 
@@ -11,22 +10,11 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
-from drf_braces.serializers.form_serializer import FormSerializer
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+
 
 
 from customer_profile.views import ProfileDetail
 
-# class UserLoginSerializer(serializers.ModelSerializer):
-    
-#     password = serializers.CharField(allow_blank=False)
-
-#     class Meta:
-
-#         model = CustomerProfile
-
-#         fields = ['email', 'password']
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -84,29 +72,40 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = CustomerProfile
         fields = ['telephone', 'phone_number']
     
-    # def save(self, commit = True, **kwargs):
-    #     usersave =  super().save(**kwargs)
-    #     if commit:
-    #         usersave.save()
-    #     return usersave
-
-    # def create(self, flag=None, *args, **kwargs):
-    #     user_profile = CustomerProfile(*args, **kwargs)
-    #     if flag == True:
-    #         user_profile.save()    
-    #         return user_profile
-    #     else:
-    #         return user_profile
 
 class ProfileAddressSerializer(serializers.ModelSerializer):
     
-    customer = ProfileSerializer(many=True)
+    customer = ProfileSerializer()
 
     class Meta:
         model = CustomerAddress
         fields = ['address', 'postal_code', 'customer']
 
-# class ProfileSerializer(FormSerializer):
-    
-#     class Meta:
-#         form = ProfileDetail
+    def create(self, validated_data):
+        customer_data = validated_data.get('customer')
+        datas = []
+        for data in customer_data.items():
+            datas.append(data[1])
+
+        
+        my_c, creating = CustomerProfile.objects.get_or_create(phone_number = datas[0], telephone=datas[1]) # bar ax dari mizni ddsh
+
+        address = validated_data.pop('address')
+        postal_code = validated_data.pop('postal_code')
+
+        address_creating= CustomerAddress.objects.create(address=address, postal_code=postal_code, customer=my_c)
+
+
+        return address_creating
+
+    def update(self, instance, validated_data):
+        customer_validated_data = validated_data.pop('customer', None)
+        customer = instance.customer
+        customer.phone_number = customer_validated_data.get('phone_number', customer.phone_number)
+        customer.telephone = customer_validated_data.get('telephone', customer.telephone)
+        customer.save()
+        instance.address = validated_data.get('address', instance.address)
+        instance.postal_code = validated_data.get('postal_code', instance.postal_code)
+        instance.save()
+        return instance
+
